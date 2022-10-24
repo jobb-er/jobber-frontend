@@ -1,10 +1,31 @@
 import { ReactElement } from "react";
-import { useTranslation } from "react-i18next";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-const App = (): ReactElement => {
-  const { t } = useTranslation();
+import { Container, Settings } from "./packages/app";
+import { AllOffers, MyOffers } from "./packages/offers";
+import { Messages } from "./packages/chat";
+import { Profile } from "./packages/profile";
+import {
+  OFFERS,
+  MESSAGES,
+  MY_OFFERS,
+  PROFILE,
+  SETTINGS,
+} from "./common/constants";
 
-  return <span>{t("hello")}</span>;
-};
+const App = (): ReactElement => (
+  <BrowserRouter>
+    <Container>
+      <Routes>
+        <Route path={OFFERS} element={<AllOffers />} />
+        <Route path={MESSAGES} element={<Messages />} />
+        <Route path={MY_OFFERS} element={<MyOffers />} />
+        <Route path={PROFILE} element={<Profile />} />
+        <Route path={SETTINGS} element={<Settings />} />
+        <Route path="*" element={<Navigate to={OFFERS} replace />} />
+      </Routes>
+    </Container>
+  </BrowserRouter>
+);
 
 export default App;

@@ -1,0 +1,7 @@
+.container {
+  display: grid;
+  grid-template-areas: "menu content";
+  grid-template-rows: auto;
+  grid-template-columns: 12rem auto;
+  height: 100vh;
+}
