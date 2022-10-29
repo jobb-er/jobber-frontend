@@ -14,8 +14,11 @@ jobs:
         node-version: [16.17.1]
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Install dependencies
       uses: yarn install
+
     - name: Run tests
       uses: yarn test
