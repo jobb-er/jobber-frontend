@@ -1,4 +1,4 @@
-name: Run tests
+name: Check tests
 
 on:
   pull_request:
@@ -13,7 +13,7 @@ jobs:
       CI: false
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Install dependencies
         uses: yarn install
