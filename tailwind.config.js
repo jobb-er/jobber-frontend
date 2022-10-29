@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         mainFont: ["Inter", "sans-serif"],
       },
+      borderRadius: {
+        "5xl": "5rem",
+      },
     },
     colors: {
       primary: {
@@ -14,6 +17,7 @@ module.exports = {
       secondary: {
         DEFAULT: "#9195A0",
         light: "#D9D9D9",
+        lightest: "#EEEEEE",
       },
       action: {
         DEFAULT: "#50A8EA",
