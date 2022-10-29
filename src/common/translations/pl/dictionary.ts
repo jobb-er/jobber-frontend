@@ -7,9 +7,11 @@ const pl = {
     settings: "Ustawienia",
     logout: "Wyloguj",
   },
+  loginRegisterWrapper: {
+    title: "Nowe potężne narzędzie do znalezeienia wymarzonej pracy.",
+  },
   login: {
     login: "Zaloguj się",
-    title: "Nowe potężne narzędzie do znalezeienia wymarzonej pracy.",
     noAccount: "Nie posiadasz jeszcze konta?",
     register: "Zarejestruj się",
     email: "E-mail",

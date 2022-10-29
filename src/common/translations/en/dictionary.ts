@@ -7,9 +7,11 @@ const en = {
     settings: "Settings",
     logout: "Logout",
   },
+  loginRegisterWrapper: {
+    title: "The new powerful tool to find wonderful job.",
+  },
   login: {
     login: "Login",
-    title: "The new powerful tool to find wonderful job.",
     noAccount: "Don't have account yet?",
     register: "Register",
     email: "E-mail",
