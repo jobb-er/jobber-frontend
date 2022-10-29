@@ -1,1 +1,1 @@
-export { Settings, Login, Register, Container } from "./ui";
+export { Settings, Login, Register, Container, AuthContainer } from "./ui";
