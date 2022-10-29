@@ -5,8 +5,9 @@ import { ReactComponent as Image } from "../../../../common/images/login/image.s
 import { addAsterisk } from "../../../../common/utils";
 import { Input, Button } from "../../../../common/components";
 import LoginRegisterWrapper from "../common";
+import { LoginProps } from "./types";
 
-const Login = (): ReactElement => {
+const Login = ({ onChangeScreen }: LoginProps): ReactElement => {
   const { t } = useTranslation();
 
   return (
@@ -14,7 +15,7 @@ const Login = (): ReactElement => {
       <span className="text-5xl font-semibold select-none">
         {t("login.login")}
       </span>
-      <div className="w-1/2 flex flex-col items-center gap-8">
+      <div className="w-1/2 flex flex-col items-center gap-3">
         <Input
           label={addAsterisk(t("login.email"))}
           placeholder={t("login.emailPlaceholder")}
@@ -34,10 +35,15 @@ const Login = (): ReactElement => {
         </Button>
       </div>
       <div className="border-b border-primary w-1/2" />
-      <span className="flex items-center gap-1.5 font-semibold">
-        <p className="select-none">{t("login.noAccount")}</p>
-        <p className="text-action">{t("login.register")}</p>
-      </span>
+      <div className="flex items-center gap-1.5 font-semibold select-none">
+        {t("login.noAccount")}
+        <button
+          className="text-action focus:outline-none"
+          onClick={onChangeScreen}
+        >
+          {t("login.register")}
+        </button>
+      </div>
     </LoginRegisterWrapper>
   );
 };

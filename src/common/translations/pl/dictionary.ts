@@ -22,6 +22,26 @@ const pl = {
       wrongPassword: "Niepoprawne hasło",
     },
   },
+  register: {
+    register: "Zarejestruj się",
+    firstName: "Imię",
+    firstNamePlaceholder: "Twoje imię",
+    lastName: "Nazwisko",
+    lastNamePlaceholder: "Twoje nazwisko",
+    password: "Hasło",
+    confirmPassword: "Potwierdź hasło",
+    role: "Rola",
+    rolePlaceholder: "Wybierz rolę",
+    email: "E-mail",
+    emailPlaceholder: "Twój e-mail",
+    acceptTerms: "Akceptuję warunki",
+    haveAccount: "Posiadasz konto?",
+    login: "Zaloguj się",
+  },
+  roles: {
+    candidate: "Kandydat",
+    recruiter: "Rekruter",
+  },
 };
 
 export default pl;
