@@ -8,16 +8,14 @@ jobs:
   build:
     name: Run tests
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.17.1]
+    timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ 16.17.1 }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.17.1
-      - run: yarn install
-      - run: yarn test
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        uses: yarn install
+
+      - name: Run tests
+        uses: yarn test
