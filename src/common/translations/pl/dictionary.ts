@@ -8,7 +8,7 @@ const pl = {
     logout: "Wyloguj",
   },
   loginRegisterWrapper: {
-    title: "Nowe potężne narzędzie do znalezeienia wymarzonej pracy.",
+    title: "Nowe potężne narzędzie do znalezienia wymarzonej pracy.",
   },
   login: {
     login: "Zaloguj się",
