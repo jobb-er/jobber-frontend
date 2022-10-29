@@ -24,7 +24,7 @@ const Input = ({
     )}
   >
     {label ? (
-      <span className="pl-3 text-xs font-semibold">{label}</span>
+      <span className="pl-3 text-xs font-semibold select-none">{label}</span>
     ) : (
       <></>
     )}
