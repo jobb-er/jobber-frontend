@@ -20,7 +20,7 @@ const Input = ({
 }: InputProps): ReactElement => (
   <div
     className={removeDuplicateWhitespaces(
-      `flex flex-col gap-0.5 text-primary h-18 ${width}`,
+      `flex flex-col gap-0.5 text-primary h-20 ${width}`,
     )}
   >
     {label ? (

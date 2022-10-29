@@ -7,9 +7,11 @@ const en = {
     settings: "Settings",
     logout: "Logout",
   },
+  loginRegisterWrapper: {
+    title: "The new powerful tool to find wonderful job.",
+  },
   login: {
     login: "Login",
-    title: "The new powerful tool to find wonderful job.",
     noAccount: "Don't have account yet?",
     register: "Register",
     email: "E-mail",
@@ -19,6 +21,26 @@ const en = {
       wrongEmail: "Wrong e-mail provided!",
       wrongPassword: "Wrong password",
     },
+  },
+  register: {
+    register: "Register",
+    firstName: "First name",
+    firstNamePlaceholder: "Your first name",
+    lastName: "Last name",
+    lastNamePlaceholder: "Your last name",
+    password: "Password",
+    confirmPassword: "Confirm password",
+    role: "Role",
+    rolePlaceholder: "Choose role",
+    email: "E-mail",
+    emailPlaceholder: "Your e-mail",
+    acceptTerms: "I accept terms and conditions",
+    haveAccount: "Already have an account?",
+    login: "Login",
+  },
+  roles: {
+    candidate: "Candidate",
+    recruiter: "Recruiter",
   },
 };
 
