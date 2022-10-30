@@ -49,6 +49,10 @@ const en = {
     candidate: "Candidate",
     recruiter: "Recruiter",
   },
+  allOffers: {
+    search: "Search offers",
+    location: "Location",
+  },
 };
 
 export default en;

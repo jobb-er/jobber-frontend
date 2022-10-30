@@ -15,12 +15,14 @@ const Input = ({
   label,
   onChange,
   disabled = false,
+  height = "h-20",
+  Icon,
   additionalClassName,
   ...props
 }: InputProps): ReactElement => (
   <div
     className={removeDuplicateWhitespaces(
-      `flex flex-col gap-0.5 text-primary h-20 ${width}`,
+      `flex flex-col gap-0.5 text-primary relative ${height} ${width}`,
     )}
   >
     {label ? (
@@ -28,11 +30,12 @@ const Input = ({
     ) : (
       <></>
     )}
+    {Icon ? <Icon className="absolute w-5 h-5 top-2 left-3" /> : <></>}
     <input
       className={removeDuplicateWhitespaces(
-        `bg-secondary-lightest rounded-xl h-9 p-3 placeholder:opacity-40 focus:outline-none w-full border ${
+        `bg-secondary-lightest rounded-xl h-9 placeholder:opacity-40 focus:outline-none w-full border ${
           isError ? "border-error" : "border-secondary-lightest"
-        } ${additionalClassName}`,
+        } ${Icon ? "pl-10 pr-3" : "p-3"} ${additionalClassName}`,
       )}
       value={value}
       defaultValue={defaultValue}

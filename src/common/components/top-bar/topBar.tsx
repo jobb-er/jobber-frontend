@@ -14,7 +14,7 @@ const TopBar = ({
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center justify-between text-primary">
+    <div className="flex items-center justify-between text-primary h-min">
       {children}
       <div className="flex items-center gap-4 select-none">
         <div className="flex flex-col gap-0.5 capitalize">
