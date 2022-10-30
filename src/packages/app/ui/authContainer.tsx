@@ -10,7 +10,7 @@ const AuthContainer = ({ children }: AuthContainerProps): ReactElement => {
   );
 
   // TODO add authorisation logic and add
-  const isAuthorised = false;
+  const isAuthorised = true;
 
   if (isAuthorised) return children;
 
