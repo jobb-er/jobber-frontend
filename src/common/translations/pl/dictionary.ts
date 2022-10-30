@@ -49,6 +49,10 @@ const pl = {
     candidate: "Kandydat",
     recruiter: "Rekruter",
   },
+  allOffers: {
+    search: "Szukaj oferty",
+    location: "Lokalizacja",
+  },
 };
 
 export default pl;

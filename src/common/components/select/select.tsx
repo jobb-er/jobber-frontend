@@ -13,6 +13,8 @@ const Select = ({
   placeholder,
   isError,
   errorMessage,
+  Icon,
+  height = "h-20",
   additionalClassName,
 }: SelectProps): ReactElement => {
   const [expanded, setExpanded] = useState(false);
@@ -25,7 +27,7 @@ const Select = ({
   return (
     <div
       className={removeDuplicateWhitespaces(
-        `flex flex-col gap-0.5 text-primary h-20 w-full ${additionalClassName}`,
+        `flex flex-col gap-0.5 text-primary w-full ${height} ${additionalClassName}`,
       )}
     >
       {label ? (
@@ -37,7 +39,7 @@ const Select = ({
         <button
           className={removeDuplicateWhitespaces(
             `relative bg-secondary-lightest rounded-xl
-            h-9 py-1 px-3 w-full border focus:outline-none 
+            h-9 w-full border focus:outline-none py-1 px-3
             ${isError ? "border-error" : "border-secondary-lightest"}`,
           )}
           type="button"
@@ -45,9 +47,12 @@ const Select = ({
           onClick={() => setExpanded((prev) => !prev)}
         >
           <div className="flex items-center justify-between gap-10">
-            <span className={value ? "" : "opacity-20"}>
-              {value || placeholder}
-            </span>
+            <div className="flex items-center gap-2">
+              {Icon ? <Icon className="w-5 h-5" /> : <></>}
+              <span className={value ? "" : "opacity-20"}>
+                {value || placeholder}
+              </span>
+            </div>
             <ArrowDownIcon
               className={removeDuplicateWhitespaces(
                 `w-4 h-4 ${

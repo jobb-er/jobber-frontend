@@ -1,4 +1,9 @@
-import { InputHTMLAttributes, ChangeEvent } from "react";
+import {
+  InputHTMLAttributes,
+  ChangeEvent,
+  FunctionComponent,
+  SVGProps,
+} from "react";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   value?: string | number;
@@ -10,7 +15,13 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   isError?: boolean;
   errorMessage?: string;
   label?: string;
+  Icon?: FunctionComponent<
+    SVGProps<SVGSVGElement> & {
+      title?: string | undefined;
+    }
+  >;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
+  height?: string;
   additionalClassName?: string;
 }

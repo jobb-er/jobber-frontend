@@ -8,4 +8,10 @@ export interface SelectProps {
   errorMessage?: string;
   placeholder?: string;
   additionalClassName?: string;
+  Icon?: React.FunctionComponent<
+    React.SVGProps<SVGSVGElement> & {
+      title?: string | undefined;
+    }
+  >;
+  height?: string;
 }
