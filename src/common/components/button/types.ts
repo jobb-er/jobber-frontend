@@ -5,7 +5,7 @@ export type ButtonVariants = "primary" | "secondary";
 export interface ButtonProps<HTMLButtonElement>
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactElement | string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   type?: "submit" | "reset" | "button";
   variant?: ButtonVariants;

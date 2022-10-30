@@ -36,10 +36,11 @@ const Select = ({
       <div className="relative">
         <button
           className={removeDuplicateWhitespaces(
-            `relative bg-secondary-lightest rounded-xl h-9 py-1 px-3 w-full border ${
-              isError ? "border-error" : "border-secondary-lightest"
-            }`,
+            `relative bg-secondary-lightest rounded-xl
+            h-9 py-1 px-3 w-full border focus:outline-none 
+            ${isError ? "border-error" : "border-secondary-lightest"}`,
           )}
+          type="button"
           disabled={disabled}
           onClick={() => setExpanded((prev) => !prev)}
         >
