@@ -22,7 +22,7 @@ const TopBar = ({
           <span className="text-secondary text-sm">{role}</span>
         </div>
         <button
-          className="w-12 h-12 border border-primary rounded-full"
+          className="w-12 h-12 border border-primary rounded-full focus:outline-none"
           onClick={() => navigate(PROFILE)}
         >
           {avatar || <NoAvatarIcon className="w-12 h-12 p-3" />}
