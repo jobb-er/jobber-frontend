@@ -37,6 +37,13 @@ const en = {
     acceptTerms: "I accept terms and conditions",
     haveAccount: "Already have an account?",
     login: "Login",
+    errors: {
+      fieldRequired: "{{ field }} is required!",
+      tooWeakPassword: "Too weak password!",
+      notTheSamePassword: "Password is not the same!",
+      acceptTerms: "You have to accept terms!",
+      wrongEmail: "Wrong email format!",
+    },
   },
   roles: {
     candidate: "Candidate",

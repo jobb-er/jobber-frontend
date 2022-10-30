@@ -37,6 +37,13 @@ const pl = {
     acceptTerms: "Akceptuję warunki",
     haveAccount: "Posiadasz konto?",
     login: "Zaloguj się",
+    errors: {
+      fieldRequired: "{{ field }} jest wymagane!",
+      tooWeakPassword: "Za słabe hasło!",
+      notTheSamePassword: "Hasło nie jest identyczne!",
+      acceptTerms: "Naley zaakceptować warunki!",
+      wrongEmail: "Niepoprawny email!",
+    },
   },
   roles: {
     candidate: "Kandydat",

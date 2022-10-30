@@ -21,7 +21,7 @@ const Checkbox = ({
     <div className="flex item-center gap-2">
       <button
         className={removeDuplicateWhitespaces(`
-            w-5 h-5 border-2 rounded-xl cursor-pointer
+            w-5 h-5 border-2 rounded-xl cursor-pointer focus:outline-none
             ${
               isChecked
                 ? "bg-primary border-primary"
@@ -29,6 +29,7 @@ const Checkbox = ({
             }
             ${disabled ? "opacity-60 cursor-not-allowed" : ""}`)}
         disabled={disabled}
+        type="button"
         onClick={() => onCheck(!isChecked)}
       >
         {isChecked && (
