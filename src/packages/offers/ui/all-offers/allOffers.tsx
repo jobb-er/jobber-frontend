@@ -1,9 +1,11 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 
+import { removeDuplicateWhitespaces } from "../../../../common/utils";
 import { ReactComponent as SearchIcon } from "../../../../common/images/offers/search.svg";
 import { ReactComponent as LocationIcon } from "../../../../common/images/offers/location.svg";
-import { TopBar, Input, Select } from "../../../../common/components";
+import { TopBar, Input, Select, Label } from "../../../../common/components";
+import styles from "./styles.module.css";
 
 const AllOffers = (): ReactElement => {
   const { t } = useTranslation();
@@ -29,7 +31,15 @@ const AllOffers = (): ReactElement => {
           />
         </div>
       </TopBar>
-      <span>All offers</span>
+      <div
+        className={removeDuplicateWhitespaces(
+          `grid h-full ${styles.offersContainer}`,
+        )}
+      >
+        <Label>{t("allOffers.recently")}</Label>
+        <Label>{t("allOffers.salary")}</Label>
+        <Label>{t("allOffers.all")}</Label>
+      </div>
     </section>
   );
 };
