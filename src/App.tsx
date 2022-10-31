@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { Container, AuthContainer, Settings } from "./packages/app";
-import { AllOffers, MyOffers } from "./packages/offers";
+import { AllOffers, MyOffers, OfferDetails } from "./packages/offers";
 import { Messages } from "./packages/chat";
 import { Profile } from "./packages/profile";
 import {
@@ -19,6 +19,7 @@ const App = (): ReactElement => (
       <Container>
         <Routes>
           <Route path={OFFERS} element={<AllOffers />} />
+          <Route path={`${OFFERS}/:id`} element={<OfferDetails />} />
           <Route path={MESSAGES} element={<Messages />} />
           <Route path={MY_OFFERS} element={<MyOffers />} />
           <Route path={PROFILE} element={<Profile />} />

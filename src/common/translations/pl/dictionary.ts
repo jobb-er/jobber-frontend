@@ -52,6 +52,14 @@ const pl = {
   allOffers: {
     search: "Szukaj oferty",
     location: "Lokalizacja",
+    recently: "Ostatnio dodane",
+    salary: "Z zarobkami",
+    all: "Wszystkie oferty",
+    new: "Nowe",
+    notProvided: "Nie podano",
+  },
+  offer: {
+    goBack: "Wróć do wszystkich ofert",
   },
 };
 

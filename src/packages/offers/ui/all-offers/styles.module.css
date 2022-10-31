@@ -1,0 +1,4 @@
+.offersContainer {
+  grid-template-columns: auto auto auto;
+  grid-template-areas: "recently salary all";
+}

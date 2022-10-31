@@ -52,6 +52,14 @@ const en = {
   allOffers: {
     search: "Search offers",
     location: "Location",
+    recently: "Recently added",
+    salary: "With salary",
+    all: "All offers",
+    new: "New",
+    notProvided: "Not provided",
+  },
+  offer: {
+    goBack: "Go back to all offers",
   },
 };
 
