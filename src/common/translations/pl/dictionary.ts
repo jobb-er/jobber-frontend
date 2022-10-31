@@ -58,6 +58,9 @@ const pl = {
     new: "Nowe",
     notProvided: "Nie podano",
   },
+  offer: {
+    goBack: "Wróć do wszystkich ofert",
+  },
 };
 
 export default pl;

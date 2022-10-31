@@ -58,6 +58,9 @@ const en = {
     new: "New",
     notProvided: "Not provided",
   },
+  offer: {
+    goBack: "Go back to all offers",
+  },
 };
 
 export default en;

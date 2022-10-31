@@ -7,3 +7,4 @@ export { default as Checkbox } from "./checkbox";
 export { default as Textarea } from "./textarea";
 export { default as Label } from "./label";
 export { default as Card } from "./card";
+export { default as BackLink } from "./back-link";
