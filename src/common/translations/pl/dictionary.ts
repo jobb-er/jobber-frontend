@@ -55,6 +55,8 @@ const pl = {
     recently: "Ostatnio dodane",
     salary: "Z zarobkami",
     all: "Wszystkie oferty",
+    new: "Nowe",
+    notProvided: "Nie podano",
   },
 };
 

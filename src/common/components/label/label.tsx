@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 import { LabelProps } from "./types";
 
 const Label = ({ children }: LabelProps): ReactElement => (
-  <span className="text-primary text-xl font-semibold select-none">
+  <span className="text-primary text-xl font-medium select-none">
     {children}
   </span>
 );

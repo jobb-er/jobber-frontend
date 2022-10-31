@@ -7,7 +7,7 @@ import { ContainerProps } from "./types";
 const Container = ({ children }: ContainerProps): ReactElement => (
   <div className={styles.container}>
     <Menu />
-    <div className="bg-white p-8">{children}</div>
+    <div className="bg-white h-screen p-8">{children}</div>
   </div>
 );
 

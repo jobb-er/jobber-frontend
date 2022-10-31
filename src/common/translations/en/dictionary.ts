@@ -55,6 +55,8 @@ const en = {
     recently: "Recently added",
     salary: "With salary",
     all: "All offers",
+    new: "New",
+    notProvided: "Not provided",
   },
 };
 
