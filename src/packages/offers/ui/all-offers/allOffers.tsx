@@ -15,7 +15,7 @@ const AllOffers = (): ReactElement => {
   const { t } = useTranslation();
 
   return (
-    <section className="flex flex-col gap-6 h-full bg-transparent">
+    <section className="flex flex-col gap-6 h-full">
       <TopBar role="recruiter" name="Jakub Kołosowski">
         <div className="flex items-center gap-3 w-1/2">
           <Input
