@@ -9,6 +9,9 @@ module.exports = {
       borderRadius: {
         "5xl": "5rem",
       },
+      dropShadow: {
+        DEFAULT: "0 15px 30px rgba(0, 0, 0, 0.25)",
+      },
     },
     colors: {
       primary: {
