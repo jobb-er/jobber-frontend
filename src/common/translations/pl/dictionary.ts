@@ -41,7 +41,7 @@ const pl = {
       fieldRequired: "{{ field }} jest wymagane!",
       tooWeakPassword: "Za słabe hasło!",
       notTheSamePassword: "Hasło nie jest identyczne!",
-      acceptTerms: "Naley zaakceptować warunki!",
+      acceptTerms: "Należy zaakceptować warunki!",
       wrongEmail: "Niepoprawny email!",
     },
   },

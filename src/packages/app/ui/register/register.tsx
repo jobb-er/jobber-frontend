@@ -9,8 +9,10 @@ import {
   PASSWORD_REGEXP,
 } from "../../../../common/constants";
 import LoginRegisterWrapper from "../common";
-import { RegisterProps, RegisterFormValues } from "./types";
+import { RegisterProps, RegisterFormValues, RegisterApiValues } from "./types";
 import InnerForm from "./innerForm";
+import { connect} from "react-redux";
+import { register } from "../../store/actions/authActions";
 
 const requiredPath = "register.errors.fieldRequired";
 
@@ -43,21 +45,21 @@ const RegisterForm = withFormik<Record<string, unknown>, RegisterFormValues>({
     return errors;
   },
 
-  handleSubmit: (values: RegisterFormValues): void => {
+  handleSubmit: (values: RegisterFormValues): void  => {
     // TODO change submit - dispatch action to register and automatically login user
     console.log(values);
   },
 })(InnerForm);
 
-const Register = ({ onChangeScreen }: RegisterProps): ReactElement => {
+const Register = ({ onChangeScreen}: RegisterProps): ReactElement => {
   const { t } = useTranslation();
-
+  
   return (
     <LoginRegisterWrapper Image={Image}>
       <span className="text-5xl font-semibold select-none">
         {t("register.register")}
       </span>
-      <RegisterForm t={t} />
+      <RegisterForm t={t}/>
       <div className="border-b border-primary w-3/4" />
       <div className="flex items-center gap-1.5 font-semibold select-none">
         {t("register.haveAccount")}
@@ -72,4 +74,11 @@ const Register = ({ onChangeScreen }: RegisterProps): ReactElement => {
   );
 };
 
-export default Register;
+const mapDispatchToProps = (dispatch:any) => {
+   return {
+      signUp: (payload: RegisterApiValues) =>
+         dispatch(register(payload))
+   };
+};
+
+export default connect(null, mapDispatchToProps)(Register);

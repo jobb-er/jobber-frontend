@@ -1,22 +1,20 @@
-import { combineReducers, AnyAction } from "redux";
+import { AnyAction, Reducer } from "@reduxjs/toolkit";
+import { RootState } from ".";
 
 import ActionTypes from "./actionTypes";
+import { appReducer } from "./appReducers";
 
-const initialState: Record<string, unknown> = {};
+const initialState: RootState = {} as RootState;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const appReducer = combineReducers({});
-
-const rootReducer = (
-  state: Record<string, unknown> = initialState,
+const rootReducer: Reducer = (
+  state: RootState = initialState,
   action: AnyAction,
-): Record<string, unknown> => {
+) => {
   switch (action.type) {
     case ActionTypes.RESET_STORE:
-      return initialState;
-    default:
       return state;
   }
+  return appReducer;
 };
 
 export default rootReducer;

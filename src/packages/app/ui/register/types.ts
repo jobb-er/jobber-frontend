@@ -2,12 +2,15 @@ export interface RegisterProps {
   onChangeScreen: () => void;
 }
 
-export interface RegisterFormValues {
+export interface RegisterApiValues {
   firstName: string;
   lastName: string;
   password: string;
-  confirmPassword: string;
   role: string;
   email: string;
+}
+
+export interface RegisterFormValues extends RegisterApiValues {
+  confirmPassword: string;
   acceptedTerms: boolean;
 }
