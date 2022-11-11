@@ -18,8 +18,9 @@ const en = {
     emailPlaceholder: "Your e-mail",
     password: "Password",
     errors: {
-      wrongEmail: "Wrong e-mail provided!",
-      wrongPassword: "Wrong password",
+      fieldRequired: "{{ field }} is required!",
+      wrongEmail: "Wrong email format!",
+      somethingWentWrong: "Something went wrong, try again",
     },
   },
   register: {
@@ -43,6 +44,8 @@ const en = {
       notTheSamePassword: "Password is not the same!",
       acceptTerms: "You have to accept terms!",
       wrongEmail: "Wrong email format!",
+      accountExists: "Account for this email already exists!",
+      somethingWentWrong: "Something went wrong, try again",
     },
   },
   roles: {
