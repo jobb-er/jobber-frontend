@@ -1,6 +1,8 @@
 import { ReactElement } from "react";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
 
 import { ReactComponent as Logo } from "../../../../common/images/logo.svg";
 import { ReactComponent as OffersIcon } from "../../../../common/images/menu/offers.svg";
@@ -17,8 +19,10 @@ import {
   PROFILE,
   SETTINGS,
 } from "../../../../common/constants";
+import { logout } from "../../store/actions/authActions";
+import { MenuProps } from "./types";
 
-const Menu = (): ReactElement => {
+const Menu = ({ logout, resetStore }: MenuProps): ReactElement => {
   const { pathname } = useLocation();
   const { t } = useTranslation();
 
@@ -60,6 +64,10 @@ const Menu = (): ReactElement => {
         <MenuTab
           path="/"
           title={t("menu.logout")}
+          onClick={async () => {
+            await logout();
+            await resetStore();
+          }}
           Icon={LogoutIcon}
           isActive={false}
         />
@@ -68,4 +76,9 @@ const Menu = (): ReactElement => {
   );
 };
 
-export default Menu;
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  logout: () => dispatch(logout()),
+  resetStore: () => dispatch({ type: "RESET_STORE" }),
+});
+
+export default connect(null, mapDispatchToProps)(Menu);
