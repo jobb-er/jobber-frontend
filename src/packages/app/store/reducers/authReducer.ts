@@ -13,7 +13,7 @@ clientSessionExpirationDate.setSeconds(
 );
 
 const isAuthorised = !!localStorage.getItem(CLIENT_SESSION);
-const initialAuth = { isAuthorised: !!localStorage.getItem(CLIENT_SESSION) };
+const initialAuth = { isAuthorised };
 
 export const authReducer = (
   state: Auth = initialAuth,
