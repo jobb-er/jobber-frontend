@@ -4,3 +4,4 @@ export { EMAIL_REGEXP, PASSWORD_REGEXP } from "./regexps";
 export { axiosHeaders, reduxMiddlewareHeaders } from "./headers";
 export { initialLoginFormValues } from "./login";
 export { GET, POST, PUT, PATCH, DELETE } from "./methods";
+export { CLIENT_SESSION } from "./localStorage";

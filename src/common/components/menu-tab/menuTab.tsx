@@ -9,6 +9,7 @@ const MenuTab = ({
   path,
   Icon,
   isActive,
+  onClick,
 }: MenuTabProps): ReactElement => (
   <Link
     to={path || "/"}
@@ -17,6 +18,7 @@ const MenuTab = ({
       px-4 py-2 rounded-xl focus:outline-none
       ${isActive ? "bg-white text-primary" : "text-white"}`,
     )}
+    onClick={onClick}
   >
     <Icon className="w-4 h-4" />
     <span>{title}</span>
