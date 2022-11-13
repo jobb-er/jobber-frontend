@@ -18,8 +18,9 @@ const pl = {
     emailPlaceholder: "Twój e-mail",
     password: "Hasło",
     errors: {
-      wrongEmail: "Podano niepoprawny e-mail",
-      wrongPassword: "Niepoprawne hasło",
+      fieldRequired: "{{ field }} jest wymagane!",
+      wrongEmail: "Niepoprawny email!",
+      somethingWentWrong: "Coś poszło nie tak, spróbuj ponownie",
     },
   },
   register: {
@@ -41,8 +42,10 @@ const pl = {
       fieldRequired: "{{ field }} jest wymagane!",
       tooWeakPassword: "Za słabe hasło!",
       notTheSamePassword: "Hasło nie jest identyczne!",
-      acceptTerms: "Naley zaakceptować warunki!",
+      acceptTerms: "Należy zaakceptować warunki!",
       wrongEmail: "Niepoprawny email!",
+      accountExists: "Konto na podany email istnieje!",
+      somethingWentWrong: "Coś poszło nie tak, spróbuj ponownie",
     },
   },
   roles: {

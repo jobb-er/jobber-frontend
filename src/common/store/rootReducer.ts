@@ -1,21 +1,22 @@
-import { combineReducers, AnyAction } from "redux";
+import { AnyAction, Reducer, combineReducers } from "@reduxjs/toolkit";
 
 import ActionTypes from "./actionTypes";
+import { authReducer } from "../../packages/app/store/reducers/authReducer";
 
-const initialState: Record<string, unknown> = {};
+const initialState = {
+  auth: {},
+};
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const appReducer = combineReducers({});
+export const appReducer = combineReducers({
+  auth: authReducer,
+});
 
-const rootReducer = (
-  state: Record<string, unknown> = initialState,
-  action: AnyAction,
-): Record<string, unknown> => {
+const rootReducer: Reducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case ActionTypes.RESET_STORE:
-      return initialState;
-    default:
       return state;
+    default:
+      return appReducer(state, action);
   }
 };
 

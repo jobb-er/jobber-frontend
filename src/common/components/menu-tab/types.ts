@@ -9,4 +9,5 @@ export interface MenuTabProps {
     }
   >;
   isActive: boolean;
+  onClick?: () => void;
 }

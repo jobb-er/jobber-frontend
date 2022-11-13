@@ -1,13 +1,10 @@
+import { RegisterValues } from "../../models";
+
 export interface RegisterProps {
   onChangeScreen: () => void;
 }
 
-export interface RegisterFormValues {
-  firstName: string;
-  lastName: string;
-  password: string;
+export interface RegisterFormValues extends RegisterValues {
   confirmPassword: string;
-  role: string;
-  email: string;
   acceptedTerms: boolean;
 }

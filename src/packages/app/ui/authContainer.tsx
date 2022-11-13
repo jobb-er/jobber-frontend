@@ -1,18 +1,28 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useState, useEffect } from "react";
+import { connect } from "react-redux";
 
+import { CLIENT_SESSION } from "../../../common/constants";
 import Login from "./login";
 import Register from "./register";
-import { AuthContainerProps } from "./types";
+import { AuthContainerProps, AuthContainerMapState } from "./types";
 
-const AuthContainer = ({ children }: AuthContainerProps): ReactElement => {
+const AuthContainer = ({
+  children,
+  auth,
+}: AuthContainerProps): ReactElement => {
+  useEffect(() => {}, [auth]);
+
   const [currentAuthPage, setCurrentAuthPage] = useState<"login" | "register">(
     "login",
   );
 
-  // TODO add authorisation logic and add
-  const isAuthorised = true;
+  const loginExpirationDate = localStorage.getItem(CLIENT_SESSION);
 
-  if (isAuthorised) return children;
+  if (
+    loginExpirationDate &&
+    Date.parse(loginExpirationDate) > Date.parse(new Date().toString())
+  )
+    return children;
 
   return currentAuthPage === "login" ? (
     <Login onChangeScreen={() => setCurrentAuthPage("register")} />
@@ -21,4 +31,10 @@ const AuthContainer = ({ children }: AuthContainerProps): ReactElement => {
   );
 };
 
-export default AuthContainer;
+const mapStateToProps = (
+  state: AuthContainerMapState,
+): AuthContainerMapState => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(AuthContainer);
