@@ -1,21 +1,37 @@
-import { RSAA } from "redux-api-middleware";
-import { baseUrl } from "../../../../config/baseUrl";
-import { RegisterApiValues } from "../../ui/register/types";
-import AuthTypes from "../types/authActionTypes";
+import axios from "axios";
 
-export const register = (payload: RegisterApiValues) => ({
-  [RSAA]: {
-    endpoint: `${baseUrl}/register`,
-    method: "POST",
-    body: JSON.stringify(payload),
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    types: [
-      AuthTypes.AUTH_REQUEST,
-      AuthTypes.AUTH_SUCCESS,
-      AuthTypes.AUTH_FAILURE,
+import { actionBuilder } from "../../../../common/store";
+import { axiosHeaders } from "../../../../common/constants";
+import { registerToAPI, loginToAPI } from "../../converters";
+import { RegisterValues, LoginValues } from "../../models";
+import ActionTypes from "../actionTypes";
+
+export const register = (data: RegisterValues) =>
+  axios.post(
+    `${process.env.REACT_APP_API_URL}/register`,
+    registerToAPI(data),
+    axiosHeaders,
+  );
+
+export const login = (data: LoginValues) =>
+  actionBuilder(
+    `${process.env.REACT_APP_API_URL}/login`,
+    [
+      ActionTypes.AUTH_REQUEST,
+      ActionTypes.AUTH_SUCCESS,
+      ActionTypes.AUTH_FAILURE,
     ],
-  },
-});
+    "POST",
+    loginToAPI(data),
+  );
+
+export const logout = () =>
+  actionBuilder(
+    `${process.env.REACT_APP_API_URL}/logout`,
+    [
+      ActionTypes.LOGOUT_REQUEST,
+      ActionTypes.LOGOUT_SUCESS,
+      ActionTypes.LOGOUT_FAILURE,
+    ],
+    "POST",
+  );
