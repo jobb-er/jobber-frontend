@@ -32,7 +32,7 @@ export const authReducer = (
       return { isAuthorised: false };
     case ActionTypes.LOGOUT_REQUEST:
       return state;
-    case ActionTypes.LOGOUT_SUCESS:
+    case ActionTypes.LOGOUT_SUCCESS:
       localStorage.removeItem(CLIENT_SESSION);
       return { isAuthorised: false };
     case ActionTypes.LOGOUT_FAILURE:

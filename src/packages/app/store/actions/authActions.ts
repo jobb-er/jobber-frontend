@@ -30,7 +30,7 @@ export const logout = () =>
     `${process.env.REACT_APP_API_URL}/logout`,
     [
       ActionTypes.LOGOUT_REQUEST,
-      ActionTypes.LOGOUT_SUCESS,
+      ActionTypes.LOGOUT_SUCCESS,
       ActionTypes.LOGOUT_FAILURE,
     ],
     "POST",
