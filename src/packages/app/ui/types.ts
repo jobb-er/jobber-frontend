@@ -4,6 +4,8 @@ import { Auth } from "../models";
 
 export interface ContainerProps {
   children: ReactElement | ReactElement[];
+  auth: Auth;
+  fetchAuth: () => void;
 }
 
 export interface AuthContainerProps {
@@ -12,5 +14,9 @@ export interface AuthContainerProps {
 }
 
 export interface AuthContainerMapState {
+  auth: Auth;
+}
+
+export interface ContainerMapState {
   auth: Auth;
 }

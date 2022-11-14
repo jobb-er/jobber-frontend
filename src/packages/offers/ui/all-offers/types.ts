@@ -1,3 +1,5 @@
+import { Auth } from "../../../app";
+
 export interface OfferTempModel {
   id: string;
   title: string;
@@ -11,4 +13,12 @@ export interface OfferTempModel {
 
 export interface OfferProps {
   offer: OfferTempModel;
+}
+
+export interface AllOffersMapState {
+  auth: Auth;
+}
+
+export interface AllOffersProps {
+  auth?: Auth;
 }

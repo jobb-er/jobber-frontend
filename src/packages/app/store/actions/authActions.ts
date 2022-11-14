@@ -35,3 +35,10 @@ export const logout = () =>
     ],
     "POST",
   );
+
+export const fetchAuth = () =>
+  actionBuilder(`${process.env.REACT_APP_API_URL}/user`, [
+    ActionTypes.AUTH_REQUEST,
+    ActionTypes.AUTH_SUCCESS,
+    ActionTypes.AUTH_FAILURE,
+  ]);

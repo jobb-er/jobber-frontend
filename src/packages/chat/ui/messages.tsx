@@ -1,15 +1,29 @@
 import { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import { connect } from "react-redux";
 
 import { TopBar } from "../../../common/components";
+import { MessagesProps, MessagesMapState } from "./types";
 
-const Messages = (): ReactElement => {
+const Messages = ({ auth }: MessagesProps): ReactElement => {
+  const { t } = useTranslation();
+
   return (
     <section>
-      <TopBar role="candidate" name="Jakub Kołosowski">
+      <TopBar
+        role={
+          auth?.accountType ? t(`roles.${auth.accountType.toLowerCase()}`) : ""
+        }
+        name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
+      >
         <span>Messages</span>
       </TopBar>
     </section>
   );
 };
 
-export default Messages;
+const mapStateToProps = (state: MessagesMapState): MessagesMapState => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(Messages);
