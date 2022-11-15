@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { FormikProps, Form } from "formik";
 
+import { RECRUITER, CANDIDATE } from "../../../../common/constants";
 import { addAsterisk } from "../../../../common/utils";
 import { Input, Button, Select, Checkbox } from "../../../../common/components";
 
@@ -67,8 +68,13 @@ const InnerForm = ({
         <Select
           label={addAsterisk(t("register.role"))}
           placeholder={t("register.rolePlaceholder")}
-          value={values.role}
-          onChange={(newRole: string): void => setFieldValue("role", newRole)}
+          value={values.role && t(`roles.${values.role.toLowerCase()}`)}
+          onChange={(newRole: string): void =>
+            setFieldValue(
+              "role",
+              newRole === t("roles.recruiter") ? RECRUITER : CANDIDATE,
+            )
+          }
           options={roleOptions}
           isError={touched && !!errors.role}
           errorMessage={t(errors?.role || "", {

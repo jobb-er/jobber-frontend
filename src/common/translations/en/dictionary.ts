@@ -64,6 +64,21 @@ const en = {
   offer: {
     goBack: "Go back to all offers",
   },
+  settings: {
+    app: "App",
+    language: "Language",
+    account: "Account",
+    changePassword: "Change password",
+    confirmPassword: "Confirm password",
+    password: "Password",
+    changeEmail: "Change e-mail",
+    email: "E-mail",
+    deactivate: "Deactivate and delete account",
+  },
+  languages: {
+    en: "English",
+    pl: "Polish",
+  },
 };
 
 export default en;

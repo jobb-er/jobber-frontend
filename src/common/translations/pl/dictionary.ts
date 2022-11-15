@@ -64,6 +64,21 @@ const pl = {
   offer: {
     goBack: "Wróć do wszystkich ofert",
   },
+  settings: {
+    app: "Aplikacja",
+    language: "Język",
+    account: "Konto",
+    changePassword: "Zmień hasło",
+    confirmPassword: "Potwierdź hasło",
+    password: "Hasło",
+    changeEmail: "Zmień e-mail",
+    email: "E-mail",
+    deactivate: "Dezaktywuj i usuń konto",
+  },
+  languages: {
+    en: "Angielski",
+    pl: "Polski",
+  },
 };
 
 export default pl;
