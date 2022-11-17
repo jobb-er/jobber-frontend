@@ -74,6 +74,9 @@ const pl = {
     changeEmail: "Zmień e-mail",
     email: "E-mail",
     deactivate: "Dezaktywuj i usuń konto",
+    alert:
+      "Operacja jest nieodwracalna, jednak będziesz mógł utworzyć nowe konto na ten sam email",
+    errorAlert: "Coś poszło nie tak, spróbuj ponownie",
   },
   languages: {
     en: "Angielski",

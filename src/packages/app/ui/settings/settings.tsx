@@ -1,16 +1,25 @@
 import { ReactElement, useState } from "react";
 import { useTranslation, TFunction } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
+import { Dispatch } from "redux";
 
 import i18n from "../../../../common/translations/i18n";
 import { EN, PL } from "../../../../common/constants";
 import { TopBar, Select, Label, Input } from "../../../../common/components";
 import { ReactComponent as Graphic } from "../../../../common/images/settings/graphic.svg";
 import { ReactComponent as WarningIcon } from "../../../../common/images/settings/warning.svg";
+import { deleteAccount, logout } from "../../store/actions/authActions";
 import { SettingsMapState, SettingsProps } from "./types";
 
-const Settings = ({ auth }: SettingsProps): ReactElement => {
+const Settings = ({
+  auth,
+  logout,
+  resetStore,
+}: SettingsProps): ReactElement => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const [language, setLanguage] = useState<string>(i18n.language);
 
   const handleChangeLanguage = (
@@ -26,6 +35,23 @@ const Settings = ({ auth }: SettingsProps): ReactElement => {
       default:
         setLanguage(EN);
         return i18n.changeLanguage(EN);
+    }
+  };
+
+  const handleDeleteAccount = async (): Promise<void> => {
+    const isConfirmed = window.confirm(t("settings.alert"));
+
+    try {
+      if (isConfirmed) {
+        const response = await deleteAccount();
+        if (response?.status?.toString() === "200") {
+          await logout();
+          await resetStore();
+          navigate("/");
+        }
+      }
+    } catch (error: unknown) {
+      alert(t("settings.errorAlert"));
     }
   };
 
@@ -81,9 +107,7 @@ const Settings = ({ auth }: SettingsProps): ReactElement => {
           <div className="border-b border-primary" />
           <button
             className="flex items-center gap-3 text-error font-medium hover:underline focus:outline-none"
-            onClick={() => {
-              // do nth
-            }}
+            onClick={handleDeleteAccount}
           >
             <span>{t("settings.deactivate")}</span>
             <WarningIcon />
@@ -99,4 +123,9 @@ const mapStateToProps = (state: SettingsMapState): SettingsMapState => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(Settings);
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  logout: () => dispatch(logout()),
+  resetStore: () => dispatch({ type: "RESET_STORE" }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);

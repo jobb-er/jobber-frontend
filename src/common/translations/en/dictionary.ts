@@ -74,6 +74,9 @@ const en = {
     changeEmail: "Change e-mail",
     email: "E-mail",
     deactivate: "Deactivate and delete account",
+    alert:
+      "This operation is not reversible, but you can create a new account on the same email",
+    errorAlert: "Something went wrong, try again",
   },
   languages: {
     en: "English",
