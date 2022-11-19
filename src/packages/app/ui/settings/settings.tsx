@@ -1,16 +1,28 @@
-import { ReactElement, useState } from "react";
+import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation, TFunction } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
 import i18n from "../../../../common/translations/i18n";
-import { EN, PL } from "../../../../common/constants";
-import { TopBar, Select, Label, Input } from "../../../../common/components";
+import {
+  EN,
+  PL,
+  initialSettingsFormValues,
+} from "../../../../common/constants";
+import {
+  TopBar,
+  Select,
+  Label,
+  Input,
+  Modal,
+  Button,
+} from "../../../../common/components";
 import { ReactComponent as Graphic } from "../../../../common/images/settings/graphic.svg";
 import { ReactComponent as WarningIcon } from "../../../../common/images/settings/warning.svg";
 import { deleteAccount, logout } from "../../store/actions/authActions";
-import { SettingsMapState, SettingsProps } from "./types";
+import { SettingsMapState, SettingsProps, SettingsFormValues } from "./types";
+import SettingsForm from "./settingsForm";
 
 const Settings = ({
   auth,
@@ -21,6 +33,10 @@ const Settings = ({
   const navigate = useNavigate();
 
   const [language, setLanguage] = useState<string>(i18n.language);
+  const [newAccountData, setNewAccountData] = useState<SettingsFormValues>(
+    initialSettingsFormValues,
+  );
+  const [oldPassword, setOldPassword] = useState("");
 
   const handleChangeLanguage = (
     newLanguage: string,
@@ -55,6 +71,13 @@ const Settings = ({
     }
   };
 
+  const handleChangeAccountData = async (): Promise<void> => {
+    console.log(oldPassword);
+    console.log(newAccountData);
+    setNewAccountData(initialSettingsFormValues);
+    setOldPassword("");
+  };
+
   return (
     <section className="flex flex-col gap-6 h-full">
       <TopBar
@@ -77,33 +100,7 @@ const Settings = ({
             />
           </div>
           <div className="border-b border-primary" />
-          <div className="flex flex-col gap-5">
-            <Label>{t("settings.account")}</Label>
-            <div className="flex items-center gap-5">
-              <Input
-                onChange={() => {
-                  // do nth
-                }}
-                label={t("settings.changePassword")}
-                placeholder={t("settings.password")}
-              />
-              <Input
-                onChange={() => {
-                  // do nth
-                }}
-                label={t("settings.confirmPassword")}
-                placeholder={t("settings.password")}
-              />
-            </div>
-            <Input
-              onChange={() => {
-                // do nth
-              }}
-              label={t("settings.changeEmail")}
-              placeholder={t("settings.email")}
-              width="w-1/2"
-            />
-          </div>
+          <SettingsForm setNewAccountData={setNewAccountData} />
           <div className="border-b border-primary" />
           <button
             className="flex items-center gap-3 text-error font-medium hover:underline focus:outline-none"
@@ -115,6 +112,34 @@ const Settings = ({
         </div>
         <Graphic className="self-end mr-10 mb-20" />
       </div>
+      <Modal isOpen={!!newAccountData.email || !!newAccountData.password}>
+        <div className="flex flex-col gap-4">
+          <Label>{t("settings.changeAccountData")}</Label>
+          <span>{t("settings.toConfirm")}</span>
+          <Input
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              setOldPassword(event.target.value)
+            }
+            type="password"
+            label={t("settings.password")}
+            placeholder={t("settings.password")}
+          />
+          <div className="flex items-center gap-3">
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setNewAccountData(initialSettingsFormValues);
+                setOldPassword("");
+              }}
+            >
+              {t("settings.cancel")}
+            </Button>
+            <Button onClick={handleChangeAccountData} disabled={!oldPassword}>
+              {t("settings.confirm")}
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </section>
   );
 };
