@@ -64,6 +64,34 @@ const en = {
   offer: {
     goBack: "Go back to all offers",
   },
+  settings: {
+    app: "App",
+    language: "Language",
+    account: "Account",
+    changePassword: "Change password",
+    confirmPassword: "Confirm password",
+    password: "Password",
+    changeEmail: "Change e-mail",
+    email: "E-mail",
+    deactivate: "Deactivate and delete account",
+    changeAccountData: "Change account data",
+    confirm: "Confirm",
+    cancel: "Cancel",
+    change: "Change",
+    toConfirm: "To confirm operation, provide current password to your account",
+    alert:
+      "This operation is not reversible, but you can create a new account on the same email",
+    errorAlert: "Something went wrong, try again",
+    errors: {
+      tooWeakPassword: "Too weak password!",
+      notTheSamePassword: "Password is not the same!",
+      wrongEmail: "Wrong email format!",
+    },
+  },
+  languages: {
+    en: "English",
+    pl: "Polish",
+  },
 };
 
 export default en;

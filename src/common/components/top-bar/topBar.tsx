@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { removeDuplicateWhitespaces } from "../../utils";
 import { ReactComponent as NoAvatarIcon } from "../../images/top-bar/noAvatar.svg";
 import { PROFILE } from "../../constants";
 import { TopBarProps } from "./types";
@@ -10,11 +11,16 @@ const TopBar = ({
   role,
   avatar,
   name,
+  additionalClassName,
 }: TopBarProps): ReactElement => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex items-center justify-between text-primary h-min">
+    <div
+      className={removeDuplicateWhitespaces(
+        `flex items-center justify-between text-primary h-min ${additionalClassName}`,
+      )}
+    >
       {children}
       <div className="flex items-center gap-4 select-none">
         <div className="flex flex-col gap-0.5 capitalize">

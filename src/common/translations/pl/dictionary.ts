@@ -64,6 +64,35 @@ const pl = {
   offer: {
     goBack: "Wróć do wszystkich ofert",
   },
+  settings: {
+    app: "Aplikacja",
+    language: "Język",
+    account: "Konto",
+    changePassword: "Zmień hasło",
+    confirmPassword: "Potwierdź hasło",
+    password: "Hasło",
+    changeEmail: "Zmień e-mail",
+    email: "E-mail",
+    deactivate: "Dezaktywuj i usuń konto",
+    changeAccountData: "Zmień dane konta",
+    confirm: "Potwierdzam",
+    cancel: "Odrzuć",
+    change: "Zmień",
+    toConfirm:
+      "Aby potwierdzić operację, wprowadź aktualne hasło do Twojego konta",
+    alert:
+      "Operacja jest nieodwracalna, jednak będziesz mógł utworzyć nowe konto na ten sam email",
+    errorAlert: "Coś poszło nie tak, spróbuj ponownie",
+    errors: {
+      tooWeakPassword: "Za słabe hasło!",
+      notTheSamePassword: "Hasło nie jest identyczne!",
+      wrongEmail: "Niepoprawny email!",
+    },
+  },
+  languages: {
+    en: "Angielski",
+    pl: "Polski",
+  },
 };
 
 export default pl;

@@ -42,3 +42,6 @@ export const fetchAuth = () =>
     ActionTypes.AUTH_SUCCESS,
     ActionTypes.AUTH_FAILURE,
   ]);
+
+export const deleteAccount = () =>
+  axios.delete(`${process.env.REACT_APP_API_URL}/user`, axiosHeaders);

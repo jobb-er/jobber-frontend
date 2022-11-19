@@ -21,7 +21,10 @@ const Button = ({
   return (
     <button
       className={removeDuplicateWhitespaces(
-        `${chosenVariant} w-max px-8 py-1.5 rounded-xl text-lg font-semibold hover:opacity-90 focus:outline-none ${additionalClassName}`,
+        `${chosenVariant} w-max px-8 py-1.5
+        rounded-xl text-lg font-semibold hover:opacity-90
+        focus:outline-none disabled:opacity-40
+        ${additionalClassName}`,
       )}
       onClick={onClick}
       disabled={disabled}
