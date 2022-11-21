@@ -40,7 +40,8 @@ const pl = {
     login: "Zaloguj się",
     errors: {
       fieldRequired: "{{ field }} jest wymagane!",
-      tooWeakPassword: "Za słabe hasło!",
+      tooWeakPassword:
+        "Przynajmniej 8 znaków w tym duża litera, cyfra oraz znak specjalny",
       notTheSamePassword: "Hasło nie jest identyczne!",
       acceptTerms: "Należy zaakceptować warunki!",
       wrongEmail: "Niepoprawny email!",
@@ -84,7 +85,8 @@ const pl = {
       "Operacja jest nieodwracalna, jednak będziesz mógł utworzyć nowe konto na ten sam email",
     errorAlert: "Coś poszło nie tak, spróbuj ponownie",
     errors: {
-      tooWeakPassword: "Za słabe hasło!",
+      tooWeakPassword:
+        "Przynajmniej 8 znaków w tym duża litera, cyfra oraz znak specjalny",
       notTheSamePassword: "Hasło nie jest identyczne!",
       wrongEmail: "Niepoprawny email!",
     },

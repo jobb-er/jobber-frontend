@@ -40,7 +40,8 @@ const en = {
     login: "Login",
     errors: {
       fieldRequired: "{{ field }} is required!",
-      tooWeakPassword: "Too weak password!",
+      tooWeakPassword:
+        "At least 8 characters with capital letter, digit and special sign",
       notTheSamePassword: "Password is not the same!",
       acceptTerms: "You have to accept terms!",
       wrongEmail: "Wrong email format!",
@@ -83,7 +84,8 @@ const en = {
       "This operation is not reversible, but you can create a new account on the same email",
     errorAlert: "Something went wrong, try again",
     errors: {
-      tooWeakPassword: "Too weak password!",
+      tooWeakPassword:
+        "At least 8 characters with capital letter, digit and special sign",
       notTheSamePassword: "Password is not the same!",
       wrongEmail: "Wrong email format!",
     },
