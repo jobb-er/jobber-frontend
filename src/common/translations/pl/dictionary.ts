@@ -65,6 +65,30 @@ const pl = {
   offer: {
     goBack: "Wróć do wszystkich ofert",
   },
+  myOffers: {
+    recruiter: {
+      addNew: "Dodaj nową ofertę",
+      goBack: "Wróć do moich ofert",
+      title: "Tytuł",
+      titlePlaceholder: "Tytuł oferty",
+      companyName: "Nazwa firmy",
+      location: "Lokalizacja",
+      locationPlaceholder: "Lokalizacja firmy",
+      experience: "Potrzebne dośwideczenie",
+      experiencePlaceholder: "1+ lat",
+      bottomPayrange: "Dolna granica wynagrodzenia",
+      topPayrange: "Górna granica wynagrodzenia",
+      currency: "Waluta",
+      description: "Opis",
+      descriptionPlaceholder: "Więcej detali na temat tej oferty",
+      post: "Opublikuj",
+      cancel: "Odrzuć",
+      emptyOffers: "Nie opublikowałeś żadnych ofert",
+      errors: {
+        fieldRequired: "{{ field }} jest wymagane!",
+      },
+    },
+  },
   settings: {
     app: "Aplikacja",
     language: "Język",

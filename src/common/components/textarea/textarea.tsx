@@ -10,11 +10,11 @@ const Textarea = ({
   placeholder,
   width = "w-full",
   isError,
-  height,
+  height = "h-full",
   errorMessage,
   label,
   onChange,
-  resizable = true,
+  resizable = false,
   disabled = false,
   additionalClassName,
   ...props
@@ -32,7 +32,7 @@ const Textarea = ({
     <textarea
       className={removeDuplicateWhitespaces(`
           bg-secondary-lightest rounded-xl placeholder:opacity-40
-          focus:outline-none w-full border p-3 ${
+          focus:outline-none w-full border p-3 h-full ${
             isError ? "border-error" : "border-secondary-lightest"
           } ${resizable ? "" : "resize-none"} ${additionalClassName}
           `)}

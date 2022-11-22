@@ -8,3 +8,4 @@ export { CLIENT_SESSION } from "./localStorage";
 export { RECRUITER, CANDIDATE } from "./roles";
 export { EN, PL } from "./languageCodes";
 export { initialSettingsFormValues } from "./settings";
+export { initialNewOfferFormValues } from "./offers";
