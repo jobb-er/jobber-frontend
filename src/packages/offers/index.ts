@@ -1,1 +1,1 @@
-export { MyOffers, AllOffers, OfferDetails } from "./ui";
+export { MyOffers, AllOffers, OfferDetails, NewOffer } from "./ui";
