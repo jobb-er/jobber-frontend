@@ -1,4 +1,8 @@
 const en = {
+  loader: {
+    pleaseWait: "Please wait a second",
+    optimising: "We are optimising everything for you",
+  },
   menu: {
     offers: "Offers",
     messages: "Messages",
@@ -64,6 +68,12 @@ const en = {
   },
   offer: {
     goBack: "Go back to all offers",
+    new: "New",
+    description: "Description",
+    apply: "Apply",
+    message: "Message",
+    added: "Added",
+    notProvided: "Not provided",
   },
   myOffers: {
     recruiter: {

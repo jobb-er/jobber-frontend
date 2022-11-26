@@ -6,10 +6,11 @@ import { removeDuplicateWhitespaces } from "../../../../common/utils";
 import { ReactComponent as SearchIcon } from "../../../../common/images/offers/search.svg";
 import { ReactComponent as LocationIcon } from "../../../../common/images/offers/location.svg";
 import { TopBar, Input, Select, Label } from "../../../../common/components";
+import { Offer as OfferModel } from "../../models";
 import styles from "./styles.module.css";
 import Offer from "./offer";
 
-import { OfferTempModel, AllOffersMapState, AllOffersProps } from "./types";
+import { AllOffersMapState, AllOffersProps } from "./types";
 import { mockData } from "./mock";
 
 const AllOffers = ({ auth }: AllOffersProps): ReactElement => {
@@ -49,7 +50,7 @@ const AllOffers = ({ auth }: AllOffersProps): ReactElement => {
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.recently")}</Label>
           {mockData.map(
-            (offer: OfferTempModel): ReactElement => (
+            (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
           )}
@@ -57,7 +58,7 @@ const AllOffers = ({ auth }: AllOffersProps): ReactElement => {
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.salary")}</Label>
           {mockData.map(
-            (offer: OfferTempModel): ReactElement => (
+            (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
           )}
@@ -65,7 +66,7 @@ const AllOffers = ({ auth }: AllOffersProps): ReactElement => {
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.all")}</Label>
           {mockData.map(
-            (offer: OfferTempModel): ReactElement => (
+            (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
           )}

@@ -5,8 +5,8 @@ export const newOfferToAPI = (data: NewOfferValues): NewOfferAPIValues => ({
   companyName: data.companyName,
   location: data.location,
   experience: data.experience,
-  bottomPayrange: data.bottomPayrange || 0,
-  topPayrange: data.topPayrange || 0,
-  currency: data.currency || "",
+  bottomPayrange: data.bottomPayrange,
+  topPayrange: data.topPayrange,
+  currency: data.currency,
   description: data.description,
 });

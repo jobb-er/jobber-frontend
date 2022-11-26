@@ -12,6 +12,7 @@ import { ReactComponent as CheckMarkIcon } from "../../../../../../common/images
 import { Input, Button, Textarea } from "../../../../../../common/components";
 import { MY_OFFERS } from "../../../../../../common/constants";
 import { NewOfferValues } from "../../../../models";
+
 const TRANSLATION_PATH = "myOffers.recruiter";
 
 const InnerForm = ({
@@ -89,6 +90,10 @@ const InnerForm = ({
                 type="number"
                 label={t(`${TRANSLATION_PATH}.bottomPayrange`)}
                 placeholder="3000"
+                isError={touched && !!errors.bottomPayrange}
+                errorMessage={t(errors?.bottomPayrange || "", {
+                  field: t(`${TRANSLATION_PATH}.bottomPayrange`),
+                })}
               />
               <span className="text-primary">-</span>
               <Input
@@ -97,6 +102,10 @@ const InnerForm = ({
                 type="number"
                 label={t(`${TRANSLATION_PATH}.topPayrange`)}
                 placeholder="5000"
+                isError={touched && !!errors.topPayrange}
+                errorMessage={t(errors?.topPayrange || "", {
+                  field: t(`${TRANSLATION_PATH}.topPayrange`),
+                })}
               />
             </div>
             <Input
@@ -105,6 +114,10 @@ const InnerForm = ({
               label={t(`${TRANSLATION_PATH}.currency`)}
               placeholder="EUR"
               width="w-1/3"
+              isError={touched && !!errors.currency}
+              errorMessage={t(errors?.currency || "", {
+                field: t(`${TRANSLATION_PATH}.currency`),
+              })}
             />
           </div>
         </div>

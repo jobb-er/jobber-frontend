@@ -1,1 +1,1 @@
-export type { NewOfferValues, NewOfferAPIValues } from "./types";
+export type { NewOfferValues, NewOfferAPIValues, Offer, Offers } from "./types";

@@ -1,18 +1,8 @@
 import { Auth } from "../../../app";
-
-export interface OfferTempModel {
-  id: string;
-  title: string;
-  company: string;
-  location?: string;
-  bottomPayRange?: number;
-  upperPayRange?: number;
-  currency?: string;
-  isNew?: boolean;
-}
+import { Offer } from "../../models";
 
 export interface OfferProps {
-  offer: OfferTempModel;
+  offer: Offer;
 }
 
 export interface AllOffersMapState {

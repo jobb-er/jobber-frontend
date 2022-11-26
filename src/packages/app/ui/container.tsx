@@ -14,6 +14,7 @@ const Container = ({
 }: ContainerProps): ReactElement => {
   useEffect(() => {
     if (!auth?.id) fetchAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

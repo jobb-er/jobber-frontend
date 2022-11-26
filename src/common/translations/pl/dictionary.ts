@@ -1,4 +1,8 @@
 const pl = {
+  loader: {
+    pleaseWait: "Proszę poczekaj jeszcze chwilkę",
+    optimising: "Optymalizujemy wszystko dla Ciebie",
+  },
   menu: {
     offers: "Oferty",
     messages: "Wiadomości",
@@ -64,6 +68,12 @@ const pl = {
   },
   offer: {
     goBack: "Wróć do wszystkich ofert",
+    new: "Nowe",
+    description: "Opis",
+    apply: "Aplikuj",
+    message: "Wiadomość",
+    added: "Dodano",
+    notProvided: "Nie podano",
   },
   myOffers: {
     recruiter: {

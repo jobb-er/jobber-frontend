@@ -18,6 +18,15 @@ const NewOfferForm = withFormik<Record<string, any>, NewOfferValues>({
     if (!values.location.trim().length) errors.location = requiredPath;
     if (!values.experience.trim().length) errors.experience = requiredPath;
     if (!values.description.trim().length) errors.description = requiredPath;
+    if (!values.bottomPayrange && (values.topPayrange || values.currency))
+      errors.bottomPayrange = requiredPath;
+    if (!values.topPayrange && (values.bottomPayrange || values.currency))
+      errors.topPayrange = requiredPath;
+    if (
+      !values.currency?.trim().length &&
+      (values.bottomPayrange || values.topPayrange)
+    )
+      errors.currency = requiredPath;
 
     return errors;
   },
@@ -25,7 +34,7 @@ const NewOfferForm = withFormik<Record<string, any>, NewOfferValues>({
   handleSubmit: async (values: NewOfferValues): Promise<void> => {
     try {
       const response = await createNewOffer(values);
-      if (response?.status?.toString() === "201")
+      if (response?.status?.toString()?.[0] === "2")
         return console.log(response.data);
     } catch (error) {
       console.log(error);
