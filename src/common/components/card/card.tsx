@@ -12,7 +12,7 @@ const Card = ({
     className={removeDuplicateWhitespaces(
       `bg-white p-3 rounded-xl drop-shadow text-primary ${additionalClassName}`,
     )}
-    role="presentation"
+    role={onClick ? "button" : "presentation"}
     onClick={onClick}
   >
     {children}

@@ -1,24 +1,25 @@
 import { Auth } from "../../../app";
-
-export interface OfferTempModel {
-  id: string;
-  title: string;
-  company: string;
-  location?: string;
-  bottomPayRange?: number;
-  upperPayRange?: number;
-  currency?: string;
-  isNew?: boolean;
-}
+import { Offer, Offers } from "../../models";
 
 export interface OfferProps {
-  offer: OfferTempModel;
+  offer: Offer;
 }
 
 export interface AllOffersMapState {
   auth: Auth;
+  offers: { allOffers: Offers };
+  requestStatuses: { isFetchingAllOffers: boolean };
+}
+
+export interface AllOffersMapStateReturn {
+  auth: Auth;
+  allOffers: Offers;
+  isFetchingAllOffers: boolean;
 }
 
 export interface AllOffersProps {
   auth?: Auth;
+  allOffers: Offers;
+  isFetchingAllOffers: boolean;
+  fetchAllOffers: () => void;
 }

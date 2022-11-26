@@ -1,0 +1,66 @@
+.dot {
+  border-radius: 0.5em;
+  background: #50A8EA;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+.dot1,
+.dot2 {
+  left: 0;
+  opacity: 0.5
+
+}
+
+.dot3 {
+  left: 1.5em;
+  opacity: 0.7
+
+}
+
+.dot4 {
+  left: 3em;
+  opacity: 0.8
+
+}
+
+.dot5 {
+  left: 4.5em;
+}
+
+.dot6 {
+  left: 6em;
+  opacity: 0.1
+}
+
+@keyframes reveal {
+  from {
+    transform: scale(0.01);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes slide {
+  to {
+    transform: translateX(1.5em);
+  }
+}
+
+.dot1 {
+  animation-name: reveal;
+}
+
+.dot2,
+.dot3,
+.dot4,
+.dot5 {
+  animation-name: slide;
+}
+
+.dot6 {
+  animation-name: reveal;
+  animation-direction: reverse;
+}

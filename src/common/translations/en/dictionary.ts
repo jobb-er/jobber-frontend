@@ -1,4 +1,8 @@
 const en = {
+  loader: {
+    pleaseWait: "Please wait a second",
+    optimising: "We are optimising everything for you",
+  },
   menu: {
     offers: "Offers",
     messages: "Messages",
@@ -64,6 +68,36 @@ const en = {
   },
   offer: {
     goBack: "Go back to all offers",
+    new: "New",
+    description: "Description",
+    apply: "Apply",
+    message: "Message",
+    added: "Added",
+    notProvided: "Not provided",
+  },
+  myOffers: {
+    recruiter: {
+      addNew: "Add new offer",
+      goBack: "Go back to my offers",
+      title: "Title",
+      titlePlaceholder: "Offer title",
+      companyName: "Company name",
+      location: "Location",
+      locationPlaceholder: "Company location",
+      experience: "Needed experience",
+      experiencePlaceholder: "1+ years",
+      bottomPayrange: "Bottom payrange",
+      topPayrange: "Top payrange",
+      currency: "Currency",
+      description: "Description",
+      descriptionPlaceholder: "More details about this offer",
+      post: "Post",
+      cancel: "Cancel",
+      emptyOffers: "You don’t have any offers",
+      errors: {
+        fieldRequired: "{{ field }} is required!",
+      },
+    },
   },
   settings: {
     app: "App",

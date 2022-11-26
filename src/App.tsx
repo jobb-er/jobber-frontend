@@ -1,8 +1,9 @@
 import { ReactElement } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { connect } from "react-redux";
 
 import { Container, AuthContainer, Settings } from "./packages/app";
-import { AllOffers, MyOffers, OfferDetails } from "./packages/offers";
+import { AllOffers, MyOffers, OfferDetails, NewOffer } from "./packages/offers";
 import { Messages } from "./packages/chat";
 import { Profile } from "./packages/profile";
 import {
@@ -11,9 +12,11 @@ import {
   MY_OFFERS,
   PROFILE,
   SETTINGS,
+  RECRUITER,
 } from "./common/constants";
+import { AppProps, AppMapState } from "./types";
 
-const App = (): ReactElement => (
+const App = ({ auth }: AppProps): ReactElement => (
   <BrowserRouter>
     <AuthContainer>
       <Container>
@@ -22,6 +25,16 @@ const App = (): ReactElement => (
           <Route path={`${OFFERS}/:id`} element={<OfferDetails />} />
           <Route path={MESSAGES} element={<Messages />} />
           <Route path={MY_OFFERS} element={<MyOffers />} />
+          <Route
+            path={`${MY_OFFERS}/new`}
+            element={
+              auth?.isAuthorised && auth?.accountType === RECRUITER ? (
+                <NewOffer />
+              ) : (
+                <Navigate to={MY_OFFERS} replace />
+              )
+            }
+          />
           <Route path={PROFILE} element={<Profile />} />
           <Route path={SETTINGS} element={<Settings />} />
           <Route path="*" element={<Navigate to={OFFERS} replace />} />
@@ -31,4 +44,8 @@ const App = (): ReactElement => (
   </BrowserRouter>
 );
 
-export default App;
+const mapStateToProps = (state: AppMapState): AppMapState => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps)(App);
