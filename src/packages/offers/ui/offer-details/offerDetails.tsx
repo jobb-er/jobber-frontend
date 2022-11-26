@@ -3,8 +3,9 @@ import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 
 import { OFFERS } from "../../../../common/constants";
-import { TopBar, BackLink } from "../../../../common/components";
+import { TopBar, BackLink, Card } from "../../../../common/components";
 import { OfferDetailsMapState, OfferDetailsProps } from "./types";
+import OfferContent from "./offerContent";
 
 const OfferDetails = ({ auth }: OfferDetailsProps): ReactElement => {
   const { t } = useTranslation();
@@ -19,7 +20,9 @@ const OfferDetails = ({ auth }: OfferDetailsProps): ReactElement => {
       >
         <BackLink path={OFFERS} title={t("offer.goBack")} />
       </TopBar>
-      <span>Offer details</span>
+      <Card additionalClassName="h-full p-0 overflow-hidden">
+        <OfferContent />
+      </Card>
     </section>
   );
 };
