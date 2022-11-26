@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -25,6 +25,7 @@ import { MenuProps } from "./types";
 const Menu = ({ logout, resetStore }: MenuProps): ReactElement => {
   const { pathname } = useLocation();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col gap-10 justify-start bg-primary px-4">
@@ -67,6 +68,7 @@ const Menu = ({ logout, resetStore }: MenuProps): ReactElement => {
           onClick={async () => {
             await logout();
             await resetStore();
+            navigate("/");
           }}
           Icon={LogoutIcon}
           isActive={false}

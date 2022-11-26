@@ -5,6 +5,6 @@ export const initialNewOfferFormValues = {
   experience: "",
   bottomPayrange: undefined,
   topPayrange: undefined,
-  currency: "",
+  currency: undefined,
   description: "",
 };
