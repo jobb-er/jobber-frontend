@@ -18,16 +18,18 @@ const Loader = ({
   return (
     <div
       className={removeDuplicateWhitespaces(
-        `flex flex-col gap-4 font-semibold ${additionalClassName}`,
+        `flex flex-col gap-5 font-semibold ${additionalClassName}`,
       )}
     >
-      <span className="ml-32 text-primary text-xl">
-        {t("loader.pleaseWait")}
-      </span>
-      <span className="ml-20 mb-12 text-secondary-dark">
+      <span className="text-primary text-3xl">{t("loader.pleaseWait")}</span>
+      <span className="text-xl text-secondary-dark">
         {t("loader.optimising")}
       </span>
-      <div className={removeDuplicateWhitespaces(`relative ${size}`)}>
+      <div
+        className={removeDuplicateWhitespaces(
+          `relative right-56 mt-24 ${size}`,
+        )}
+      >
         <div className={`${dotStyles} ${styles.dot1}`} />
         <div className={`${dotStyles} ${styles.dot2}`} />
         <div className={`${dotStyles} ${styles.dot3}`} />

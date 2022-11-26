@@ -1,20 +1,45 @@
-import { ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
+import { Dispatch } from "redux";
 
 import { removeDuplicateWhitespaces } from "../../../../common/utils";
 import { ReactComponent as SearchIcon } from "../../../../common/images/offers/search.svg";
 import { ReactComponent as LocationIcon } from "../../../../common/images/offers/location.svg";
-import { TopBar, Input, Select, Label } from "../../../../common/components";
+import {
+  TopBar,
+  Input,
+  Select,
+  Label,
+  Loader,
+} from "../../../../common/components";
+import { fetchAllOffers } from "../../store/actions/allOffersActions";
 import { Offer as OfferModel } from "../../models";
 import styles from "./styles.module.css";
 import Offer from "./offer";
+import {
+  AllOffersMapState,
+  AllOffersMapStateReturn,
+  AllOffersProps,
+} from "./types";
 
-import { AllOffersMapState, AllOffersProps } from "./types";
-import { mockData } from "./mock";
-
-const AllOffers = ({ auth }: AllOffersProps): ReactElement => {
+const AllOffers = ({
+  auth,
+  isFetchingAllOffers,
+  allOffers,
+  fetchAllOffers,
+}: AllOffersProps): ReactElement => {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    fetchAllOffers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (isFetchingAllOffers)
+    return (
+      <Loader additionalClassName="flex items-center justify-center h-full" />
+    );
 
   return (
     <section className="flex flex-col gap-6 h-full">
@@ -49,7 +74,7 @@ const AllOffers = ({ auth }: AllOffersProps): ReactElement => {
       >
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.recently")}</Label>
-          {mockData.map(
+          {allOffers.map(
             (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
@@ -57,7 +82,7 @@ const AllOffers = ({ auth }: AllOffersProps): ReactElement => {
         </div>
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.salary")}</Label>
-          {mockData.map(
+          {allOffers.map(
             (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
@@ -65,7 +90,7 @@ const AllOffers = ({ auth }: AllOffersProps): ReactElement => {
         </div>
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.all")}</Label>
-          {mockData.map(
+          {allOffers.map(
             (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
@@ -76,8 +101,16 @@ const AllOffers = ({ auth }: AllOffersProps): ReactElement => {
   );
 };
 
-const mapStateToProps = (state: AllOffersMapState): AllOffersMapState => ({
+const mapStateToProps = (
+  state: AllOffersMapState,
+): AllOffersMapStateReturn => ({
   auth: state.auth,
+  allOffers: state.offers.allOffers,
+  isFetchingAllOffers: state.requestStatuses.isFetchingAllOffers,
 });
 
-export default connect(mapStateToProps)(AllOffers);
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  fetchAllOffers: () => dispatch(fetchAllOffers()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AllOffers);

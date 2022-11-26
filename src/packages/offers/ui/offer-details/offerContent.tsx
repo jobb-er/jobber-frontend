@@ -7,10 +7,9 @@ import { ReactComponent as MapPinIcon } from "../../../../common/images/offers/m
 import { ReactComponent as MoneyIcon } from "../../../../common/images/offers/money.svg";
 import { ReactComponent as CheckMarkIcon } from "../../../../common/images/offers/checkMark.svg";
 import { ReactComponent as MessageIcon } from "../../../../common/images/offers/message.svg";
+import { OfferContentProps } from "./types";
 
-import { mockData as offer } from "./mock";
-
-const OfferContent = (): ReactElement => {
+const OfferContent = ({ offer }: OfferContentProps): ReactElement => {
   const { t } = useTranslation();
 
   return (
@@ -30,7 +29,6 @@ const OfferContent = (): ReactElement => {
           <BuildingIcon className="w-5 h-5" />
           <span>{offer.companyName}</span>
         </div>
-
         {offer?.location ? (
           <div className="flex items-center gap-2">
             <MapPinIcon className="w-5 h-5" />
