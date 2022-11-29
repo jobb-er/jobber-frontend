@@ -6,6 +6,7 @@ import { Dispatch } from "redux";
 import { removeDuplicateWhitespaces } from "../../../../common/utils";
 import { ReactComponent as SearchIcon } from "../../../../common/images/offers/search.svg";
 import { ReactComponent as LocationIcon } from "../../../../common/images/offers/location.svg";
+import { ReactComponent as BroomIcon } from "../../../../common/images/offers/broom.svg";
 import {
   TopBar,
   Input,
@@ -31,6 +32,7 @@ const AllOffers = ({
 }: AllOffersProps): ReactElement => {
   const { t } = useTranslation();
   const [searchValue, setSearchValue] = useState("");
+  const [locationValue, setLocationValue] = useState("");
 
   useEffect(() => {
     fetchAllOffers();
@@ -45,11 +47,20 @@ const AllOffers = ({
         .includes(searchValue.trim().toLowerCase()),
     );
 
+  const handleOnFilterOffers = (offers: Offers): Offers =>
+    locationValue
+      ? offers.filter((offer: OfferModel) => offer.location === locationValue)
+      : offers;
+
   const onlyRecentOffers = allOffers.filter((offer: OfferModel) => offer.isNew);
   const onlyOfferWithSalary = allOffers.filter(
     (offer: OfferModel) =>
       offer.bottomPayrange && offer.topPayrange && offer.currency,
   );
+
+  const locationSelectOptions = [
+    ...new Set(allOffers.map((offer: OfferModel): string => offer.location)),
+  ];
 
   if (isFetchingAllOffers)
     return (
@@ -64,7 +75,7 @@ const AllOffers = ({
         }
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
       >
-        <div className="flex items-center gap-3 w-1/2">
+        <div className="flex items-center gap-3 w-max">
           <Input
             height="h-min"
             placeholder={t("allOffers.search")}
@@ -74,15 +85,25 @@ const AllOffers = ({
             }
           />
           <Select
-            options={[]}
-            value=""
-            onChange={() => {
-              // do nth
-            }}
+            options={locationSelectOptions}
+            value={locationValue}
+            onChange={setLocationValue}
             Icon={LocationIcon}
             placeholder={t("allOffers.location")}
             height="h-min"
           />
+          {locationValue ? (
+            <div
+              role="button"
+              onClick={() => setLocationValue("")}
+              className="flex items-center gap-2 whitespace-nowrap text-action hover:underline"
+            >
+              <BroomIcon className="w-6 h-6" />
+              <span>{t("allOffers.clear")}</span>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </TopBar>
       <div
@@ -92,7 +113,7 @@ const AllOffers = ({
       >
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.recently")}</Label>
-          {handleOnSearchOffers(onlyRecentOffers).map(
+          {handleOnFilterOffers(handleOnSearchOffers(onlyRecentOffers)).map(
             (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
@@ -100,7 +121,7 @@ const AllOffers = ({
         </div>
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.salary")}</Label>
-          {handleOnSearchOffers(onlyOfferWithSalary).map(
+          {handleOnFilterOffers(handleOnSearchOffers(onlyOfferWithSalary)).map(
             (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
@@ -108,7 +129,7 @@ const AllOffers = ({
         </div>
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.all")}</Label>
-          {handleOnSearchOffers(allOffers).map(
+          {handleOnFilterOffers(handleOnSearchOffers(allOffers)).map(
             (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),

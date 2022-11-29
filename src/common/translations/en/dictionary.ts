@@ -65,6 +65,7 @@ const en = {
     all: "All offers",
     new: "New",
     notProvided: "Not provided",
+    clear: "Clear filter",
   },
   offer: {
     goBack: "Go back to offers",

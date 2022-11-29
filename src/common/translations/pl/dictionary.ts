@@ -65,6 +65,7 @@ const pl = {
     all: "Wszystkie oferty",
     new: "Nowe",
     notProvided: "Nie podano",
+    clear: "Wyczyść filtr",
   },
   offer: {
     goBack: "Wróć do ofert",
