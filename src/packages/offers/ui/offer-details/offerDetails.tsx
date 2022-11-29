@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import { OFFERS } from "../../../../common/constants";
 import { TopBar, BackLink, Card, Loader } from "../../../../common/components";
 import { fetchOffer } from "../../store/actions/allOffersActions";
 import {
@@ -41,7 +40,7 @@ const OfferDetails = ({
         }
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
       >
-        <BackLink path={OFFERS} title={t("offer.goBack")} />
+        <BackLink title={t("offer.goBack")} />
       </TopBar>
       <Card additionalClassName="h-full p-0 overflow-hidden">
         <OfferContent offer={offer} />

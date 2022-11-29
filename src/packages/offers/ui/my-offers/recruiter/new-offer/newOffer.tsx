@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 
 import { TopBar, BackLink, Card } from "../../../../../../common/components";
-import { MY_OFFERS } from "../../../../../../common/constants";
 import { NewOfferMapState, NewOfferProps } from "./types";
 import NewOfferForm from "./newOfferForm";
 
@@ -18,7 +17,7 @@ const NewOffer = ({ auth }: NewOfferProps): ReactElement => {
         }
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
       >
-        <BackLink path={MY_OFFERS} title={t("myOffers.recruiter.goBack")} />
+        <BackLink title={t("myOffers.recruiter.goBack")} />
       </TopBar>
       <Card additionalClassName="h-full p-0">
         <NewOfferForm />
