@@ -52,7 +52,11 @@ const OfferContent = ({ offer }: OfferContentProps): ReactElement => {
       </div>
       <span className="text-secondary flex items-center gap-1 px-6 text-sm font-semibold">
         {t("offer.added")}
-        <span className="underline">{new Date().toLocaleDateString()}</span>
+        <span className="underline">
+          {offer.creationDate
+            ? new Date(offer.creationDate).toLocaleDateString()
+            : ""}
+        </span>
       </span>
       <div className="flex items-center gap-3 justify-end bg-secondary-light w-full h-16 px-6 py-3 rounded-b-xl">
         <Button variant="secondary">

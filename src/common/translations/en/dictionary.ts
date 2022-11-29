@@ -67,7 +67,7 @@ const en = {
     notProvided: "Not provided",
   },
   offer: {
-    goBack: "Go back to all offers",
+    goBack: "Go back to offers",
     new: "New",
     description: "Description",
     apply: "Apply",
@@ -77,6 +77,8 @@ const en = {
   },
   myOffers: {
     recruiter: {
+      createdByYou: "Created by you",
+      posted: "Posted",
       addNew: "Add new offer",
       goBack: "Go back to my offers",
       title: "Title",
@@ -93,9 +95,20 @@ const en = {
       descriptionPlaceholder: "More details about this offer",
       post: "Post",
       cancel: "Cancel",
-      emptyOffers: "You don’t have any offers",
+      emptyOffers: "You don't have any offers",
       errors: {
         fieldRequired: "{{ field }} is required!",
+      },
+    },
+    candidate: {
+      didntApply: "You didn't apply for job",
+      startSearching: "Start searching",
+      applied: "Applied ({{ number }})",
+      searchAndApply: "Search and apply for more offers",
+      statuses: {
+        applied: "Applied",
+        rejected: "Rejected",
+        accepted: "Accepted",
       },
     },
   },

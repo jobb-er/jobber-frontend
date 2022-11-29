@@ -12,6 +12,9 @@ module.exports = {
       dropShadow: {
         DEFAULT: "0 15px 10px rgba(0, 0, 0, 0.25)",
       },
+      minWidth: {
+        48: "12rem",
+      },
     },
     colors: {
       primary: {
