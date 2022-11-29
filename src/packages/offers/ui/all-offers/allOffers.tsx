@@ -1,4 +1,4 @@
-import { ReactElement, useEffect } from "react";
+import { ReactElement, useEffect, useState, ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -6,6 +6,7 @@ import { Dispatch } from "redux";
 import { removeDuplicateWhitespaces } from "../../../../common/utils";
 import { ReactComponent as SearchIcon } from "../../../../common/images/offers/search.svg";
 import { ReactComponent as LocationIcon } from "../../../../common/images/offers/location.svg";
+import { ReactComponent as BroomIcon } from "../../../../common/images/offers/broom.svg";
 import {
   TopBar,
   Input,
@@ -14,7 +15,7 @@ import {
   Loader,
 } from "../../../../common/components";
 import { fetchAllOffers } from "../../store/actions/allOffersActions";
-import { Offer as OfferModel } from "../../models";
+import { Offer as OfferModel, Offers } from "../../models";
 import styles from "./styles.module.css";
 import Offer from "./offer";
 import {
@@ -30,11 +31,36 @@ const AllOffers = ({
   fetchAllOffers,
 }: AllOffersProps): ReactElement => {
   const { t } = useTranslation();
+  const [searchValue, setSearchValue] = useState("");
+  const [locationValue, setLocationValue] = useState("");
 
   useEffect(() => {
     fetchAllOffers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleOnSearchOffers = (offers: Offers): Offers =>
+    offers.filter((offer: OfferModel) =>
+      offer.title
+        .trim()
+        .toLowerCase()
+        .includes(searchValue.trim().toLowerCase()),
+    );
+
+  const handleOnFilterOffers = (offers: Offers): Offers =>
+    locationValue
+      ? offers.filter((offer: OfferModel) => offer.location === locationValue)
+      : offers;
+
+  const onlyRecentOffers = allOffers.filter((offer: OfferModel) => offer.isNew);
+  const onlyOfferWithSalary = allOffers.filter(
+    (offer: OfferModel) =>
+      offer.bottomPayrange && offer.topPayrange && offer.currency,
+  );
+
+  const locationSelectOptions = [
+    ...new Set(allOffers.map((offer: OfferModel): string => offer.location)),
+  ];
 
   if (isFetchingAllOffers)
     return (
@@ -49,22 +75,37 @@ const AllOffers = ({
         }
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
       >
-        <div className="flex items-center gap-3 w-1/2">
+        <div className="flex items-center gap-3 w-max">
           <Input
             height="h-min"
             placeholder={t("allOffers.search")}
             Icon={SearchIcon}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              setSearchValue(event.target.value)
+            }
+            disabled={!allOffers.length}
           />
           <Select
-            options={[]}
-            value=""
-            onChange={() => {
-              // do nth
-            }}
+            options={locationSelectOptions}
+            value={locationValue}
+            onChange={setLocationValue}
             Icon={LocationIcon}
             placeholder={t("allOffers.location")}
             height="h-min"
+            disabled={!locationSelectOptions.length}
           />
+          {locationValue ? (
+            <div
+              role="button"
+              onClick={() => setLocationValue("")}
+              className="flex items-center gap-2 whitespace-nowrap text-action hover:underline"
+            >
+              <BroomIcon className="w-6 h-6" />
+              <span>{t("allOffers.clear")}</span>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </TopBar>
       <div
@@ -74,7 +115,7 @@ const AllOffers = ({
       >
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.recently")}</Label>
-          {allOffers.map(
+          {handleOnFilterOffers(handleOnSearchOffers(onlyRecentOffers)).map(
             (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
@@ -82,7 +123,7 @@ const AllOffers = ({
         </div>
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.salary")}</Label>
-          {allOffers.map(
+          {handleOnFilterOffers(handleOnSearchOffers(onlyOfferWithSalary)).map(
             (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
@@ -90,7 +131,7 @@ const AllOffers = ({
         </div>
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.all")}</Label>
-          {allOffers.map(
+          {handleOnFilterOffers(handleOnSearchOffers(allOffers)).map(
             (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
