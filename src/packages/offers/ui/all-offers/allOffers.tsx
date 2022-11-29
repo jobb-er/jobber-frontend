@@ -1,4 +1,4 @@
-import { ReactElement, useEffect } from "react";
+import { ReactElement, useEffect, useState, ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -14,7 +14,7 @@ import {
   Loader,
 } from "../../../../common/components";
 import { fetchAllOffers } from "../../store/actions/allOffersActions";
-import { Offer as OfferModel } from "../../models";
+import { Offer as OfferModel, Offers } from "../../models";
 import styles from "./styles.module.css";
 import Offer from "./offer";
 import {
@@ -30,11 +30,26 @@ const AllOffers = ({
   fetchAllOffers,
 }: AllOffersProps): ReactElement => {
   const { t } = useTranslation();
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     fetchAllOffers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleOnSearchOffers = (offers: Offers): Offers =>
+    offers.filter((offer: OfferModel) =>
+      offer.title
+        .trim()
+        .toLowerCase()
+        .includes(searchValue.trim().toLowerCase()),
+    );
+
+  const onlyRecentOffers = allOffers.filter((offer: OfferModel) => offer.isNew);
+  const onlyOfferWithSalary = allOffers.filter(
+    (offer: OfferModel) =>
+      offer.bottomPayrange && offer.topPayrange && offer.currency,
+  );
 
   if (isFetchingAllOffers)
     return (
@@ -54,6 +69,9 @@ const AllOffers = ({
             height="h-min"
             placeholder={t("allOffers.search")}
             Icon={SearchIcon}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              setSearchValue(event.target.value)
+            }
           />
           <Select
             options={[]}
@@ -74,7 +92,7 @@ const AllOffers = ({
       >
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.recently")}</Label>
-          {allOffers.map(
+          {handleOnSearchOffers(onlyRecentOffers).map(
             (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
@@ -82,7 +100,7 @@ const AllOffers = ({
         </div>
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.salary")}</Label>
-          {allOffers.map(
+          {handleOnSearchOffers(onlyOfferWithSalary).map(
             (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
@@ -90,7 +108,7 @@ const AllOffers = ({
         </div>
         <div className="flex flex-col gap-6">
           <Label>{t("allOffers.all")}</Label>
-          {allOffers.map(
+          {handleOnSearchOffers(allOffers).map(
             (offer: OfferModel): ReactElement => (
               <Offer key={offer.id} offer={offer} />
             ),
