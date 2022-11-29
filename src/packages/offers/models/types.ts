@@ -20,8 +20,21 @@ export interface NewOfferAPIValues {
   description: string;
 }
 
+export interface UpdateOfferAPIValues {
+  title: string;
+  companyName: string;
+  location: string;
+  experience: string;
+  bottomPayrange?: number;
+  topPayrange?: number;
+  currency?: string;
+  description: string;
+  status: string;
+}
+
 export interface Offer {
   id: string;
+  creationDate?: string;
   title: string;
   companyName: string;
   location: string;

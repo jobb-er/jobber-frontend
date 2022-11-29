@@ -11,7 +11,7 @@ export const recruiterOffersReducer = (
     case ActionTypes.RECRUITER_OFFERS_REQUEST:
       return state;
     case ActionTypes.RECRUITER_OFFERS_SUCCESS:
-      return action.payload;
+      return action.payload.offers;
     case ActionTypes.RECRUITER_OFFERS_FAILURE:
       return [];
     default:
@@ -27,7 +27,8 @@ export const candidateOffersReducer = (
     case ActionTypes.CANDIDATE_OFFERS_REQUEST:
       return state;
     case ActionTypes.CANDIDATE_OFFERS_SUCCESS:
-      return action.payload;
+      // TODO change model - accepted/rejected/waiting separation
+      return action.payload.offers;
     case ActionTypes.CANDIDATE_OFFERS_FAILURE:
       return [];
     default:
