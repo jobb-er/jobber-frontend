@@ -83,6 +83,7 @@ const AllOffers = ({
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               setSearchValue(event.target.value)
             }
+            disabled={!allOffers.length}
           />
           <Select
             options={locationSelectOptions}
@@ -91,6 +92,7 @@ const AllOffers = ({
             Icon={LocationIcon}
             placeholder={t("allOffers.location")}
             height="h-min"
+            disabled={!locationSelectOptions.length}
           />
           {locationValue ? (
             <div
