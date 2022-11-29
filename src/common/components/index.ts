@@ -10,3 +10,4 @@ export { default as Card } from "./card";
 export { default as BackLink } from "./back-link";
 export { default as Modal } from "./modal";
 export { default as Loader } from "./loader";
+export { default as Link } from "./link";

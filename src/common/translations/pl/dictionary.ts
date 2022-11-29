@@ -67,7 +67,7 @@ const pl = {
     notProvided: "Nie podano",
   },
   offer: {
-    goBack: "Wróć do wszystkich ofert",
+    goBack: "Wróć do ofert",
     new: "Nowe",
     description: "Opis",
     apply: "Aplikuj",
@@ -77,6 +77,8 @@ const pl = {
   },
   myOffers: {
     recruiter: {
+      createdByYou: "Stworzone przez Ciebie",
+      posted: "Utworzono",
       addNew: "Dodaj nową ofertę",
       goBack: "Wróć do moich ofert",
       title: "Tytuł",
@@ -96,6 +98,17 @@ const pl = {
       emptyOffers: "Nie opublikowałeś żadnych ofert",
       errors: {
         fieldRequired: "{{ field }} jest wymagane!",
+      },
+    },
+    candidate: {
+      didntApply: "Nie zaaplikowałeś na oferty",
+      startSearching: "Zacznij szukać",
+      applied: "Zaaplikowano ({{ number }})",
+      searchAndApply: "Szukaj i zaaplikuj na więcej ofert",
+      statuses: {
+        applied: "Zaaplikowano",
+        rejected: "Odrzucono",
+        accepted: "Zaakceptowano",
       },
     },
   },
