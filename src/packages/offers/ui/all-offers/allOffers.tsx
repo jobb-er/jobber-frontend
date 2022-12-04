@@ -68,7 +68,7 @@ const AllOffers = ({
     );
 
   return (
-    <section className="flex flex-col gap-6 h-full">
+    <section className="flex flex-col mx-8 mt-8">
       <TopBar
         role={
           auth?.accountType ? t(`roles.${auth.accountType.toLowerCase()}`) : ""
@@ -110,32 +110,39 @@ const AllOffers = ({
       </TopBar>
       <div
         className={removeDuplicateWhitespaces(
-          `grid gap-8 h-full ${styles.offersContainer}`,
+          `grid gap-8 h-full  ${styles.offersContainer}`,
         )}
       >
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col h-[85vh] pt-6">
           <Label>{t("allOffers.recently")}</Label>
-          {handleOnFilterOffers(handleOnSearchOffers(onlyRecentOffers)).map(
-            (offer: OfferModel): ReactElement => (
-              <Offer key={offer.id} offer={offer} />
-            ),
-          )}
+            <div className="flex flex-col gap-6 overflow-y-auto p-6">
+            {handleOnFilterOffers(handleOnSearchOffers(onlyRecentOffers)).map(
+              (offer: OfferModel): ReactElement => (
+                <Offer key={offer.id} offer={offer} />
+              ),
+            )}
+            </div>
         </div>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 h-[85vh] pt-6">
           <Label>{t("allOffers.salary")}</Label>
-          {handleOnFilterOffers(handleOnSearchOffers(onlyOfferWithSalary)).map(
-            (offer: OfferModel): ReactElement => (
-              <Offer key={offer.id} offer={offer} />
-            ),
-          )}
+            <div className="flex flex-col gap-6 overflow-y-auto p-6">
+            {handleOnFilterOffers(handleOnSearchOffers(onlyOfferWithSalary)).map(
+              (offer: OfferModel): ReactElement => (
+                <Offer key={offer.id} offer={offer} />
+              ),
+            )}
+            </div>
+
         </div>
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 h-[85vh] pt-6">
           <Label>{t("allOffers.all")}</Label>
-          {handleOnFilterOffers(handleOnSearchOffers(allOffers)).map(
-            (offer: OfferModel): ReactElement => (
-              <Offer key={offer.id} offer={offer} />
-            ),
-          )}
+            <div className="flex flex-col gap-6 overflow-y-auto p-6 ">
+            {handleOnFilterOffers(handleOnSearchOffers(allOffers)).map(
+              (offer: OfferModel): ReactElement => (
+                <Offer key={offer.id} offer={offer} />
+              ),
+            )}
+          </div>
         </div>
       </div>
     </section>

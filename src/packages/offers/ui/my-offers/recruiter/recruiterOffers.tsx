@@ -40,13 +40,15 @@ const RecruiterOffers = ({
     );
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 h-[85vh]">
       <Label>{t("myOffers.recruiter.createdByYou")}</Label>
-      {offers.map(
-        (offer: OfferModel): ReactElement => (
-          <Offer key={offer.id} offer={offer} />
-        ),
-      )}
+        <div className="flex flex-col gap-6 overflow-y-auto p-6 ">
+          {offers.map(
+            (offer: OfferModel): ReactElement => (
+              <Offer key={offer.id} offer={offer} />
+            ),
+          )}
+      </div>
     </div>
   );
 };
