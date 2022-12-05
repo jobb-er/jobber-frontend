@@ -49,7 +49,7 @@ const CandidateOffers = ({
     );
 
   return (
-    <div className="flex flex-col gap-6 h-[85vh]">
+    <div className="flex flex-col gap-6 h-85">
       <Label>
         {t("myOffers.candidate.applied", { number: offers.length })}
       </Label>

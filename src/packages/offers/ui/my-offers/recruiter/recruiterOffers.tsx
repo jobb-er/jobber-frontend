@@ -40,7 +40,7 @@ const RecruiterOffers = ({
     );
 
   return (
-    <div className="flex flex-col gap-6 h-[85vh]">
+    <div className="flex flex-col gap-6 h-85">
       <Label>{t("myOffers.recruiter.createdByYou")}</Label>
         <div className="flex flex-col gap-6 overflow-y-auto p-6 ">
           {offers.map(

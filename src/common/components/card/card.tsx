@@ -10,7 +10,7 @@ const Card = ({
 }: CardProps): ReactElement => (
   <div
     className={removeDuplicateWhitespaces(
-      `bg-white p-3 rounded-xl drop-shadow text-primary ${additionalClassName}`,
+      `bg-white p-3 rounded-xl drop-shadow-md text-primary ${additionalClassName}`,
     )}
     role={onClick ? "button" : "presentation"}
     onClick={onClick}

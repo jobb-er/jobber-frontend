@@ -113,7 +113,7 @@ const AllOffers = ({
           `grid gap-8 h-full  ${styles.offersContainer}`,
         )}
       >
-        <div className="flex flex-col h-[85vh] pt-6">
+        <div className="flex flex-col h-85 pt-6">
           <Label>{t("allOffers.recently")}</Label>
             <div className="flex flex-col gap-6 overflow-y-auto p-6">
             {handleOnFilterOffers(handleOnSearchOffers(onlyRecentOffers)).map(
@@ -123,7 +123,7 @@ const AllOffers = ({
             )}
             </div>
         </div>
-        <div className="flex flex-col gap-6 h-[85vh] pt-6">
+        <div className="flex flex-col gap-6 h-85 pt-6">
           <Label>{t("allOffers.salary")}</Label>
             <div className="flex flex-col gap-6 overflow-y-auto p-6">
             {handleOnFilterOffers(handleOnSearchOffers(onlyOfferWithSalary)).map(
@@ -134,7 +134,7 @@ const AllOffers = ({
             </div>
 
         </div>
-        <div className="flex flex-col gap-6 h-[85vh] pt-6">
+        <div className="flex flex-col gap-6 h-85 pt-6">
           <Label>{t("allOffers.all")}</Label>
             <div className="flex flex-col gap-6 overflow-y-auto p-6 ">
             {handleOnFilterOffers(handleOnSearchOffers(allOffers)).map(
