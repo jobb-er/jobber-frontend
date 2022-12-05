@@ -8,7 +8,7 @@ import { ReactComponent as EmptyOffersIcon } from "../../../../../common/images/
 import { ReactComponent as AllOffersIcon } from "../../../../../common/images/offers/allOffers.svg";
 import { Label, Link, Loader } from "../../../../../common/components";
 import { fetchCandidateOffers } from "../../../store/actions/myOffersActions";
-import { Offer as OfferModel } from "../../../models";
+import { CandidateOffer } from "../../../models";
 import {
   CandidateOffersProps,
   CandidateOffersMapState,
@@ -54,7 +54,7 @@ const CandidateOffers = ({
         {t("myOffers.candidate.applied", { number: offers.length })}
       </Label>
       {offers.map(
-        (offer: OfferModel): ReactElement => (
+        (offer: CandidateOffer): ReactElement => (
           <Offer key={offer.id} offer={offer} />
         ),
       )}

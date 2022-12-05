@@ -48,3 +48,29 @@ export interface Offer {
 }
 
 export type Offers = Offer[];
+
+export interface CandidateOffersAPIValues {
+  waiting: Offers;
+  accepted: Offers;
+  rejected: Offers;
+}
+
+export type RecruiterResponse = "accepted" | "rejected" | "waiting";
+
+export interface CandidateOffer {
+  id: string;
+  creationDate?: string;
+  title: string;
+  companyName: string;
+  location: string;
+  experience: string;
+  bottomPayrange?: number;
+  topPayrange?: number;
+  currency?: string;
+  description: string;
+  status: "open" | "closed";
+  isNew?: boolean;
+  recruiterResponse: RecruiterResponse;
+}
+
+export type CandidateOffers = CandidateOffer[];

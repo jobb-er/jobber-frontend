@@ -1,6 +1,7 @@
 import { AnyAction } from "redux";
 
 import { Offers } from "../../models";
+import { candidateOffersFromAPI } from "../../converters";
 import ActionTypes from "../actionTypes";
 
 export const recruiterOffersReducer = (
@@ -27,8 +28,7 @@ export const candidateOffersReducer = (
     case ActionTypes.CANDIDATE_OFFERS_REQUEST:
       return state;
     case ActionTypes.CANDIDATE_OFFERS_SUCCESS:
-      // TODO change model - accepted/rejected/waiting separation
-      return action.payload.offers;
+      return candidateOffersFromAPI(action.payload.offers);
     case ActionTypes.CANDIDATE_OFFERS_FAILURE:
       return [];
     default:

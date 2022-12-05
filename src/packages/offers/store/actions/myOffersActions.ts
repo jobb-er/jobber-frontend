@@ -33,3 +33,10 @@ export const fetchCandidateOffers = () =>
     ActionTypes.CANDIDATE_OFFERS_SUCCESS,
     ActionTypes.CANDIDATE_OFFERS_FAILURE,
   ]);
+
+export const applyForOffer = (offerId: string) =>
+  axios.post(
+    `${process.env.REACT_APP_API_URL}/candidate/offer/${offerId}/apply`,
+    undefined,
+    axiosHeaders,
+  );

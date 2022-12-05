@@ -16,6 +16,8 @@ const MyOffers = ({ auth }: MyOffersProps): ReactElement => {
 
   const isCandidate = auth?.accountType === CANDIDATE;
 
+  if (!auth?.id) return <></>;
+
   return (
     <section className="flex flex-col gap-6 h-full">
       <TopBar
