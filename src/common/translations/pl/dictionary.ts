@@ -96,6 +96,7 @@ const pl = {
       descriptionPlaceholder: "Więcej detali na temat tej oferty",
       post: "Opublikuj",
       cancel: "Odrzuć",
+      update: "Aktualizuj",
       emptyOffers: "Nie opublikowałeś żadnych ofert",
       errors: {
         fieldRequired: "{{ field }} jest wymagane!",

@@ -9,6 +9,17 @@ export interface NewOfferValues {
   description: string;
 }
 
+export interface EditOfferValues {
+  title: string;
+  companyName: string;
+  location: string;
+  experience: string;
+  bottomPayrange?: number;
+  topPayrange?: number;
+  currency?: string;
+  description: string;
+}
+
 export interface NewOfferAPIValues {
   title: string;
   companyName: string;

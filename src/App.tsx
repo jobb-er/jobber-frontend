@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { Container, AuthContainer, Settings } from "./packages/app";
-import { AllOffers, MyOffers, OfferDetails, NewOffer } from "./packages/offers";
+import { AllOffers, MyOffers, OfferDetails, NewOffer, EditOffer } from "./packages/offers";
 import { Messages } from "./packages/chat";
 import { Profile } from "./packages/profile";
 import {
@@ -30,6 +30,16 @@ const App = ({ auth }: AppProps): ReactElement => (
             element={
               auth?.isAuthorised && auth?.accountType === RECRUITER ? (
                 <NewOffer />
+              ) : (
+                <Navigate to={MY_OFFERS} replace />
+              )
+            }
+          />
+          <Route
+            path={`${MY_OFFERS}/edit/:id`}
+            element={
+              auth?.isAuthorised && auth?.accountType === RECRUITER ? (
+                <EditOffer />
               ) : (
                 <Navigate to={MY_OFFERS} replace />
               )

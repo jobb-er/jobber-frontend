@@ -1,2 +1,2 @@
 export { default } from "./myOffers";
-export { NewOffer } from "./recruiter";
+export { NewOffer, EditOffer } from "./recruiter";

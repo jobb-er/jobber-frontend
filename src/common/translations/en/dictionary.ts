@@ -96,6 +96,7 @@ const en = {
       descriptionPlaceholder: "More details about this offer",
       post: "Post",
       cancel: "Cancel",
+      update: "Update",
       emptyOffers: "You don't have any offers",
       errors: {
         fieldRequired: "{{ field }} is required!",

@@ -13,6 +13,13 @@ export const createNewOffer = (data: NewOfferValues) =>
     axiosHeaders,
   );
 
+export const fetchRecruiterOffer = (id: string) =>
+  actionBuilder(`${process.env.REACT_APP_API_URL}/recruiter/offer/${id}`, [
+    ActionTypes.RECRUITER_OFFER_REQUEST,
+    ActionTypes.RECRUITER_OFFER_SUCCESS,
+    ActionTypes.RECRUITER_OFFER_FAILURE,
+  ]);
+
 export const fetchRecruiterOffers = () =>
   actionBuilder(`${process.env.REACT_APP_API_URL}/recruiter/offer`, [
     ActionTypes.RECRUITER_OFFERS_REQUEST,
