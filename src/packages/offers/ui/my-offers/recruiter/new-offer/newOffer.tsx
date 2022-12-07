@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 
 import { TopBar, BackLink, Card } from "../../../../../../common/components";
 import { NewOfferMapState, NewOfferProps } from "./types";
-import NewOfferForm from "./newOfferForm";
+import OfferForm from "../offer-form";
+import { initialNewOfferFormValues } from "common/constants";
+import { newOfferFormSubmit } from "./helpers";
 
 const NewOffer = ({ auth }: NewOfferProps): ReactElement => {
   const { t } = useTranslation();
@@ -20,7 +22,10 @@ const NewOffer = ({ auth }: NewOfferProps): ReactElement => {
         <BackLink title={t("myOffers.recruiter.goBack")} />
       </TopBar>
       <Card additionalClassName="h-full p-0">
-        <NewOfferForm />
+        <OfferForm
+          offer={initialNewOfferFormValues}
+          submitAction={newOfferFormSubmit}
+        />
       </Card>
     </section>
   );

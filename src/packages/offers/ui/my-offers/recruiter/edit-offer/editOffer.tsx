@@ -10,8 +10,9 @@ import {
   EditOfferMapStateReturn,
   EditOfferProps,
 } from "./types";
-import EditOfferForm from "./editOfferForm";
+import OfferForm from "../offer-form";
 import { fetchRecruiterOffer } from "packages/offers/store/actions/myOffersActions";
+import { editOfferFormSubmit } from "./helpers";
 
 const EditOffer = ({
   auth,
@@ -24,6 +25,7 @@ const EditOffer = ({
 
   useEffect(() => {
     if (id) fetchRecruiterOffer(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isFetchingMyOffer)
@@ -43,7 +45,10 @@ const EditOffer = ({
       </TopBar>
       <Card additionalClassName="h-full p-0">
         {recruiterOffer ? (
-          <EditOfferForm recruiterOffer={recruiterOffer} />
+          <OfferForm
+            offer={recruiterOffer}
+            submitAction={editOfferFormSubmit}
+          />
         ) : (
           <></>
         )}

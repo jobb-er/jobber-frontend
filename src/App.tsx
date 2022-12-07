@@ -3,7 +3,13 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { Container, AuthContainer, Settings } from "./packages/app";
-import { AllOffers, MyOffers, OfferDetails, NewOffer, EditOffer } from "./packages/offers";
+import {
+  AllOffers,
+  MyOffers,
+  OfferDetails,
+  NewOffer,
+  EditOffer,
+} from "./packages/offers";
 import { Messages } from "./packages/chat";
 import { Profile } from "./packages/profile";
 import {

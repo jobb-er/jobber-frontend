@@ -1,15 +1,4 @@
-export interface NewOfferValues {
-  title: string;
-  companyName: string;
-  location: string;
-  experience: string;
-  bottomPayrange?: number;
-  topPayrange?: number;
-  currency?: string;
-  description: string;
-}
-
-export interface EditOfferValues {
+export interface OfferFormValues {
   title: string;
   companyName: string;
   location: string;
@@ -40,7 +29,7 @@ export interface UpdateOfferAPIValues {
   topPayrange?: number;
   currency?: string;
   description: string;
-  status: string;
+  status?: string;
 }
 
 export interface Offer {

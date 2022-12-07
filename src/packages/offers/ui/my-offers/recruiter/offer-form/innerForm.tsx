@@ -11,7 +11,7 @@ import { ReactComponent as MoneyIcon } from "common/images/offers/money.svg";
 import { ReactComponent as CheckMarkIcon } from "common/images/offers/checkMark.svg";
 import { Input, Button, Textarea } from "common/components";
 import { MY_OFFERS } from "common/constants";
-import { EditOfferValues } from "packages/offers/models";
+import { OfferFormValues } from "packages/offers/models";
 
 const TRANSLATION_PATH = "myOffers.recruiter";
 
@@ -20,7 +20,7 @@ const InnerForm = ({
   handleChange,
   touched,
   errors,
-}: FormikProps<EditOfferValues>): ReactElement => {
+}: FormikProps<OfferFormValues>): ReactElement => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -148,7 +148,7 @@ const InnerForm = ({
         <Button type="submit">
           <div className="flex items-center gap-3">
             <CheckMarkIcon className="w-4 h-4" />
-            {t(`${TRANSLATION_PATH}.update`)}
+            {t(`${TRANSLATION_PATH}.submit`)}
           </div>
         </Button>
       </div>

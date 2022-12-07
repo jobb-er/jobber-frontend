@@ -4,28 +4,28 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import {
-  initialNewOfferFormValues,
-  MY_OFFERS,
-} from "../../../../../../common/constants";
-import { NewOfferValues } from "../../../../models";
-import {
-  createNewOffer,
-  fetchRecruiterOffers,
-} from "../../../../store/actions/myOffersActions";
+import { MY_OFFERS } from "common/constants";
+import { OfferFormValues } from "packages/offers/models";
+import { fetchRecruiterOffers } from "packages/offers/store/actions/myOffersActions";
 import InnerForm from "./innerForm";
-import { NewOfferFormProps } from "./types";
+import { OfferFormProps, OfferFormikProps } from "./types";
 
 const requiredPath = "myOffers.recruiter.errors.fieldRequired";
 
-const NewOfferForm = ({ fetchMyOffers }: NewOfferFormProps): ReactElement => {
+const OfferForm = ({
+  offer,
+  submitAction,
+  fetchMyOffers,
+}: OfferFormProps): ReactElement => {
   const navigate = useNavigate();
 
-  const NewOfferFormFormik = withFormik<Record<string, any>, NewOfferValues>({
-    mapPropsToValues: (): NewOfferValues => initialNewOfferFormValues,
+  const OfferFormFormik = withFormik<OfferFormikProps, OfferFormValues>({
+    mapPropsToValues: ({ offer }): OfferFormValues => {
+      return { ...offer };
+    },
 
-    validate: (values: NewOfferValues): FormikErrors<NewOfferValues> => {
-      let errors: FormikErrors<NewOfferValues> = {};
+    validate: (values: OfferFormValues): FormikErrors<OfferFormValues> => {
+      let errors: FormikErrors<OfferFormValues> = {};
 
       if (!values.title.trim().length) errors.title = requiredPath;
       if (!values.companyName.trim().length) errors.companyName = requiredPath;
@@ -45,9 +45,9 @@ const NewOfferForm = ({ fetchMyOffers }: NewOfferFormProps): ReactElement => {
       return errors;
     },
 
-    handleSubmit: async (values: NewOfferValues): Promise<void> => {
+    handleSubmit: async (values: OfferFormValues): Promise<void> => {
       try {
-        const response = await createNewOffer(values);
+        const response = await submitAction({ ...offer, ...values });
         if (response?.status?.toString()?.[0] === "2") navigate(MY_OFFERS);
         return fetchMyOffers();
       } catch (error) {
@@ -56,11 +56,11 @@ const NewOfferForm = ({ fetchMyOffers }: NewOfferFormProps): ReactElement => {
     },
   })(InnerForm);
 
-  return <NewOfferFormFormik />;
+  return <OfferFormFormik offer={offer} />;
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   fetchMyOffers: () => dispatch(fetchRecruiterOffers()),
 });
 
-export default connect(null, mapDispatchToProps)(NewOfferForm);
+export default connect(null, mapDispatchToProps)(OfferForm);

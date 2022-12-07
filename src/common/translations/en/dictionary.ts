@@ -97,6 +97,7 @@ const en = {
       post: "Post",
       cancel: "Cancel",
       update: "Update",
+      submit: "Submit",
       emptyOffers: "You don't have any offers",
       errors: {
         fieldRequired: "{{ field }} is required!",

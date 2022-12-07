@@ -1,2 +1,2 @@
-export { newOfferToAPI } from "./newOfferToAPI";
-export { updateOfferToAPI } from "./updateOfferToAPI";
+export { offerToNewOfferAPI } from "./offerToNewOfferAPI";
+export { offerToUpdateOfferAPI } from "./offerToUpdateOfferAPI";
