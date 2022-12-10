@@ -1,9 +1,14 @@
 import { ReactElement } from "react";
 
+import { removeDuplicateWhitespaces } from "../../utils";
 import { LabelProps } from "./types";
 
-const Label = ({ children }: LabelProps): ReactElement => (
-  <span className="text-primary text-xl font-medium select-none">
+const Label = ({ children, additionalClassName }: LabelProps): ReactElement => (
+  <span
+    className={removeDuplicateWhitespaces(
+      `text-primary text-xl font-medium select-none ${additionalClassName}`,
+    )}
+  >
     {children}
   </span>
 );
