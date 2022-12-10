@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 
-import { TopBar } from "../../../common/components";
+import { TopBar } from "common/components";
 import { MessagesProps, MessagesMapState } from "./types";
 
 const Messages = ({ auth }: MessagesProps): ReactElement => {

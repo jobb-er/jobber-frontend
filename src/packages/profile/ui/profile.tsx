@@ -2,8 +2,8 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 
-import { TopBar } from "../../../common/components";
-import { CANDIDATE } from "../../../common/constants";
+import { TopBar } from "common/components";
+import { CANDIDATE } from "common/constants";
 import CandidateProfile from "./candidate";
 import RecruiterProfile from "./recruiter";
 import { ProfileMapState, ProfileProps } from "./types";

@@ -4,22 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import i18n from "../../../../common/translations/i18n";
-import {
-  EN,
-  PL,
-  initialSettingsFormValues,
-} from "../../../../common/constants";
-import {
-  TopBar,
-  Select,
-  Label,
-  Input,
-  Modal,
-  Button,
-} from "../../../../common/components";
-import { ReactComponent as Graphic } from "../../../../common/images/settings/graphic.svg";
-import { ReactComponent as WarningIcon } from "../../../../common/images/settings/warning.svg";
+import i18n from "common/translations/i18n";
+import { EN, PL, initialSettingsFormValues } from "common/constants";
+import { TopBar, Select, Label, Input, Modal, Button } from "common/components";
+import { ReactComponent as Graphic } from "common/images/settings/graphic.svg";
+import { ReactComponent as WarningIcon } from "common/images/settings/warning.svg";
 import { deleteAccount, logout } from "../../store/actions/authActions";
 import { SettingsMapState, SettingsProps, SettingsFormValues } from "./types";
 import SettingsForm from "./settingsForm";
@@ -87,7 +76,7 @@ const Settings = ({
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
         additionalClassName="self-end"
       />
-      <div className="flex justify-between gap-3 w-full h-full">
+      <div className="flex justify-between gap-3 w-full h-full px-10">
         <div className="w-3/4 2xl:w-1/2 flex flex-col gap-10">
           <div className="flex flex-col gap-5">
             <Label>{t("settings.app")}</Label>

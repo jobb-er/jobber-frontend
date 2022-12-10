@@ -1,10 +1,11 @@
-import { ReactElement, useEffect } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import { TopBar, BackLink, Card, Loader } from "../../../../common/components";
+import { CANDIDATE } from "common/constants";
+import { TopBar, BackLink, Card, Loader } from "common/components";
 import { fetchOffer } from "../../store/actions/allOffersActions";
 import {
   OfferDetailsMapState,
@@ -12,6 +13,7 @@ import {
   OfferDetailsProps,
 } from "./types";
 import OfferContent from "./offerContent";
+import SuccessfulApply from "./successfulApply";
 
 const OfferDetails = ({
   auth,
@@ -21,11 +23,19 @@ const OfferDetails = ({
 }: OfferDetailsProps): ReactElement => {
   const { t } = useTranslation();
   const { id } = useParams();
+  const [appliedSuccess, setAppliedSuccess] = useState(false);
 
   useEffect(() => {
     if (id) fetchOffer(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    () => {
+      return setAppliedSuccess(false);
+    };
+  }, []);
 
   if (isFetchingOffer)
     return (
@@ -39,12 +49,21 @@ const OfferDetails = ({
           auth?.accountType ? t(`roles.${auth.accountType.toLowerCase()}`) : ""
         }
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
+        additionalClassName={appliedSuccess ? "self-end" : ""}
       >
-        <BackLink title={t("offer.goBack")} />
+        {appliedSuccess ? <></> : <BackLink title={t("offer.goBack")} />}
       </TopBar>
-      <Card additionalClassName="h-full p-0 overflow-hidden">
-        <OfferContent offer={offer} />
-      </Card>
+      {appliedSuccess ? (
+        <SuccessfulApply />
+      ) : (
+        <Card additionalClassName="h-full p-0 overflow-hidden">
+          <OfferContent
+            offer={offer}
+            isCandidate={auth?.accountType === CANDIDATE}
+            onApplySuccess={() => setAppliedSuccess(true)}
+          />
+        </Card>
+      )}
     </section>
   );
 };

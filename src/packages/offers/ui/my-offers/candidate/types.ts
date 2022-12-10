@@ -1,21 +1,21 @@
-import { Offer, Offers } from "../../../models";
+import { CandidateOffer, CandidateOffers } from "../../../models";
 
 export interface OfferProps {
-  offer: Offer;
+  offer: CandidateOffer;
 }
 
 export interface CandidateOffersProps {
   fetchMyOffers: () => void;
-  offers: Offers;
+  offers: CandidateOffers;
   isFetchingMyOffers: boolean;
 }
 
 export interface CandidateOffersMapState {
-  offers: { candidateOffers: Offers };
+  offers: { candidateOffers: CandidateOffers };
   requestStatuses: { isFetchingMyOffers: boolean };
 }
 
 export interface CandidateOffersMapStateReturn {
-  offers: Offers;
+  offers: CandidateOffers;
   isFetchingMyOffers: boolean;
 }

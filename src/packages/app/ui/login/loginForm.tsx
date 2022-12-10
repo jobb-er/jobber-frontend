@@ -2,10 +2,7 @@ import { withFormik, FormikErrors } from "formik";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import {
-  initialLoginFormValues,
-  EMAIL_REGEXP,
-} from "../../../../common/constants";
+import { initialLoginFormValues, EMAIL_REGEXP } from "common/constants";
 import { login } from "../../store/actions/authActions";
 import { LoginValues } from "../../models";
 import InnerForm from "./innerForm";

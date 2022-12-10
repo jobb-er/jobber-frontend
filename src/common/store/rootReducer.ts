@@ -8,6 +8,7 @@ import {
   isFetchingMyOffers,
   isFetchingOffer,
   isFetchingMyOffer,
+  isFetchingOfferAppliedCandidates,
 } from "../../packages/offers/store/reducers";
 
 const initialState = {
@@ -17,13 +18,15 @@ const initialState = {
     offer: {},
     recruiterOffer: {},
     recruiterOffers: [],
+    offerAppliedCandidates: [],
     candidateOffers: [],
   },
   requestStatuses: {
     isFetchingAllOffers: false,
     isFetchingMyOffers: false,
     isFetchingOffer: false,
-    isFetchingMyOffer: false
+    isFetchingMyOffer: false,
+    isFetchingOfferAppliedCandidates: false,
   },
 };
 
@@ -34,7 +37,8 @@ export const appReducer = combineReducers({
     isFetchingAllOffers,
     isFetchingMyOffers,
     isFetchingOffer,
-    isFetchingMyOffer
+    isFetchingMyOffer,
+    isFetchingOfferAppliedCandidates,
   }),
 });
 

@@ -2,15 +2,48 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-import { OFFERS } from "../../../../../common/constants";
-import { ReactComponent as BuildingIcon } from "../../../../../common/images/offers/building.svg";
-import { ReactComponent as MapPinIcon } from "../../../../../common/images/offers/mapPin.svg";
-import { Card } from "../../../../../common/components";
+import { OFFERS } from "common/constants";
+import { ReactComponent as BuildingIcon } from "common/images/offers/building.svg";
+import { ReactComponent as MapPinIcon } from "common/images/offers/mapPin.svg";
+import { Card } from "common/components";
+import { RecruiterResponse } from "../../../models";
 import { OfferProps } from "./types";
 
 const Offer = ({ offer }: OfferProps): ReactElement => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const renderRecruiterResponse = (
+    response: RecruiterResponse,
+  ): ReactElement => {
+    const baseResponseStyles = " text-2xl font-semibold mr-5";
+    switch (response) {
+      case "waiting":
+        return (
+          <span className={`text-secondary-light ${baseResponseStyles}`}>
+            {t("myOffers.candidate.statuses.applied")}
+          </span>
+        );
+      case "accepted":
+        return (
+          <span className={`text-action ${baseResponseStyles}`}>
+            {t("myOffers.candidate.statuses.accepted")}
+          </span>
+        );
+      case "rejected":
+        return (
+          <span className={`text-error ${baseResponseStyles}`}>
+            {t("myOffers.candidate.statuses.rejected")}
+          </span>
+        );
+      default:
+        return (
+          <span className={`text-secondary-light ${baseResponseStyles}`}>
+            {t("myOffers.candidate.statuses.applied")}
+          </span>
+        );
+    }
+  };
 
   return (
     <Card onClick={() => navigate(`${OFFERS}/${offer.id}`)}>
@@ -28,9 +61,7 @@ const Offer = ({ offer }: OfferProps): ReactElement => {
             <span>{offer.location}</span>
           </span>
         </div>
-        <div className="text-secondary-light text-2xl font-semibold mr-5">
-          {t("myOffers.candidate.statuses.applied")}
-        </div>
+        {renderRecruiterResponse(offer.recruiterResponse)}
       </div>
     </Card>
   );

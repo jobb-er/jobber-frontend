@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, ReactElement, MouseEventHandler } from "react";
 
-export type ButtonVariants = "primary" | "secondary";
+export type ButtonVariants = "primary" | "secondary" | "error";
 
 export interface ButtonProps<HTMLButtonElement>
   extends ButtonHTMLAttributes<HTMLButtonElement> {

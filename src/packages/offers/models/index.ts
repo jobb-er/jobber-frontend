@@ -4,4 +4,12 @@ export type {
   UpdateOfferAPIValues,
   Offer,
   Offers,
+  CandidateOffer,
+  CandidateOffers,
+  CandidateOffersAPIValues,
+  RecruiterResponse,
+  AppliedCandidateAPIValues,
+  AppliedCandidate,
+  AppliedCandidates,
+  AppliedCandidatesAPIValues,
 } from "./types";

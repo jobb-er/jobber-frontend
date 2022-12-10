@@ -5,13 +5,13 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { TopBar, BackLink, Card, Loader } from "common/components";
+import { fetchRecruiterOffer } from "packages/offers/store/actions/myOffersActions";
 import {
   EditOfferMapState,
   EditOfferMapStateReturn,
   EditOfferProps,
 } from "./types";
 import OfferForm from "../offer-form";
-import { fetchRecruiterOffer } from "packages/offers/store/actions/myOffersActions";
 import { editOfferFormSubmit } from "./helpers";
 
 const EditOffer = ({

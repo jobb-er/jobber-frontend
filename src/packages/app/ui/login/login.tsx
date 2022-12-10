@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 
-import { ReactComponent as Image } from "../../../../common/images/login/image.svg";
+import { ReactComponent as Image } from "common/images/login/image.svg";
 import LoginRegisterWrapper from "../common";
 import { LoginProps } from "./types";
 import LoginForm from "./loginForm";

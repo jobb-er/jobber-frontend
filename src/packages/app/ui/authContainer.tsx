@@ -1,7 +1,7 @@
 import { ReactElement, useState, useEffect } from "react";
 import { connect } from "react-redux";
 
-import { CLIENT_SESSION } from "../../../common/constants";
+import { CLIENT_SESSION } from "common/constants";
 import Login from "./login";
 import Register from "./register";
 import { AuthContainerProps, AuthContainerMapState } from "./types";

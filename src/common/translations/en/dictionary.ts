@@ -75,6 +75,8 @@ const en = {
     message: "Message",
     added: "Added",
     notProvided: "Not provided",
+    successTitle: "You applied to an offer!",
+    goToMyOffers: "Go to my offers",
   },
   myOffers: {
     recruiter: {
@@ -98,6 +100,13 @@ const en = {
       cancel: "Cancel",
       update: "Update",
       submit: "Submit",
+      accept: "Accept",
+      reject: "Reject",
+      message: "Message",
+      statuses: {
+        rejected: "Rejected",
+        accepted: "Accepted",
+      },
       emptyOffers: "You don't have any offers",
       errors: {
         fieldRequired: "{{ field }} is required!",

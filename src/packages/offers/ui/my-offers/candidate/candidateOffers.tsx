@@ -3,12 +3,12 @@ import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import { OFFERS } from "../../../../../common/constants";
-import { ReactComponent as EmptyOffersIcon } from "../../../../../common/images/offers/emptyOffersGraphic.svg";
-import { ReactComponent as AllOffersIcon } from "../../../../../common/images/offers/allOffers.svg";
-import { Label, Link, Loader } from "../../../../../common/components";
+import { OFFERS } from "common/constants";
+import { ReactComponent as EmptyOffersIcon } from "common/images/offers/emptyOffersGraphic.svg";
+import { ReactComponent as AllOffersIcon } from "common/images/offers/allOffers.svg";
+import { Label, Link, Loader } from "common/components";
 import { fetchCandidateOffers } from "../../../store/actions/myOffersActions";
-import { Offer as OfferModel } from "../../../models";
+import { CandidateOffer } from "../../../models";
 import {
   CandidateOffersProps,
   CandidateOffersMapState,
@@ -55,7 +55,7 @@ const CandidateOffers = ({
       </Label>
       <div className="flex flex-col gap-6 overflow-y-auto px-10 pb-10">
         {offers.map(
-          (offer: OfferModel): ReactElement => (
+          (offer: CandidateOffer): ReactElement => (
             <Offer key={offer.id} offer={offer} />
           ),
         )}
@@ -64,6 +64,7 @@ const CandidateOffers = ({
         path={OFFERS}
         title={t("myOffers.candidate.searchAndApply")}
         textSize="text-md"
+        additionalClassName="px-10"
       />
     </div>
   );
