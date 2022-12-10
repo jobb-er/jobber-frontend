@@ -12,7 +12,7 @@ const Profile = ({ auth }: ProfileProps): ReactElement => {
   const { t } = useTranslation();
 
   return (
-    <section>
+    <section className="p-8">
       <TopBar
         role={
           auth?.accountType ? t(`roles.${auth.accountType.toLowerCase()}`) : ""

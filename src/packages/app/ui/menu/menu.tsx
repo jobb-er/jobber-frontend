@@ -28,7 +28,7 @@ const Menu = ({ logout, resetStore }: MenuProps): ReactElement => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col gap-10 justify-start bg-primary px-4">
+    <div className="flex flex-col gap-10 justify-start bg-primary px-4 h-full">
       <Logo className="w-full mt-8" />
       <div className="flex flex-col gap-5">
         <MenuTab

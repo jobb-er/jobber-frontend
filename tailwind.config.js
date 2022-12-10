@@ -15,6 +15,9 @@ module.exports = {
       minWidth: {
         48: "12rem",
       },
+      height: {
+        85: "80vh",
+      },
     },
     colors: {
       primary: {

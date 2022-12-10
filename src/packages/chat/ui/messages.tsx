@@ -9,7 +9,7 @@ const Messages = ({ auth }: MessagesProps): ReactElement => {
   const { t } = useTranslation();
 
   return (
-    <section>
+    <section className="p-8">
       <TopBar
         role={
           auth?.accountType ? t(`roles.${auth.accountType.toLowerCase()}`) : ""

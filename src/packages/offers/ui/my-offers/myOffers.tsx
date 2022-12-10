@@ -17,7 +17,7 @@ const MyOffers = ({ auth }: MyOffersProps): ReactElement => {
   const isCandidate = auth?.accountType === CANDIDATE;
 
   return (
-    <section className="flex flex-col gap-6 h-full">
+    <section className="flex flex-col gap-6 h-full p-8">
       <TopBar
         role={
           auth?.accountType ? t(`roles.${auth.accountType.toLowerCase()}`) : ""
