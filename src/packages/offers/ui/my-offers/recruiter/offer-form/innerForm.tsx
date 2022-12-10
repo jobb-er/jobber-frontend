@@ -3,23 +3,24 @@ import { FormikProps, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import { addAsterisk } from "../../../../../../common/utils";
-import { ReactComponent as BuildingIcon } from "../../../../../../common/images/offers/building.svg";
-import { ReactComponent as MapPinIcon } from "../../../../../../common/images/offers/mapPin.svg";
-import { ReactComponent as ExperienceIcon } from "../../../../../../common/images/offers/experience.svg";
-import { ReactComponent as MoneyIcon } from "../../../../../../common/images/offers/money.svg";
-import { ReactComponent as CheckMarkIcon } from "../../../../../../common/images/offers/checkMark.svg";
-import { Input, Button, Textarea } from "../../../../../../common/components";
-import { MY_OFFERS } from "../../../../../../common/constants";
-import { NewOfferValues } from "../../../../models";
+import { addAsterisk } from "common/utils";
+import { ReactComponent as BuildingIcon } from "common/images/offers/building.svg";
+import { ReactComponent as MapPinIcon } from "common/images/offers/mapPin.svg";
+import { ReactComponent as ExperienceIcon } from "common/images/offers/experience.svg";
+import { ReactComponent as MoneyIcon } from "common/images/offers/money.svg";
+import { ReactComponent as CheckMarkIcon } from "common/images/offers/checkMark.svg";
+import { Input, Button, Textarea } from "common/components";
+import { MY_OFFERS } from "common/constants";
+import { OfferFormValues } from "packages/offers/models";
 
 const TRANSLATION_PATH = "myOffers.recruiter";
 
 const InnerForm = ({
+  initialValues,
   handleChange,
   touched,
   errors,
-}: FormikProps<NewOfferValues>): ReactElement => {
+}: FormikProps<OfferFormValues>): ReactElement => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -28,6 +29,7 @@ const InnerForm = ({
       <section className="flex flex-col p-6 h-full overflow-y-auto text-secondary-dark">
         <div className="flex items-center">
           <Input
+            defaultValue={initialValues.title}
             onChange={handleChange}
             name="title"
             label={addAsterisk(t(`${TRANSLATION_PATH}.title`))}
@@ -43,6 +45,7 @@ const InnerForm = ({
           <div className="flex items-center gap-2 w-full">
             <BuildingIcon className="w-7 h-7 mb-1.5" />
             <Input
+              defaultValue={initialValues.companyName}
               onChange={handleChange}
               name="companyName"
               label={addAsterisk(t(`${TRANSLATION_PATH}.companyName`))}
@@ -56,6 +59,7 @@ const InnerForm = ({
           <div className="flex items-center gap-2 w-full">
             <MapPinIcon className="w-7 h-7 mb-1.5" />
             <Input
+              defaultValue={initialValues.location}
               onChange={handleChange}
               name="location"
               label={addAsterisk(t(`${TRANSLATION_PATH}.location`))}
@@ -71,6 +75,7 @@ const InnerForm = ({
           <div className="flex items-center gap-2 w-1/2">
             <ExperienceIcon className="w-7 h-7 mb-1.5" />
             <Input
+              defaultValue={initialValues.experience}
               onChange={handleChange}
               name="experience"
               label={addAsterisk(t(`${TRANSLATION_PATH}.experience`))}
@@ -85,6 +90,7 @@ const InnerForm = ({
             <MoneyIcon className="w-7 h-7 mb-1.5" />
             <div className="flex items-center gap-2">
               <Input
+                defaultValue={initialValues.bottomPayrange}
                 onChange={handleChange}
                 name="bottomPayrange"
                 type="number"
@@ -97,6 +103,7 @@ const InnerForm = ({
               />
               <span className="text-primary">-</span>
               <Input
+                defaultValue={initialValues.topPayrange}
                 onChange={handleChange}
                 name="topPayrange"
                 type="number"
@@ -109,6 +116,7 @@ const InnerForm = ({
               />
             </div>
             <Input
+              defaultValue={initialValues.currency}
               onChange={handleChange}
               name="currency"
               label={t(`${TRANSLATION_PATH}.currency`)}
@@ -122,6 +130,7 @@ const InnerForm = ({
           </div>
         </div>
         <Textarea
+          defaultValue={initialValues.description}
           onChange={handleChange}
           name="description"
           label={addAsterisk(t(`${TRANSLATION_PATH}.description`))}
@@ -139,7 +148,7 @@ const InnerForm = ({
         <Button type="submit">
           <div className="flex items-center gap-3">
             <CheckMarkIcon className="w-4 h-4" />
-            {t(`${TRANSLATION_PATH}.post`)}
+            {t(`${TRANSLATION_PATH}.submit`)}
           </div>
         </Button>
       </div>

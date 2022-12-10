@@ -1,6 +1,6 @@
-import { NewOfferValues, NewOfferAPIValues } from "../models";
+import { NewOfferAPIValues, Offer } from "../models";
 
-export const newOfferToAPI = (data: NewOfferValues): NewOfferAPIValues => ({
+export const offerToNewOfferAPI = (data: Offer): NewOfferAPIValues => ({
   title: data.title,
   companyName: data.companyName,
   location: data.location,

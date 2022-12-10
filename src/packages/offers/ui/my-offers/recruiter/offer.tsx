@@ -2,8 +2,9 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { useNavigate } from "react-router-dom";
 
-import { OFFERS } from "../../../../../common/constants";
+import { MY_OFFERS, OFFERS } from "../../../../../common/constants";
 import { removeDuplicateWhitespaces } from "../../../../../common/utils";
 import { ReactComponent as BuildingIcon } from "../../../../../common/images/offers/building.svg";
 import { ReactComponent as MapPinIcon } from "../../../../../common/images/offers/mapPin.svg";
@@ -20,6 +21,7 @@ import { OfferProps } from "./types";
 
 const Offer = ({ offer, fetchMyOffers }: OfferProps): ReactElement => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const isOfferClosed = offer.status === "closed";
 
@@ -67,7 +69,11 @@ const Offer = ({ offer, fetchMyOffers }: OfferProps): ReactElement => {
           </span>
         </div>
         <div className="flex items-center gap-3">
-          <PenIcon className="text-action h-5 w-5" role="button" />
+          <PenIcon
+            className="text-action h-5 w-5"
+            role="button"
+            onClick={() => navigate(`${MY_OFFERS}/edit/${offer.id}`)}
+          />
           <div className="border-r border-secondary-dark h-6" />
           {isOfferClosed ? (
             <RevertIcon

@@ -2,16 +2,23 @@ import axios from "axios";
 
 import { actionBuilder } from "../../../../common/store";
 import { axiosHeaders } from "../../../../common/constants";
-import { newOfferToAPI, updateOfferToAPI } from "../../converters";
-import { NewOfferValues, Offer } from "../../models";
+import { offerToNewOfferAPI, offerToUpdateOfferAPI } from "../../converters";
+import { Offer } from "../../models";
 import ActionTypes from "../actionTypes";
 
-export const createNewOffer = (data: NewOfferValues) =>
+export const createNewOffer = (data: Offer) =>
   axios.post(
     `${process.env.REACT_APP_API_URL}/recruiter/offer`,
-    newOfferToAPI(data),
+    offerToNewOfferAPI(data),
     axiosHeaders,
   );
+
+export const fetchRecruiterOffer = (id: string) =>
+  actionBuilder(`${process.env.REACT_APP_API_URL}/recruiter/offer/${id}`, [
+    ActionTypes.RECRUITER_OFFER_REQUEST,
+    ActionTypes.RECRUITER_OFFER_SUCCESS,
+    ActionTypes.RECRUITER_OFFER_FAILURE,
+  ]);
 
 export const fetchRecruiterOffers = () =>
   actionBuilder(`${process.env.REACT_APP_API_URL}/recruiter/offer`, [
@@ -23,7 +30,7 @@ export const fetchRecruiterOffers = () =>
 export const updateOffer = (data: Offer) =>
   axios.patch(
     `${process.env.REACT_APP_API_URL}/recruiter/offer/${data.id}`,
-    updateOfferToAPI(data),
+    offerToUpdateOfferAPI(data),
     axiosHeaders,
   );
 

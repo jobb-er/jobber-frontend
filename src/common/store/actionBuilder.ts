@@ -1,7 +1,7 @@
 import { Dispatch } from "redux";
 import { createAction } from "redux-api-middleware";
 
-import { reduxMiddlewareHeaders, GET, POST } from "../constants";
+import { reduxMiddlewareHeaders, GET, POST, PATCH } from "../constants";
 
 const actionBuilder =
   (
@@ -27,6 +27,17 @@ const actionBuilder =
           createAction({
             endpoint: url,
             method: POST,
+            headers: reduxMiddlewareHeaders,
+            credentials: "include",
+            body: JSON.stringify(data),
+            types: [actionStart, actionSuccess, actionError],
+          }),
+        );
+      case PATCH:
+        return dispatch(
+          createAction({
+            endpoint: url,
+            method: PATCH,
             headers: reduxMiddlewareHeaders,
             credentials: "include",
             body: JSON.stringify(data),
