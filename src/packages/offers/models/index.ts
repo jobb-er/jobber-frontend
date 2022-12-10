@@ -1,5 +1,5 @@
 export type {
-  NewOfferValues,
+  OfferFormValues,
   NewOfferAPIValues,
   UpdateOfferAPIValues,
   Offer,

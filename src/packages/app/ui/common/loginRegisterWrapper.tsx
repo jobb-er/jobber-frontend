@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 
-import { ReactComponent as BigLogo } from "../../../../common/images/bigLogo.svg";
+import { ReactComponent as BigLogo } from "common/images/bigLogo.svg";
 import { LoginRegisterWrapperProps } from "./types";
 
 const LoginRegisterWrapper = ({

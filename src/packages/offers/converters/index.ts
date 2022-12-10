@@ -1,3 +1,3 @@
-export { newOfferToAPI } from "./newOfferToAPI";
-export { updateOfferToAPI } from "./updateOfferToAPI";
 export { candidateOffersFromAPI } from "./candidateOffersFromAPI";
+export { offerToNewOfferAPI } from "./offerToNewOfferAPI";
+export { offerToUpdateOfferAPI } from "./offerToUpdateOfferAPI";

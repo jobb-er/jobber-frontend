@@ -1,4 +1,7 @@
-export const initialNewOfferFormValues = {
+import { Offer } from "packages/offers/models/types";
+
+export const initialNewOfferFormValues: Offer = {
+  id: "",
   title: "",
   companyName: "",
   location: "",
@@ -7,4 +10,6 @@ export const initialNewOfferFormValues = {
   topPayrange: undefined,
   currency: undefined,
   description: "",
+  status: "open",
+  isNew: true,
 };
