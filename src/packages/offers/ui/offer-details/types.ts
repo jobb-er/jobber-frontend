@@ -23,4 +23,5 @@ export interface OfferDetailsProps {
 export interface OfferContentProps {
   offer: Offer;
   isCandidate: boolean;
+  onApplySuccess: () => void;
 }

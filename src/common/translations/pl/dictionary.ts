@@ -75,6 +75,8 @@ const pl = {
     message: "Wiadomość",
     added: "Dodano",
     notProvided: "Nie podano",
+    successTitle: "Złożyłeś aplikację!",
+    goToMyOffers: "Idź do moich ofert",
   },
   myOffers: {
     recruiter: {

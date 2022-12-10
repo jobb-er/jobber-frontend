@@ -13,6 +13,7 @@ import { OfferContentProps } from "./types";
 const OfferContent = ({
   offer,
   isCandidate,
+  onApplySuccess,
 }: OfferContentProps): ReactElement => {
   const { t } = useTranslation();
 
@@ -70,7 +71,13 @@ const OfferContent = ({
               {t("offer.message")}
             </div>
           </Button>
-          <Button type="submit" onClick={() => applyForOffer(offer.id)}>
+          <Button
+            type="submit"
+            onClick={() => {
+              applyForOffer(offer.id);
+              onApplySuccess();
+            }}
+          >
             <div className="flex items-center gap-3">
               <CheckMarkIcon className="w-5 h-5" />
               {t("offer.apply")}

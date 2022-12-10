@@ -75,6 +75,8 @@ const en = {
     message: "Message",
     added: "Added",
     notProvided: "Not provided",
+    successTitle: "You applied to an offer!",
+    goToMyOffers: "Go to my offers",
   },
   myOffers: {
     recruiter: {
