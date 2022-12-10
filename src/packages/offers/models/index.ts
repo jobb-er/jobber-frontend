@@ -8,4 +8,8 @@ export type {
   CandidateOffers,
   CandidateOffersAPIValues,
   RecruiterResponse,
+  AppliedCandidateAPIValues,
+  AppliedCandidate,
+  AppliedCandidates,
+  AppliedCandidatesAPIValues,
 } from "./types";

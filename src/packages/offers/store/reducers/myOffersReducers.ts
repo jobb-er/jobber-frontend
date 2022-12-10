@@ -1,7 +1,10 @@
 import { AnyAction } from "redux";
 
-import { candidateOffersFromAPI } from "../../converters";
-import { Offer, Offers } from "../../models";
+import {
+  candidateOffersFromAPI,
+  appliedCandidatesFromAPI,
+} from "../../converters";
+import { Offer, Offers, AppliedCandidates } from "../../models";
 import ActionTypes from "../actionTypes";
 
 export const recruiterOfferReducer = (
@@ -30,6 +33,22 @@ export const recruiterOffersReducer = (
     case ActionTypes.RECRUITER_OFFERS_SUCCESS:
       return action.payload.offers;
     case ActionTypes.RECRUITER_OFFERS_FAILURE:
+      return [];
+    default:
+      return state;
+  }
+};
+
+export const offerAppliedCandidatesReducer = (
+  state: AppliedCandidates = [],
+  action: AnyAction,
+): AppliedCandidates => {
+  switch (action.type) {
+    case ActionTypes.OFFER_CANDIDATES_FAILURE:
+      return state;
+    case ActionTypes.OFFER_CANDIDATES_SUCCESS:
+      return appliedCandidatesFromAPI(action.payload?.candidates);
+    case ActionTypes.OFFER_CANDIDATES_FAILURE:
       return [];
     default:
       return state;
@@ -73,6 +92,21 @@ export const isFetchingMyOffer = (state = false, action: AnyAction) => {
       return true;
     case ActionTypes.RECRUITER_OFFER_SUCCESS:
     case ActionTypes.RECRUITER_OFFER_FAILURE:
+      return false;
+    default:
+      return state;
+  }
+};
+
+export const isFetchingOfferAppliedCandidates = (
+  state = false,
+  action: AnyAction,
+) => {
+  switch (action.type) {
+    case ActionTypes.OFFER_CANDIDATES_REQUEST:
+      return true;
+    case ActionTypes.OFFER_CANDIDATES_SUCCESS:
+    case ActionTypes.OFFER_CANDIDATES_FAILURE:
       return false;
     default:
       return state;

@@ -98,6 +98,13 @@ const pl = {
       cancel: "Odrzuć",
       update: "Aktualizuj",
       submit: "Zatwierdź",
+      accept: "Akceptuj",
+      reject: "Odrzuć",
+      message: "Napisz",
+      statuses: {
+        rejected: "Odrzucono",
+        accepted: "Zaakceptowano",
+      },
       emptyOffers: "Nie opublikowałeś żadnych ofert",
       errors: {
         fieldRequired: "{{ field }} jest wymagane!",

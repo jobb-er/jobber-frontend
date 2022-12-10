@@ -1,4 +1,4 @@
-import { ReactElement, useEffect } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -20,6 +20,8 @@ const RecruiterOffers = ({
   isFetchingMyOffers,
 }: RecruiterOffersProps): ReactElement => {
   const { t } = useTranslation();
+  const [expandedAppliedCandidatesOffer, setExpandedAppliedCandidatesOffer] =
+    useState("");
 
   useEffect(() => {
     fetchMyOffers();
@@ -47,7 +49,14 @@ const RecruiterOffers = ({
       <div className="flex flex-col gap-6 overflow-y-auto px-10 pb-10">
         {offers.map(
           (offer: OfferModel): ReactElement => (
-            <Offer key={offer.id} offer={offer} />
+            <Offer
+              key={offer.id}
+              offer={offer}
+              setExpandedAppliedCandidatesOffer={
+                setExpandedAppliedCandidatesOffer
+              }
+              expandedAppliedCandidatesOffer={expandedAppliedCandidatesOffer}
+            />
           ),
         )}
       </div>

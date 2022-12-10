@@ -98,6 +98,13 @@ const en = {
       cancel: "Cancel",
       update: "Update",
       submit: "Submit",
+      accept: "Accept",
+      reject: "Reject",
+      message: "Message",
+      statuses: {
+        rejected: "Rejected",
+        accepted: "Accepted",
+      },
       emptyOffers: "You don't have any offers",
       errors: {
         fieldRequired: "{{ field }} is required!",

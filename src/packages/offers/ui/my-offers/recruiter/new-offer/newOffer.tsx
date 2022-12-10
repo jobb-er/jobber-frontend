@@ -12,7 +12,7 @@ const NewOffer = ({ auth }: NewOfferProps): ReactElement => {
   const { t } = useTranslation();
 
   return (
-    <section className="flex flex-col gap-6 h-full">
+    <section className="flex flex-col gap-6 h-full p-8">
       <TopBar
         role={
           auth?.accountType ? t(`roles.${auth.accountType.toLowerCase()}`) : ""

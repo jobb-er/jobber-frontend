@@ -6,6 +6,7 @@ import { ButtonProps, ButtonVariants } from "./types";
 const variants: Record<ButtonVariants, string> = {
   primary: "bg-action text-white",
   secondary: "bg-secondary-light text-action",
+  error: "bg-error text-white",
 };
 
 const Button = ({

@@ -10,8 +10,10 @@ import {
   recruiterOfferReducer,
   recruiterOffersReducer,
   candidateOffersReducer,
+  offerAppliedCandidatesReducer,
   isFetchingMyOffers,
   isFetchingMyOffer,
+  isFetchingOfferAppliedCandidates,
 } from "./myOffersReducers";
 
 export const offersReducer = combineReducers({
@@ -19,7 +21,14 @@ export const offersReducer = combineReducers({
   offer: offerReducer,
   recruiterOffer: recruiterOfferReducer,
   recruiterOffers: recruiterOffersReducer,
+  offerAppliedCandidates: offerAppliedCandidatesReducer,
   candidateOffers: candidateOffersReducer,
 });
 
-export { isFetchingAllOffers, isFetchingOffer, isFetchingMyOffers, isFetchingMyOffer };
+export {
+  isFetchingAllOffers,
+  isFetchingOffer,
+  isFetchingMyOffers,
+  isFetchingMyOffer,
+  isFetchingOfferAppliedCandidates,
+};
