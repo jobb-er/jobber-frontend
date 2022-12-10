@@ -9,13 +9,14 @@ const Link = ({
   title,
   path,
   textSize = "text-2xl",
+  additionalClassName,
 }: LinkProps): ReactElement => {
   const navigate = useNavigate();
 
   return (
     <button
       className={removeDuplicateWhitespaces(
-        `flex items-center gap-3 text-action font-medium underline hover:opacity-90 focus:outline-none ${textSize}`,
+        `flex items-center gap-3 text-action font-medium underline hover:opacity-90 focus:outline-none ${textSize} ${additionalClassName}`,
       )}
       onClick={() => navigate(path)}
     >

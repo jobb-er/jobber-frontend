@@ -18,7 +18,7 @@ const TopBar = ({
   return (
     <div
       className={removeDuplicateWhitespaces(
-        `flex items-center justify-between text-primary h-min ${additionalClassName}`,
+        `flex items-center justify-between text-primary h-min px-10 ${additionalClassName}`,
       )}
     >
       {children}

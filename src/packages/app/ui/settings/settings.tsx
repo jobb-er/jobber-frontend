@@ -76,7 +76,7 @@ const Settings = ({
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
         additionalClassName="self-end"
       />
-      <div className="flex justify-between gap-3 w-full h-full">
+      <div className="flex justify-between gap-3 w-full h-full px-10">
         <div className="w-3/4 2xl:w-1/2 flex flex-col gap-10">
           <div className="flex flex-col gap-5">
             <Label>{t("settings.app")}</Label>

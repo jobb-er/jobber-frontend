@@ -64,6 +64,7 @@ const CandidateOffers = ({
         path={OFFERS}
         title={t("myOffers.candidate.searchAndApply")}
         textSize="text-md"
+        additionalClassName="px-10"
       />
     </div>
   );
