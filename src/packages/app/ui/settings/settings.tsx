@@ -4,22 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import i18n from "../../../../common/translations/i18n";
-import {
-  EN,
-  PL,
-  initialSettingsFormValues,
-} from "../../../../common/constants";
-import {
-  TopBar,
-  Select,
-  Label,
-  Input,
-  Modal,
-  Button,
-} from "../../../../common/components";
-import { ReactComponent as Graphic } from "../../../../common/images/settings/graphic.svg";
-import { ReactComponent as WarningIcon } from "../../../../common/images/settings/warning.svg";
+import i18n from "common/translations/i18n";
+import { EN, PL, initialSettingsFormValues } from "common/constants";
+import { TopBar, Select, Label, Input, Modal, Button } from "common/components";
+import { ReactComponent as Graphic } from "common/images/settings/graphic.svg";
+import { ReactComponent as WarningIcon } from "common/images/settings/warning.svg";
 import { deleteAccount, logout } from "../../store/actions/authActions";
 import { SettingsMapState, SettingsProps, SettingsFormValues } from "./types";
 import SettingsForm from "./settingsForm";

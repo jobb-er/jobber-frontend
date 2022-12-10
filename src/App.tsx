@@ -2,16 +2,16 @@ import { ReactElement } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { Container, AuthContainer, Settings } from "./packages/app";
+import { Container, AuthContainer, Settings } from "packages/app";
 import {
   AllOffers,
   MyOffers,
   OfferDetails,
   NewOffer,
   EditOffer,
-} from "./packages/offers";
-import { Messages } from "./packages/chat";
-import { Profile } from "./packages/profile";
+} from "packages/offers";
+import { Messages } from "packages/chat";
+import { Profile } from "packages/profile";
 import {
   OFFERS,
   MESSAGES,
@@ -19,7 +19,7 @@ import {
   PROFILE,
   SETTINGS,
   RECRUITER,
-} from "./common/constants";
+} from "common/constants";
 import { AppProps, AppMapState } from "./types";
 
 const App = ({ auth }: AppProps): ReactElement => (

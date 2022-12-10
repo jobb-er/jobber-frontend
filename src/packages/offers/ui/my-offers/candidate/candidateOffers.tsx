@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import { OFFERS } from "../../../../../common/constants";
-import { ReactComponent as EmptyOffersIcon } from "../../../../../common/images/offers/emptyOffersGraphic.svg";
-import { ReactComponent as AllOffersIcon } from "../../../../../common/images/offers/allOffers.svg";
-import { Label, Link, Loader } from "../../../../../common/components";
+import { OFFERS } from "common/constants";
+import { ReactComponent as EmptyOffersIcon } from "common/images/offers/emptyOffersGraphic.svg";
+import { ReactComponent as AllOffersIcon } from "common/images/offers/allOffers.svg";
+import { Label, Link, Loader } from "common/components";
 import { fetchCandidateOffers } from "../../../store/actions/myOffersActions";
 import { CandidateOffer } from "../../../models";
 import {

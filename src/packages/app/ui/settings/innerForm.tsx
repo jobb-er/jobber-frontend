@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { FormikProps, Form } from "formik";
 import { useTranslation } from "react-i18next";
 
-import { Input, Label, Button } from "../../../../common/components";
+import { Input, Label, Button } from "common/components";
 import { SettingsFormValues } from "./types";
 
 const InnerForm = ({

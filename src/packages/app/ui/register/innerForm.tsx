@@ -2,9 +2,9 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { FormikProps, Form } from "formik";
 
-import { RECRUITER, CANDIDATE } from "../../../../common/constants";
-import { addAsterisk } from "../../../../common/utils";
-import { Input, Button, Select, Checkbox } from "../../../../common/components";
+import { RECRUITER, CANDIDATE } from "common/constants";
+import { addAsterisk } from "common/utils";
+import { Input, Button, Select, Checkbox } from "common/components";
 import { RegisterFormValues } from "./types";
 
 const InnerForm = ({

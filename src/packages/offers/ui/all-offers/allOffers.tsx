@@ -3,17 +3,11 @@ import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import { removeDuplicateWhitespaces } from "../../../../common/utils";
-import { ReactComponent as SearchIcon } from "../../../../common/images/offers/search.svg";
-import { ReactComponent as LocationIcon } from "../../../../common/images/offers/location.svg";
-import { ReactComponent as BroomIcon } from "../../../../common/images/offers/broom.svg";
-import {
-  TopBar,
-  Input,
-  Select,
-  Label,
-  Loader,
-} from "../../../../common/components";
+import { removeDuplicateWhitespaces } from "common/utils";
+import { ReactComponent as SearchIcon } from "common/images/offers/search.svg";
+import { ReactComponent as LocationIcon } from "common/images/offers/location.svg";
+import { ReactComponent as BroomIcon } from "common/images/offers/broom.svg";
+import { TopBar, Input, Select, Label, Loader } from "common/components";
 import { fetchAllOffers } from "../../store/actions/allOffersActions";
 import { Offer as OfferModel, Offers } from "../../models";
 import styles from "./styles.module.css";

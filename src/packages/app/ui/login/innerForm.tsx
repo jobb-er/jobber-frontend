@@ -2,8 +2,8 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { FormikProps, Form } from "formik";
 
-import { addAsterisk } from "../../../../common/utils";
-import { Input, Button } from "../../../../common/components";
+import { addAsterisk } from "common/utils";
+import { Input, Button } from "common/components";
 import { LoginValues } from "../../models";
 
 const InnerForm = ({

@@ -4,15 +4,15 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { useNavigate } from "react-router-dom";
 
-import { MY_OFFERS, OFFERS } from "../../../../../common/constants";
-import { removeDuplicateWhitespaces } from "../../../../../common/utils";
-import { ReactComponent as BuildingIcon } from "../../../../../common/images/offers/building.svg";
-import { ReactComponent as MapPinIcon } from "../../../../../common/images/offers/mapPin.svg";
-import { ReactComponent as PersonIcon } from "../../../../../common/images/offers/person.svg";
-import { ReactComponent as BinIcon } from "../../../../../common/images/offers/bin.svg";
-import { ReactComponent as PenIcon } from "../../../../../common/images/offers/pen.svg";
-import { ReactComponent as RevertIcon } from "../../../../../common/images/offers/revert.svg";
-import { Card, Link } from "../../../../../common/components";
+import { MY_OFFERS, OFFERS } from "common/constants";
+import { removeDuplicateWhitespaces } from "common/utils";
+import { ReactComponent as BuildingIcon } from "common/images/offers/building.svg";
+import { ReactComponent as MapPinIcon } from "common/images/offers/mapPin.svg";
+import { ReactComponent as PersonIcon } from "common/images/offers/person.svg";
+import { ReactComponent as BinIcon } from "common/images/offers/bin.svg";
+import { ReactComponent as PenIcon } from "common/images/offers/pen.svg";
+import { ReactComponent as RevertIcon } from "common/images/offers/revert.svg";
+import { Card, Link } from "common/components";
 import {
   updateOffer,
   fetchRecruiterOffers,

@@ -4,21 +4,21 @@ import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import { ReactComponent as Logo } from "../../../../common/images/logo.svg";
-import { ReactComponent as OffersIcon } from "../../../../common/images/menu/offers.svg";
-import { ReactComponent as MessagesIcon } from "../../../../common/images/menu/messages.svg";
-import { ReactComponent as MyOffersIcon } from "../../../../common/images/menu/myoffers.svg";
-import { ReactComponent as ProfileIcon } from "../../../../common/images/menu/profile.svg";
-import { ReactComponent as SettingsIcon } from "../../../../common/images/menu/settings.svg";
-import { ReactComponent as LogoutIcon } from "../../../../common/images/menu/logout.svg";
-import { MenuTab } from "../../../../common/components";
+import { ReactComponent as Logo } from "common/images/logo.svg";
+import { ReactComponent as OffersIcon } from "common/images/menu/offers.svg";
+import { ReactComponent as MessagesIcon } from "common/images/menu/messages.svg";
+import { ReactComponent as MyOffersIcon } from "common/images/menu/myoffers.svg";
+import { ReactComponent as ProfileIcon } from "common/images/menu/profile.svg";
+import { ReactComponent as SettingsIcon } from "common/images/menu/settings.svg";
+import { ReactComponent as LogoutIcon } from "common/images/menu/logout.svg";
+import { MenuTab } from "common/components";
 import {
   OFFERS,
   MESSAGES,
   MY_OFFERS,
   PROFILE,
   SETTINGS,
-} from "../../../../common/constants";
+} from "common/constants";
 import { logout } from "../../store/actions/authActions";
 import { MenuProps } from "./types";
 

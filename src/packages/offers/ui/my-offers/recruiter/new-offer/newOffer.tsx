@@ -2,10 +2,10 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 
-import { TopBar, BackLink, Card } from "../../../../../../common/components";
+import { TopBar, BackLink, Card } from "common/components";
+import { initialNewOfferFormValues } from "common/constants";
 import { NewOfferMapState, NewOfferProps } from "./types";
 import OfferForm from "../offer-form";
-import { initialNewOfferFormValues } from "common/constants";
 import { newOfferFormSubmit } from "./helpers";
 
 const NewOffer = ({ auth }: NewOfferProps): ReactElement => {

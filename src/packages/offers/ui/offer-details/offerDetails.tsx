@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import { CANDIDATE } from "../../../../common/constants";
-import { TopBar, BackLink, Card, Loader } from "../../../../common/components";
+import { CANDIDATE } from "common/constants";
+import { TopBar, BackLink, Card, Loader } from "common/components";
 import { fetchOffer } from "../../store/actions/allOffersActions";
 import {
   OfferDetailsMapState,

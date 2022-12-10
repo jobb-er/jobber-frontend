@@ -1,12 +1,12 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Button } from "../../../../common/components";
-import { ReactComponent as BuildingIcon } from "../../../../common/images/offers/building.svg";
-import { ReactComponent as MapPinIcon } from "../../../../common/images/offers/mapPin.svg";
-import { ReactComponent as MoneyIcon } from "../../../../common/images/offers/money.svg";
-import { ReactComponent as CheckMarkIcon } from "../../../../common/images/offers/checkMark.svg";
-import { ReactComponent as MessageIcon } from "../../../../common/images/offers/message.svg";
+import { Button } from "common/components";
+import { ReactComponent as BuildingIcon } from "common/images/offers/building.svg";
+import { ReactComponent as MapPinIcon } from "common/images/offers/mapPin.svg";
+import { ReactComponent as MoneyIcon } from "common/images/offers/money.svg";
+import { ReactComponent as CheckMarkIcon } from "common/images/offers/checkMark.svg";
+import { ReactComponent as MessageIcon } from "common/images/offers/message.svg";
 import { applyForOffer } from "../../store/actions/myOffersActions";
 import { OfferContentProps } from "./types";
 

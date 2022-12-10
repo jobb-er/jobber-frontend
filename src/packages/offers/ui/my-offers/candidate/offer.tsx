@@ -2,10 +2,10 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-import { OFFERS } from "../../../../../common/constants";
-import { ReactComponent as BuildingIcon } from "../../../../../common/images/offers/building.svg";
-import { ReactComponent as MapPinIcon } from "../../../../../common/images/offers/mapPin.svg";
-import { Card } from "../../../../../common/components";
+import { OFFERS } from "common/constants";
+import { ReactComponent as BuildingIcon } from "common/images/offers/building.svg";
+import { ReactComponent as MapPinIcon } from "common/images/offers/mapPin.svg";
+import { Card } from "common/components";
 import { RecruiterResponse } from "../../../models";
 import { OfferProps } from "./types";
 

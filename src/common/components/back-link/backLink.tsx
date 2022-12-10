@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ReactComponent as BackIcon } from "../../../common/images/back-link/back.svg";
+import { ReactComponent as BackIcon } from "common/images/back-link/back.svg";
 import { BackLinkProps } from "./types";
 
 const BackLink = ({ title }: BackLinkProps): ReactElement => {

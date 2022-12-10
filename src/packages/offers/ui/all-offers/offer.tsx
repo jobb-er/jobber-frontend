@@ -2,11 +2,11 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-import { Card } from "../../../../common/components";
-import { OFFERS } from "../../../../common/constants";
-import { ReactComponent as BuildingIcon } from "../../../../common/images/offers/building.svg";
-import { ReactComponent as MapPinIcon } from "../../../../common/images/offers/mapPin.svg";
-import { ReactComponent as MoneyIcon } from "../../../../common/images/offers/money.svg";
+import { Card } from "common/components";
+import { OFFERS } from "common/constants";
+import { ReactComponent as BuildingIcon } from "common/images/offers/building.svg";
+import { ReactComponent as MapPinIcon } from "common/images/offers/mapPin.svg";
+import { ReactComponent as MoneyIcon } from "common/images/offers/money.svg";
 import { OfferProps } from "./types";
 
 const Offer = ({ offer }: OfferProps): ReactElement => {

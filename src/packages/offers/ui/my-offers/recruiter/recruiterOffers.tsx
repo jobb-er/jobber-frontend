@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import { ReactComponent as EmptyOffersIcon } from "../../../../../common/images/offers/emptyOffersGraphic.svg";
-import { Label, Loader } from "../../../../../common/components";
+import { ReactComponent as EmptyOffersIcon } from "common/images/offers/emptyOffersGraphic.svg";
+import { Label, Loader } from "common/components";
 import { fetchRecruiterOffers } from "../../../store/actions/myOffersActions";
 import { Offer as OfferModel } from "../../../models";
 import Offer from "./offer";

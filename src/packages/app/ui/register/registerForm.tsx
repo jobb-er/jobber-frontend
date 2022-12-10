@@ -6,7 +6,7 @@ import {
   initialRegisterFormValues,
   EMAIL_REGEXP,
   PASSWORD_REGEXP,
-} from "../../../../common/constants";
+} from "common/constants";
 import { register, login } from "../../store/actions/authActions";
 import { LoginValues } from "../../models";
 import { RegisterFormValues } from "./types";

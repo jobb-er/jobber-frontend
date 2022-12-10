@@ -5,7 +5,7 @@ import {
   initialSettingsFormValues,
   EMAIL_REGEXP,
   PASSWORD_REGEXP,
-} from "../../../../common/constants";
+} from "common/constants";
 import InnerForm from "./innerForm";
 import { SettingsFormValues, SettingsFormProps } from "./types";
 
