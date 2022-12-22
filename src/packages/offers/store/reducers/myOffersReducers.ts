@@ -44,7 +44,7 @@ export const offerAppliedCandidatesReducer = (
   action: AnyAction,
 ): AppliedCandidates => {
   switch (action.type) {
-    case ActionTypes.OFFER_CANDIDATES_FAILURE:
+    case ActionTypes.OFFER_CANDIDATES_REQUEST:
       return state;
     case ActionTypes.OFFER_CANDIDATES_SUCCESS:
       return appliedCandidatesFromAPI(action.payload?.candidates);

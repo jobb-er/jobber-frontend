@@ -9,7 +9,11 @@ import { EN, PL, initialSettingsFormValues } from "common/constants";
 import { TopBar, Select, Label, Input, Modal, Button } from "common/components";
 import { ReactComponent as Graphic } from "common/images/settings/graphic.svg";
 import { ReactComponent as WarningIcon } from "common/images/settings/warning.svg";
-import { deleteAccount, logout } from "../../store/actions/authActions";
+import {
+  deleteAccount,
+  logout,
+  updateAccountCredentials,
+} from "../../store/actions/authActions";
 import { SettingsMapState, SettingsProps, SettingsFormValues } from "./types";
 import SettingsForm from "./settingsForm";
 
@@ -43,6 +47,12 @@ const Settings = ({
     }
   };
 
+  const handleLogout = async (): Promise<void> => {
+    await logout();
+    await resetStore();
+    navigate("/");
+  };
+
   const handleDeleteAccount = async (): Promise<void> => {
     const isConfirmed = window.confirm(t("settings.alert"));
 
@@ -50,9 +60,7 @@ const Settings = ({
       if (isConfirmed) {
         const response = await deleteAccount();
         if (response?.status?.toString() === "200") {
-          await logout();
-          await resetStore();
-          navigate("/");
+          await handleLogout();
         }
       }
     } catch (error: unknown) {
@@ -61,10 +69,14 @@ const Settings = ({
   };
 
   const handleChangeAccountData = async (): Promise<void> => {
-    console.log(oldPassword);
-    console.log(newAccountData);
+    await updateAccountCredentials(
+      oldPassword,
+      newAccountData.email,
+      newAccountData.password,
+    );
     setNewAccountData(initialSettingsFormValues);
     setOldPassword("");
+    await handleLogout();
   };
 
   return (

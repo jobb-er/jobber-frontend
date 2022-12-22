@@ -45,3 +45,14 @@ export const fetchAuth = () =>
 
 export const deleteAccount = () =>
   axios.delete(`${process.env.REACT_APP_API_URL}/user`, axiosHeaders);
+
+export const updateAccountCredentials = (
+  password: string,
+  newEmail?: string,
+  newPassword?: string,
+) =>
+  axios.patch(
+    `${process.env.REACT_APP_API_URL}/user`,
+    { password, newPassword, newEmail },
+    axiosHeaders,
+  );
