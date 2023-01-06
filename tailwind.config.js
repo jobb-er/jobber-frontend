@@ -14,9 +14,17 @@ module.exports = {
       },
       minWidth: {
         48: "12rem",
+        "4/12": "33.333333%",
       },
       height: {
         85: "80vh",
+      },
+      fontSize: {
+        "msg-conv-list-title": ["1.25rem", "1.5rem"],
+        "msg-conv-list-msg": ["1rem", "1.25rem"],
+        "msg-conv-title": ["2rem", "2.5rem"],
+        "msg-conv-msg": ["1.25rem", "1.5rem"],
+        "msg-conv-msg-inp": ["1.5rem", "1.75rem"],
       },
     },
     colors: {

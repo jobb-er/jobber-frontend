@@ -3,9 +3,12 @@ import {
   ChangeEvent,
   FunctionComponent,
   SVGProps,
+  MouseEventHandler,
+  ReactElement,
 } from "react";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  children?: ReactElement | ReactElement[];
   value?: string | number;
   defaultValue?: string | number;
   name?: string;
@@ -15,6 +18,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   isError?: boolean;
   errorMessage?: string;
   label?: string;
+  delay?: number;
   Icon?: FunctionComponent<
     SVGProps<SVGSVGElement> & {
       title?: string | undefined;

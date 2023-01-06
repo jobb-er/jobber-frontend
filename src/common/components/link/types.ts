@@ -7,5 +7,6 @@ export interface LinkProps {
   title: string;
   path: string;
   textSize?: `text-${string}`;
+  textColor?: `text-${string}`;
   additionalClassName?: string;
 }

@@ -24,8 +24,8 @@ const TopBar = ({
       {children}
       <div className="flex items-center gap-4 select-none">
         <div className="flex flex-col gap-0.5 capitalize">
-          <span className="font-semibold text-lg">{name}</span>
-          <span className="text-secondary text-sm">{role}</span>
+          <span className="font-semibold text-lg whitespace-nowrap">{name}</span>
+          <span className="text-secondary text-sm whitespace-nowrap">{role}</span>
         </div>
         <button
           className="w-12 h-12 border border-primary rounded-full focus:outline-none"

@@ -10,6 +10,7 @@ import {
   isFetchingMyOffer,
   isFetchingOfferAppliedCandidates,
 } from "../../packages/offers/store/reducers";
+import { messagesReducers } from "../../packages/chat/store/reducers";
 
 const initialState = {
   auth: {},
@@ -20,6 +21,10 @@ const initialState = {
     recruiterOffers: [],
     offerAppliedCandidates: [],
     candidateOffers: [],
+  },
+  messages: {
+    conversations: [],
+    conversation: {},
   },
   requestStatuses: {
     isFetchingAllOffers: false,
@@ -33,6 +38,7 @@ const initialState = {
 export const appReducer = combineReducers({
   auth: authReducer,
   offers: offersReducer,
+  messages: messagesReducers,
   requestStatuses: combineReducers({
     isFetchingAllOffers,
     isFetchingMyOffers,

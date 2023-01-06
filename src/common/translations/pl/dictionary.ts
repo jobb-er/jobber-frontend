@@ -124,6 +124,12 @@ const pl = {
       },
     },
   },
+  messages: {
+    emptyInbox: "Brak wiadomości",
+    newMessage: "Nowa wiadomość",
+    searchConvs: "Wyszukaj konwersacje",
+    searchUsers: "Do",
+  },
   settings: {
     app: "Aplikacja",
     language: "Język",

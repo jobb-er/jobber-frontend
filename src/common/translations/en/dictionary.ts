@@ -124,6 +124,12 @@ const en = {
       },
     },
   },
+  messages: {
+    emptyInbox: "Your inbox is empty",
+    newMessage: "New message",
+    searchConvs: "Search conversations",
+    searchUsers: "To",
+  },
   settings: {
     app: "App",
     language: "Language",

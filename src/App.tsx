@@ -21,6 +21,7 @@ import {
   RECRUITER,
 } from "common/constants";
 import { AppProps, AppMapState } from "./types";
+import { NEW_MESSAGE } from "common/constants/routes";
 
 const App = ({ auth }: AppProps): ReactElement => (
   <BrowserRouter>
@@ -29,7 +30,10 @@ const App = ({ auth }: AppProps): ReactElement => (
         <Routes>
           <Route path={OFFERS} element={<AllOffers />} />
           <Route path={`${OFFERS}/:id`} element={<OfferDetails />} />
-          <Route path={MESSAGES} element={<Messages />} />
+          <Route path={MESSAGES} element={<Messages />}>
+            <Route path={NEW_MESSAGE} element={<Messages />} />
+            <Route path=":id" element={<Messages />} />
+          </Route>
           <Route path={MY_OFFERS} element={<MyOffers />} />
           <Route
             path={`${MY_OFFERS}/new`}
