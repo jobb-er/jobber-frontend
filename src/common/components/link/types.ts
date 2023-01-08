@@ -5,7 +5,8 @@ export interface LinkProps {
     }
   >;
   title: string;
-  path: string;
+  path?: string;
+  onClick?: () => void;
   textSize?: `text-${string}`;
   additionalClassName?: string;
 }
