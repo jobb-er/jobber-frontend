@@ -1,7 +1,6 @@
 import { AnyAction, Reducer, combineReducers } from "@reduxjs/toolkit";
 
-import ActionTypes from "./actionTypes";
-import { authReducer } from "../../packages/app/store/reducers/authReducer";
+import { authReducer } from "packages/app/store/reducers/authReducer";
 import {
   offersReducer,
   isFetchingAllOffers,
@@ -9,7 +8,12 @@ import {
   isFetchingOffer,
   isFetchingMyOffer,
   isFetchingOfferAppliedCandidates,
-} from "../../packages/offers/store/reducers";
+} from "packages/offers/store/reducers";
+import {
+  profileReducer,
+  isFetchingProfile,
+} from "packages/profile/store/reducers";
+import ActionTypes from "./actionTypes";
 
 const initialState = {
   auth: {},
@@ -21,24 +25,31 @@ const initialState = {
     offerAppliedCandidates: [],
     candidateOffers: [],
   },
+  profile: {
+    candidateProfile: {},
+    recruiterProfile: {},
+  },
   requestStatuses: {
     isFetchingAllOffers: false,
     isFetchingMyOffers: false,
     isFetchingOffer: false,
     isFetchingMyOffer: false,
     isFetchingOfferAppliedCandidates: false,
+    isFetchingProfile: false,
   },
 };
 
 export const appReducer = combineReducers({
   auth: authReducer,
   offers: offersReducer,
+  profile: profileReducer,
   requestStatuses: combineReducers({
     isFetchingAllOffers,
     isFetchingMyOffers,
     isFetchingOffer,
     isFetchingMyOffer,
     isFetchingOfferAppliedCandidates,
+    isFetchingProfile,
   }),
 });
 
