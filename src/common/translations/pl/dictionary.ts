@@ -200,8 +200,9 @@ const pl = {
       wrongEmail: "Niepoprawny email!",
       wrongUrl: "Niepoprawny format URL!",
     },
-    save: "Save",
-    cancel: "Cancel",
+    edit: "Edytuj profil",
+    save: "Zapisz",
+    view: "Widok",
   },
 };
 

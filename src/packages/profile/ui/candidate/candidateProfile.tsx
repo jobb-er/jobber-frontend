@@ -5,8 +5,9 @@ import { Dispatch } from "redux";
 import { ABOUT, EXPERIENCE, EDUCATION, ADDITIONAL } from "common/constants";
 import { Loader } from "common/components";
 import { fetchCandidateProfile } from "packages/profile/store/actions/profileActions";
-import { About, Experience, Education, Additional } from "./edit";
 import { useProfileContext } from "../context";
+import { About, Experience, Education, Additional } from "./edit";
+import View from "./view";
 import {
   CandidateProfileMapState,
   CandidateProfileMapStateReturn,
@@ -17,14 +18,14 @@ const CandidateProfile = ({
   fetchCandidateProfile,
   isFetchingProfile,
 }: CandidateProfileProps): ReactElement => {
-  const { activeTab } = useProfileContext();
+  const { activeTab, mode } = useProfileContext();
 
   useEffect(() => {
     fetchCandidateProfile();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const renderProperTab = (): ReactElement => {
+  const renderProperEditTab = (): ReactElement => {
     switch (activeTab) {
       case ABOUT:
         return <About />;
@@ -44,7 +45,9 @@ const CandidateProfile = ({
       <Loader additionalClassName="flex items-center justify-center h-full" />
     );
 
-  return <div className="px-10 h-full">{renderProperTab()}</div>;
+  if (mode === "view") return <View />;
+
+  return <div className="px-10 h-full">{renderProperEditTab()}</div>;
 };
 
 const mapStateToProps = (

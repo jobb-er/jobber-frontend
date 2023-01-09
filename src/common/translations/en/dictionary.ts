@@ -199,8 +199,9 @@ const en = {
       wrongEmail: "Wrong email format!",
       wrongUrl: "Wrong URL format!",
     },
+    edit: "Edit profile",
     save: "Save",
-    cancel: "Cancel",
+    view: "View",
   },
 };
 

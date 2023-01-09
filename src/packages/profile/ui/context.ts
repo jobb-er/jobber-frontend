@@ -6,6 +6,8 @@ import { ProfileContextProps } from "./types";
 const initialState: ProfileContextProps = {
   activeTab: ABOUT,
   setActiveTab: () => "",
+  mode: "view",
+  setMode: () => "",
 };
 
 export const ProfileContext = createContext<ProfileContextProps>(initialState);

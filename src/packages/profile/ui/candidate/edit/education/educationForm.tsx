@@ -13,6 +13,7 @@ import {
   CandidateEducationFormValues,
 } from "packages/profile/models/types";
 import { initialEducationItemFormValues } from "common/constants";
+import { useProfileContext } from "packages/profile/ui/context";
 import { ReactComponent as CheckMarkIcon } from "common/images/offers/checkMark.svg";
 import { Button, Link } from "common/components";
 import { EducationFormProps } from "./types";
@@ -26,6 +27,7 @@ const EducationForm = ({
   submitAction,
 }: EducationFormProps): ReactElement => {
   const { t } = useTranslation();
+  const { setMode } = useProfileContext();
 
   return (
     <Formik
@@ -99,12 +101,21 @@ const EducationForm = ({
                     title={t(`${TRANSLATION_PATH}.addNewEducation`)}
                     textSize="text-md"
                   />
-                  <Button type="submit" additionalClassName="self-end">
-                    <div className="flex items-center gap-3">
-                      <CheckMarkIcon className="w-4 h-4" />
-                      {t("profile.save")}
-                    </div>
-                  </Button>
+                  <div className="flex items-center gap-4 self-end">
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      onClick={() => setMode("view")}
+                    >
+                      {t("profile.view")}
+                    </Button>
+                    <Button type="submit">
+                      <div className="flex items-center gap-3">
+                        <CheckMarkIcon className="w-4 h-4" />
+                        {t("profile.save")}
+                      </div>
+                    </Button>
+                  </div>
                 </div>
               </div>
             )}

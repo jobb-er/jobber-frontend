@@ -2,7 +2,8 @@ import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 
-import { TopBar, Tabs } from "common/components";
+import { ReactComponent as PencilIcon } from "common/images/profile/pencil.svg";
+import { TopBar, Tabs, Button } from "common/components";
 import { CANDIDATE, TABS, ABOUT } from "common/constants";
 import CandidateProfile from "./candidate";
 import RecruiterProfile from "./recruiter";
@@ -12,6 +13,7 @@ import { ProfileMapState, ProfileProps } from "./types";
 const Profile = ({ auth }: ProfileProps): ReactElement => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState(ABOUT);
+  const [mode, setMode] = useState<"edit" | "view">("view");
 
   const isCandidate = auth?.accountType === CANDIDATE;
 
@@ -20,8 +22,32 @@ const Profile = ({ auth }: ProfileProps): ReactElement => {
     value: t(`profile.tabs.${tab}`),
   }));
 
+  const renderTopBarChildren = (): ReactElement => {
+    if (mode === "view")
+      return (
+        <Button onClick={() => setMode("edit")}>
+          <div className="flex items-center gap-3">
+            <PencilIcon className="w-4 h-4" />
+            {t("profile.edit")}
+          </div>
+        </Button>
+      );
+
+    return isCandidate ? (
+      <Tabs
+        tabs={tabKeyValue}
+        activeTab={activeTab}
+        onChangeTab={setActiveTab}
+      />
+    ) : (
+      <></>
+    );
+  };
+
+  if (!auth?.id) return <></>;
+
   return (
-    <ProfileContext.Provider value={{ setActiveTab, activeTab }}>
+    <ProfileContext.Provider value={{ setActiveTab, activeTab, mode, setMode }}>
       <section className="flex flex-col gap-6 h-full p-8">
         <TopBar
           role={
@@ -30,17 +56,8 @@ const Profile = ({ auth }: ProfileProps): ReactElement => {
               : ""
           }
           name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
-          additionalClassName={isCandidate ? "" : "self-end"}
         >
-          {isCandidate ? (
-            <Tabs
-              tabs={tabKeyValue}
-              activeTab={activeTab}
-              onChangeTab={setActiveTab}
-            />
-          ) : (
-            <></>
-          )}
+          {renderTopBarChildren()}
         </TopBar>
         {isCandidate ? <CandidateProfile /> : <RecruiterProfile />}
       </section>
