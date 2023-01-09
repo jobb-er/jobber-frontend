@@ -7,7 +7,8 @@ import {
   CandidateExperienceFormValues,
   CandidateEducationFormValues,
   CandidateAdditionalFormValues,
-} from "packages/profile/models/types";
+  RecruiterProfileFormValues,
+} from "packages/profile/models";
 import ActionTypes from "../actionTypes";
 
 export const fetchRecruiterProfile = () =>
@@ -16,6 +17,15 @@ export const fetchRecruiterProfile = () =>
     ActionTypes.RECRUITER_PROFILE_SUCCESS,
     ActionTypes.RECRUITER_PROFILE_FAILURE,
   ]);
+
+export const updateRecruiterProfile = (
+  updatedProfile: RecruiterProfileFormValues,
+) =>
+  axios.patch(
+    `${process.env.REACT_APP_API_URL}/recruiter`,
+    updatedProfile,
+    axiosHeaders,
+  );
 
 export const fetchCandidateProfile = () =>
   actionBuilder(`${process.env.REACT_APP_API_URL}/candidate`, [

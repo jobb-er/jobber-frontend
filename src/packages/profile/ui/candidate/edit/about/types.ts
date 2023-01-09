@@ -1,7 +1,7 @@
 import {
   CandidateAboutFormValues,
   CandidateProfile,
-} from "packages/profile/models/types";
+} from "packages/profile/models";
 
 export interface AboutFormikProps {
   data: CandidateAboutFormValues;

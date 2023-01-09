@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
 import AboutForm from "./aboutForm";
-import { CandidateAboutFormValues } from "packages/profile/models/types";
+import { CandidateAboutFormValues } from "packages/profile/models";
 import {
   updateCandidateProfileAbout,
   fetchCandidateProfile,

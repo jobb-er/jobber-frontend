@@ -22,7 +22,7 @@ const Profile = ({ auth }: ProfileProps): ReactElement => {
     value: t(`profile.tabs.${tab}`),
   }));
 
-  const renderTopBarChildren = (): ReactElement => {
+  const renderCandidateTopBarChildren = (): ReactElement => {
     if (mode === "view")
       return (
         <Button onClick={() => setMode("edit")}>
@@ -33,14 +33,12 @@ const Profile = ({ auth }: ProfileProps): ReactElement => {
         </Button>
       );
 
-    return isCandidate ? (
+    return (
       <Tabs
         tabs={tabKeyValue}
         activeTab={activeTab}
         onChangeTab={setActiveTab}
       />
-    ) : (
-      <></>
     );
   };
 
@@ -56,8 +54,9 @@ const Profile = ({ auth }: ProfileProps): ReactElement => {
               : ""
           }
           name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
+          additionalClassName={isCandidate ? "" : "self-end"}
         >
-          {renderTopBarChildren()}
+          {isCandidate ? renderCandidateTopBarChildren() : <></>}
         </TopBar>
         {isCandidate ? <CandidateProfile /> : <RecruiterProfile />}
       </section>

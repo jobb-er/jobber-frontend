@@ -2,24 +2,36 @@
 export interface RecruiterProfileFormValues {
   firstName: string;
   lastName: string;
-  avatar?: File | null;
+  avatar?: string;
   email: string;
   phoneNumber: string;
   country: string;
   linkedin?: string;
-  companyName?: string;
+  company?: string;
 }
 
 // recruiter profile view
 export interface RecruiterProfile {
   firstName: string;
   lastName: string;
-  avatar?: File | null;
+  avatar?: string;
   email: string;
   phoneNumber: string;
   country: string;
   linkedin?: string;
-  companyName?: string;
+  company?: string;
+}
+
+export interface RecruiterProfileAPIValues {
+  id: string;
+  firstName: string;
+  lastName: string;
+  avatar?: string;
+  email: string;
+  phoneNumber: string;
+  country: string;
+  linkedin?: string;
+  company?: string;
 }
 
 // candidate profile form

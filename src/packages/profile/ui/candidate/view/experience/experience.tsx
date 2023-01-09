@@ -6,7 +6,7 @@ import { ReactComponent as BuildingIcon } from "common/images/profile/building.s
 import { ReactComponent as LocationIcon } from "common/images/profile/location.svg";
 import { ReactComponent as CalendarIcon } from "common/images/profile/calendar.svg";
 import { Card } from "common/components";
-import { CandidateExperienceItemFormValues } from "packages/profile/models/types";
+import { CandidateExperienceItemFormValues } from "packages/profile/models";
 import { SectionSeparator } from "../common";
 import {
   ExperienceProps,

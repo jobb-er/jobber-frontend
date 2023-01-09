@@ -4,7 +4,7 @@ import { FormikErrors } from "formik";
 import {
   CandidateExperienceFormValues,
   CandidateProfile,
-} from "packages/profile/models/types";
+} from "packages/profile/models";
 
 export interface ExperienceFormProps {
   data: { experience: CandidateExperienceFormValues };

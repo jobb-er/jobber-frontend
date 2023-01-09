@@ -1,4 +1,4 @@
-import { CandidateProfile } from "packages/profile/models/types";
+import { CandidateProfile } from "packages/profile/models";
 
 export interface AdditionalMapState {
   profile: { candidateProfile: CandidateProfile };

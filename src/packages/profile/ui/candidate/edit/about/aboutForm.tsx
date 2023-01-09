@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { withFormik, FormikErrors } from "formik";
 
 import { EMAIL_REGEXP, URL_REGEXP } from "common/constants";
-import { CandidateAboutFormValues } from "packages/profile/models/types";
+import { CandidateAboutFormValues } from "packages/profile/models";
 import InnerForm from "./innerForm";
 import { AboutFormikProps, AboutFormProps } from "./types";
 

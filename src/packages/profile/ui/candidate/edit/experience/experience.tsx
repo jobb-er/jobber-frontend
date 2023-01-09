@@ -6,7 +6,7 @@ import {
   fetchCandidateProfile,
   updateCandidateProfileExperience,
 } from "packages/profile/store/actions/profileActions";
-import { CandidateExperienceFormValues } from "packages/profile/models/types";
+import { CandidateExperienceFormValues } from "packages/profile/models";
 import ExperienceForm from "./experienceForm";
 import {
   ExperienceMapState,

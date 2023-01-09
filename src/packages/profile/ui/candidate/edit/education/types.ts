@@ -4,7 +4,7 @@ import { FormikErrors } from "formik";
 import {
   CandidateEducationFormValues,
   CandidateProfile,
-} from "packages/profile/models/types";
+} from "packages/profile/models";
 
 export interface EducationFormProps {
   data: { education: CandidateEducationFormValues };

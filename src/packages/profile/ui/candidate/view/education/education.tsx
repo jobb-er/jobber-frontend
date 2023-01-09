@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { ReactComponent as CalendarIcon } from "common/images/profile/calendar.svg";
 import { Card } from "common/components";
-import { CandidateEducationItemFormValues } from "packages/profile/models/types";
+import { CandidateEducationItemFormValues } from "packages/profile/models";
 import { SectionSeparator } from "../common";
 import {
   EducationProps,

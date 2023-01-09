@@ -3,7 +3,7 @@ import {
   initialExperienceItemFormValues,
   initialAdditionalItemFormValues,
 } from "common/constants";
-import { CandidateProfile, CandidateProfileAPIValues } from "../models/types";
+import { CandidateProfile, CandidateProfileAPIValues } from "../models";
 
 export const candidateProfileFromAPI = (
   data: CandidateProfileAPIValues,

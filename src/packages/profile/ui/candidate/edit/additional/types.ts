@@ -4,7 +4,7 @@ import { FormikErrors } from "formik";
 import {
   CandidateAdditionalFormValues,
   CandidateProfile,
-} from "packages/profile/models/types";
+} from "packages/profile/models";
 
 export interface AdditionalFormProps {
   data: { additional: CandidateAdditionalFormValues };

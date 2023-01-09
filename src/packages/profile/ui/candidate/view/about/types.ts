@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { CandidateProfile } from "packages/profile/models/types";
+import { CandidateProfile } from "packages/profile/models";
 
 export interface AboutMapState {
   profile: { candidateProfile: CandidateProfile };

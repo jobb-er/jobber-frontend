@@ -6,7 +6,7 @@ import {
   fetchCandidateProfile,
   updateCandidateProfileEducation,
 } from "packages/profile/store/actions/profileActions";
-import { CandidateEducationFormValues } from "packages/profile/models/types";
+import { CandidateEducationFormValues } from "packages/profile/models";
 import EducationForm from "./educationForm";
 import {
   EducationMapState,

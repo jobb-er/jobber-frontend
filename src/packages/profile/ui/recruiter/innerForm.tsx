@@ -3,10 +3,9 @@ import { Form, FormikProps } from "formik";
 import { useTranslation } from "react-i18next";
 
 import { addAsterisk } from "common/utils";
-import { Input, ImageUploader, Button, Textarea } from "common/components";
+import { Input, ImageUploader, Button } from "common/components";
 import { ReactComponent as CheckMarkIcon } from "common/images/offers/checkMark.svg";
-import { CandidateAboutFormValues } from "packages/profile/models";
-import { useProfileContext } from "packages/profile/ui/context";
+import { RecruiterProfileFormValues } from "packages/profile/models";
 
 const TRANSLATION_PATH = "profile.common";
 
@@ -17,12 +16,11 @@ const InnerForm = ({
   touched,
   errors,
   values,
-}: FormikProps<CandidateAboutFormValues>): ReactElement => {
+}: FormikProps<RecruiterProfileFormValues>): ReactElement => {
   const { t } = useTranslation();
-  const { setMode } = useProfileContext();
 
   return (
-    <Form className="flex flex-col gap-8 py-8">
+    <Form className="flex flex-col gap-8 py-8 px-10 h-full">
       <div className="flex items-center gap-10">
         <ImageUploader
           title={t("profile.common.uploadAvatar")}
@@ -103,40 +101,23 @@ const InnerForm = ({
           })}
         />
         <Input
-          label={t("profile.candidate.portfolio")}
-          placeholder={t(`${TRANSLATION_PATH}.link`)}
-          name="portfolio"
-          defaultValue={initialValues.portfolio}
+          label={t("profile.recruiter.company")}
+          placeholder={t("profile.recruiter.company")}
+          name="company"
+          defaultValue={initialValues.company}
           onChange={handleChange}
-          isError={touched && !!errors.portfolio}
-          errorMessage={t(errors?.portfolio || "", {
-            field: t("profile.candidate.portfolio"),
+          isError={touched && !!errors.company}
+          errorMessage={t(errors?.company || "", {
+            field: t("profile.recruiter.company"),
           })}
         />
       </div>
-      <Textarea
-        label={t("profile.candidate.bio")}
-        placeholder={t("profile.candidate.bioPlaceholder")}
-        name="bio"
-        defaultValue={initialValues.bio}
-        onChange={handleChange}
-        height="h-40"
-      />
-      <div className="flex items-center gap-4 self-end">
-        <Button
-          type="button"
-          variant="secondary"
-          onClick={() => setMode("view")}
-        >
-          {t("profile.view")}
-        </Button>
-        <Button type="submit">
-          <div className="flex items-center gap-3">
-            <CheckMarkIcon className="w-4 h-4" />
-            {t("profile.save")}
-          </div>
-        </Button>
-      </div>
+      <Button type="submit" additionalClassName="self-end">
+        <div className="flex items-center gap-3">
+          <CheckMarkIcon className="w-4 h-4" />
+          {t("profile.save")}
+        </div>
+      </Button>
     </Form>
   );
 };

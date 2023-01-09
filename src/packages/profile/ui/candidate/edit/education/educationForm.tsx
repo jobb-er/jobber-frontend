@@ -11,7 +11,7 @@ import {
 import {
   CandidateEducationItemFormValues,
   CandidateEducationFormValues,
-} from "packages/profile/models/types";
+} from "packages/profile/models";
 import { initialEducationItemFormValues } from "common/constants";
 import { useProfileContext } from "packages/profile/ui/context";
 import { ReactComponent as CheckMarkIcon } from "common/images/offers/checkMark.svg";

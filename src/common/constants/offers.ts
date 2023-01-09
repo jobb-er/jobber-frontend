@@ -1,4 +1,4 @@
-import { Offer } from "packages/offers/models/types";
+import { Offer } from "packages/offers/models";
 
 export const initialNewOfferFormValues: Offer = {
   id: "",

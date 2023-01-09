@@ -6,7 +6,7 @@ import {
   fetchCandidateProfile,
   updateCandidateProfileAdditional,
 } from "packages/profile/store/actions/profileActions";
-import { CandidateAdditionalFormValues } from "packages/profile/models/types";
+import { CandidateAdditionalFormValues } from "packages/profile/models";
 import AdditionalForm from "./additionalForm";
 import {
   AdditionalMapState,

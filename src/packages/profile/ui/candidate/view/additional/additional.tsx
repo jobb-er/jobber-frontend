@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import { connect } from "react-redux";
 
-import { CandidateAdditionalItemFormValues } from "packages/profile/models/types";
+import { CandidateAdditionalItemFormValues } from "packages/profile/models";
 import { SectionSeparator } from "../common";
 import {
   AdditionalMapState,

@@ -1,10 +1,10 @@
 import { AnyAction } from "redux";
 
+import { CandidateProfile, RecruiterProfile } from "packages/profile/models";
 import {
-  CandidateProfile,
-  RecruiterProfile,
-} from "packages/profile/models/types";
-import { candidateProfileFromAPI } from "packages/profile/converters/candidateProfileFromAPI";
+  candidateProfileFromAPI,
+  recruiterProfileFromAPI,
+} from "packages/profile/converters";
 import ActionTypes from "../actionTypes";
 
 export const recruiterProfileReducer = (
@@ -15,7 +15,7 @@ export const recruiterProfileReducer = (
     case ActionTypes.RECRUITER_PROFILE_REQUEST:
       return state;
     case ActionTypes.RECRUITER_PROFILE_SUCCESS:
-      return action.payload?.recruiter;
+      return recruiterProfileFromAPI(action.payload?.recruiter);
     case ActionTypes.RECRUITER_PROFILE_FAILURE:
       return {};
     default:
