@@ -194,6 +194,7 @@ const en = {
     recruiter: {
       company: "Company",
     },
+    goBack: "Go back",
     errors: {
       fieldRequired: "{{ field }} is required!",
       wrongEmail: "Wrong email format!",

@@ -1,17 +1,10 @@
 import React, { ReactElement } from "react";
-import { connect } from "react-redux";
 
 import { CandidateAdditionalItemFormValues } from "packages/profile/models";
-import { SectionSeparator } from "../common";
-import {
-  AdditionalMapState,
-  AdditionalMapStateReturn,
-  AdditionalProps,
-} from "./types";
+import SectionSeparator from "../sectionSeparator";
+import { AdditionalProps } from "./types";
 
-const Additional = ({ candidateProfile }: AdditionalProps): ReactElement => {
-  const { additional } = candidateProfile;
-
+const Additional = ({ additional }: AdditionalProps): ReactElement => {
   if (!additional?.length || !additional?.[0]?.id) return <></>;
 
   return (
@@ -31,10 +24,4 @@ const Additional = ({ candidateProfile }: AdditionalProps): ReactElement => {
   );
 };
 
-const mapStateToProps = (
-  state: AdditionalMapState,
-): AdditionalMapStateReturn => ({
-  candidateProfile: state.profile.candidateProfile,
-});
-
-export default connect(mapStateToProps)(Additional);
+export default Additional;

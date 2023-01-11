@@ -27,6 +27,7 @@ const initialState = {
   },
   profile: {
     candidateProfile: {},
+    otherCandidateProfile: {},
     recruiterProfile: {},
   },
   requestStatuses: {

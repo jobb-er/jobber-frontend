@@ -1,13 +1,13 @@
 import { CandidateProfile } from "packages/profile/models";
 
-export interface EducationMapState {
+export interface ViewMapState {
   profile: { candidateProfile: CandidateProfile };
 }
 
-export interface EducationMapStateReturn {
+export interface ViewMapStateReturn {
   candidateProfile: CandidateProfile;
 }
 
-export interface EducationProps {
+export interface ViewProps {
   candidateProfile: CandidateProfile;
 }

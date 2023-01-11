@@ -12,7 +12,7 @@ import {
 import ActionTypes from "../actionTypes";
 
 export const fetchRecruiterProfile = () =>
-  actionBuilder(`${process.env.REACT_APP_API_URL}/recruiter`, [
+  actionBuilder(`${process.env.REACT_APP_API_URL}/user/recruiter`, [
     ActionTypes.RECRUITER_PROFILE_REQUEST,
     ActionTypes.RECRUITER_PROFILE_SUCCESS,
     ActionTypes.RECRUITER_PROFILE_FAILURE,
@@ -28,10 +28,17 @@ export const updateRecruiterProfile = (
   );
 
 export const fetchCandidateProfile = () =>
-  actionBuilder(`${process.env.REACT_APP_API_URL}/candidate`, [
+  actionBuilder(`${process.env.REACT_APP_API_URL}/user/candidate`, [
     ActionTypes.CANDIDATE_PROFILE_REQUEST,
     ActionTypes.CANDIDATE_PROFILE_SUCCESS,
     ActionTypes.CANDIDATE_PROFILE_FAILURE,
+  ]);
+
+export const fetchOtherCandidateProfile = (id: string) =>
+  actionBuilder(`${process.env.REACT_APP_API_URL}/user/candidate?id=${id}`, [
+    ActionTypes.OTHER_CANDIDATE_PROFILE_REQUEST,
+    ActionTypes.OTHER_CANDIDATE_PROFILE_SUCCESS,
+    ActionTypes.OTHER_CANDIDATE_PROFILE_FAILURE,
   ]);
 
 export const updateCandidateProfileAbout = (

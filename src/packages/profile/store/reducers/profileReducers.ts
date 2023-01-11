@@ -39,15 +39,34 @@ export const candidateProfileReducer = (
   }
 };
 
+export const otherCandidateProfileReducer = (
+  state: CandidateProfile | Record<string, unknown> = {},
+  action: AnyAction,
+): CandidateProfile | Record<string, unknown> => {
+  switch (action.type) {
+    case ActionTypes.OTHER_CANDIDATE_PROFILE_REQUEST:
+      return state;
+    case ActionTypes.OTHER_CANDIDATE_PROFILE_SUCCESS:
+      return candidateProfileFromAPI(action.payload);
+    case ActionTypes.OTHER_CANDIDATE_PROFILE_FAILURE:
+      return {};
+    default:
+      return state;
+  }
+};
+
 export const isFetchingProfile = (state = false, action: AnyAction) => {
   switch (action.type) {
     case ActionTypes.CANDIDATE_PROFILE_REQUEST:
     case ActionTypes.RECRUITER_PROFILE_REQUEST:
+    case ActionTypes.OTHER_CANDIDATE_PROFILE_REQUEST:
       return true;
     case ActionTypes.CANDIDATE_PROFILE_SUCCESS:
     case ActionTypes.CANDIDATE_PROFILE_FAILURE:
     case ActionTypes.RECRUITER_PROFILE_SUCCESS:
     case ActionTypes.RECRUITER_PROFILE_FAILURE:
+    case ActionTypes.OTHER_CANDIDATE_PROFILE_SUCCESS:
+    case ActionTypes.OTHER_CANDIDATE_PROFILE_FAILURE:
       return false;
     default:
       return state;

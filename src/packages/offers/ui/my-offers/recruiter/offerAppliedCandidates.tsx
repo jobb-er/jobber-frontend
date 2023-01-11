@@ -2,7 +2,9 @@ import { ReactElement } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
+import { PROFILE } from "common/constants";
 import { AppliedCandidate, RecruiterResponse } from "packages/offers/models";
 import { ReactComponent as NoAvatarIcon } from "common/images/offers/noAvatar.svg";
 import { ReactComponent as MessageIcon } from "common/images/offers/message.svg";
@@ -22,6 +24,7 @@ const OfferAppliedCandidates = ({
   fetchAppliedCandidatesForOffer,
 }: OfferAppliedCandidatesProps): ReactElement => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const getColorOfCandidate = (response: RecruiterResponse): string => {
     switch (response) {
@@ -63,7 +66,12 @@ const OfferAppliedCandidates = ({
                   <div className="w-10 h-10 border border-transparent rounded-full">
                     <NoAvatarIcon className="w-10 h-10 p-2.5" />
                   </div>
-                  <span className="underline font-semibold">{`${candidate.firstName} ${candidate.lastName}`}</span>
+                  <button
+                    className="underline font-semibold focus:outline-none"
+                    onClick={() =>
+                      navigate(`${PROFILE}/candidate/${candidate.id}`)
+                    }
+                  >{`${candidate.firstName} ${candidate.lastName}`}</button>
                 </div>
                 <div className="flex items-center gap-2">
                   <MessageIcon className="w-5 h-5" />

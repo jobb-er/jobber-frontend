@@ -1,5 +1,4 @@
 import { ReactElement } from "react";
-import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 import { ReactComponent as BuildingIcon } from "common/images/profile/building.svg";
@@ -7,17 +6,11 @@ import { ReactComponent as LocationIcon } from "common/images/profile/location.s
 import { ReactComponent as CalendarIcon } from "common/images/profile/calendar.svg";
 import { Card } from "common/components";
 import { CandidateExperienceItemFormValues } from "packages/profile/models";
-import { SectionSeparator } from "../common";
-import {
-  ExperienceProps,
-  ExperienceMapState,
-  ExperienceMapStateReturn,
-} from "./types";
+import SectionSeparator from "../sectionSeparator";
+import { ExperienceProps } from "./types";
 
-const Experience = ({ candidateProfile }: ExperienceProps): ReactElement => {
+const Experience = ({ experience }: ExperienceProps): ReactElement => {
   const { t } = useTranslation();
-
-  const { experience } = candidateProfile;
 
   if (!experience?.length || !experience?.[0]?.id) return <></>;
 
@@ -54,10 +47,4 @@ const Experience = ({ candidateProfile }: ExperienceProps): ReactElement => {
   );
 };
 
-const mapStateToProps = (
-  state: ExperienceMapState,
-): ExperienceMapStateReturn => ({
-  candidateProfile: state.profile.candidateProfile,
-});
-
-export default connect(mapStateToProps)(Experience);
+export default Experience;

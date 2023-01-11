@@ -1,21 +1,14 @@
 import { ReactElement } from "react";
-import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 import { ReactComponent as CalendarIcon } from "common/images/profile/calendar.svg";
 import { Card } from "common/components";
 import { CandidateEducationItemFormValues } from "packages/profile/models";
-import { SectionSeparator } from "../common";
-import {
-  EducationProps,
-  EducationMapState,
-  EducationMapStateReturn,
-} from "./types";
+import SectionSeparator from "../sectionSeparator";
+import { EducationProps } from "./types";
 
-const Education = ({ candidateProfile }: EducationProps): ReactElement => {
+const Education = ({ education }: EducationProps): ReactElement => {
   const { t } = useTranslation();
-
-  const { education } = candidateProfile;
 
   if (!education?.length || !education?.[0]?.id) return <></>;
 
@@ -46,10 +39,4 @@ const Education = ({ candidateProfile }: EducationProps): ReactElement => {
   );
 };
 
-const mapStateToProps = (
-  state: EducationMapState,
-): EducationMapStateReturn => ({
-  candidateProfile: state.profile.candidateProfile,
-});
-
-export default connect(mapStateToProps)(Education);
+export default Education;

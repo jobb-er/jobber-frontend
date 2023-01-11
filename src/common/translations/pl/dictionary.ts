@@ -195,6 +195,7 @@ const pl = {
     recruiter: {
       company: "Firma",
     },
+    goBack: "Powrót",
     errors: {
       fieldRequired: "{{ field }} jest wymagane!",
       wrongEmail: "Niepoprawny email!",
