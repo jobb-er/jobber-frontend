@@ -8,6 +8,7 @@ const Link = ({
   Icon,
   title,
   path,
+  onClick,
   textSize = "text-2xl",
   additionalClassName,
 }: LinkProps): ReactElement => {
@@ -18,7 +19,8 @@ const Link = ({
       className={removeDuplicateWhitespaces(
         `flex items-center gap-3 text-action font-medium underline hover:opacity-90 focus:outline-none ${textSize} ${additionalClassName}`,
       )}
-      onClick={() => navigate(path)}
+      type="button"
+      onClick={() => (path ? navigate(path) : onClick?.())}
     >
       {Icon ? <Icon className="w-6" /> : <></>}
       {title}

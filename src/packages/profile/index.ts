@@ -1,1 +1,1 @@
-export { default as Profile } from "./ui";
+export { Profile, OtherCandidateProfile } from "./ui";

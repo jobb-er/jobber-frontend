@@ -11,7 +11,7 @@ import {
   EditOffer,
 } from "packages/offers";
 import { Messages } from "packages/chat";
-import { Profile } from "packages/profile";
+import { Profile, OtherCandidateProfile } from "packages/profile";
 import {
   OFFERS,
   MESSAGES,
@@ -52,6 +52,16 @@ const App = ({ auth }: AppProps): ReactElement => (
             }
           />
           <Route path={PROFILE} element={<Profile />} />
+          <Route
+            path={`${PROFILE}/candidate/:id`}
+            element={
+              auth?.isAuthorised && auth?.accountType === RECRUITER ? (
+                <OtherCandidateProfile />
+              ) : (
+                <Navigate to={PROFILE} replace />
+              )
+            }
+          />
           <Route path={SETTINGS} element={<Settings />} />
           <Route path="*" element={<Navigate to={OFFERS} replace />} />
         </Routes>

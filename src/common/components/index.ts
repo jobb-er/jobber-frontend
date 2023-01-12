@@ -11,3 +11,5 @@ export { default as BackLink } from "./back-link";
 export { default as Modal } from "./modal";
 export { default as Loader } from "./loader";
 export { default as Link } from "./link";
+export { default as Tabs } from "./tabs";
+export { default as ImageUploader } from "./image-uploader";

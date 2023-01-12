@@ -16,7 +16,7 @@ const Offer = ({ offer }: OfferProps): ReactElement => {
   const renderRecruiterResponse = (
     response: RecruiterResponse,
   ): ReactElement => {
-    const baseResponseStyles = " text-2xl font-semibold mr-5";
+    const baseResponseStyles = "text-2xl font-semibold mr-5";
     switch (response) {
       case "waiting":
         return (
