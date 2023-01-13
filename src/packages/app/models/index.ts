@@ -4,4 +4,6 @@ export type {
   RegisterValues,
   LoginValues,
   LoginAPIValues,
+  Socket,
+  SocketReducer,
 } from "./types";

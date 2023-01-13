@@ -1,30 +1,67 @@
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { useParams } from "react-router-dom";
 
 import { Card, Input } from "common/components";
 import { ReactComponent as NoAvatarIcon } from "common/images/top-bar/noAvatar.svg";
+import { ReactComponent as SendMessage } from "common/images/messages/send.svg";
 import {
   ConversationCardMapState,
   ConversationCardMapStateReturn,
   ConversationCardProps,
 } from "./types";
-import { ReactComponent as SendMessage } from "common/images/messages/send.svg";
-import { fetchConversation } from "packages/chat/store/actions/conversationsActions";
-import { useParams } from "react-router-dom";
+import {
+  fetchConversation,
+  sendMessage as sendMessageAction,
+} from "packages/chat/store/actions/conversationsActions";
+import ActionTypes from "packages/chat/store/actionTypes";
+import SocketActionTypes from "packages/app/store/actionTypes";
+import { connectToNamespace } from "packages/app/store/actions/socketActions";
+import { Message } from "packages/chat/models";
+import ConversationMessages from "./conversationMessages";
+import { CHAT } from "common/constants";
 
 const ConversationCard = ({
-  conversation: { user, messages },
+  auth,
+  socket,
+  conversation: { user },
+  connectToChat,
   fetchUserConversation,
+  addMessage,
 }: ConversationCardProps): ReactElement => {
   const { id } = useParams();
 
-  const [messageInput, setMessageInput] = useState<string>();
+  const [messageInput, setMessageInput] = useState<string>("");
 
   useEffect(() => {
-    if (id) fetchUserConversation(id);
+    if (id) {
+      fetchUserConversation(id);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
+
+  useEffect(() => {
+    if (id && auth.id) {
+      connectToChat(auth.id, id);
+    }
+    return () => {
+      socket.send.socket?.disconnect();
+      socket.receive.socket?.disconnect();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, auth]);
+
+  useEffect(() => {
+    socket.receive.socket?.on("receiveMessage", (message: Message) => {
+      addMessage(message);
+    });
+
+    return () => {
+      socket.receive.socket?.off("receiveMessage");
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [socket.receive.socket]);
 
   if (id !== user?.id) {
     return (
@@ -34,11 +71,22 @@ const ConversationCard = ({
     );
   }
 
+  const handleClick = () => {
+    if (socket.send.socket && messageInput) {
+      sendMessageAction(
+        socket.send.socket,
+        { message: messageInput },
+        addMessage,
+      );
+      setMessageInput("");
+    }
+  };
+
   return (
     <Card additionalClassName="relative w-full p-8 divide-y-2 divide-primary text-primary">
       <div className="flex flex-row">
         <div className="flex justify-center items-center w-18 h-20 pb-4">
-          <div className="w-16 h-16 border border-primary rounded-full focus:outline-none">
+          <div className="w-16 h-16 box-content border border-primary rounded-full focus:outline-none">
             {user?.avatar || <NoAvatarIcon className="w-16 h-16 p-3" />}
           </div>
         </div>
@@ -47,32 +95,7 @@ const ConversationCard = ({
         </div>
       </div>
       <div className="absolute flex flex-col justify-between inset-8 top-28">
-        <div className="absolute flex flex-col-reverse flex-auto w-full overflow-y-scroll top-2 bottom-24">
-          {messages.map((msg, i, arr) => {
-            return (
-              <div key={msg.id} className="relative w-full">
-                {msg.received && !arr[i - 1]?.received ? (
-                  <div className="absolute left-0 bottom-1">
-                    <div className="w-8 h-8 border border-primary rounded-full focus:outline-none">
-                      {user?.avatar || <NoAvatarIcon className="w-8 h-8 p-2" />}
-                    </div>
-                  </div>
-                ) : (
-                  <></>
-                )}
-                <p
-                  className={`text-msg-conv-msg rounded-xl px-5 py-3 my-0.5 w-max text-white ${
-                    msg.received
-                      ? "ml-14 float-left bg-secondary"
-                      : "mr-4 float-right bg-action"
-                  }`}
-                >
-                  {msg.message}
-                </p>
-              </div>
-            );
-          })}
-        </div>
+        {<ConversationMessages />}
         <div className="absolute flex flex-row inset-x-0 bottom-0">
           <Input
             additionalClassName="text-msg-conv-msg-inp py-4 px-6 h-14"
@@ -82,9 +105,16 @@ const ConversationCard = ({
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               setMessageInput(event.target.value)
             }
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleClick();
+              }
+            }}
           />
           <div className="py-2 px-7">
-            <SendMessage />
+            <button onClick={handleClick}>
+              <SendMessage />
+            </button>
           </div>
         </div>
       </div>
@@ -95,11 +125,40 @@ const ConversationCard = ({
 const mapStateToProps = (
   state: ConversationCardMapState,
 ): ConversationCardMapStateReturn => ({
+  auth: state.auth,
+  socket: state.socket,
   conversation: state.messages.conversation,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  fetchUserConversation: (id: string) => dispatch(fetchConversation(id)),
+  fetchUserConversation: async (id: string) => {
+    await dispatch(fetchConversation(id));
+    await dispatch({ type: ActionTypes.MARK_AS_READ, payload: id });
+  },
+  connectToChat: async (userId: string, receiverId: string) => {
+    const sendNamespace = `${CHAT}/${userId}/${receiverId}`;
+    const receiveNamespace = `${CHAT}/${receiverId}/${userId}`;
+    console.log(sendNamespace);
+    console.log(receiveNamespace);
+    await dispatch({
+      type: SocketActionTypes.SOCKET_CHAT_SEND_CONNECT,
+      payload: {
+        name: sendNamespace,
+        socket: connectToNamespace(sendNamespace),
+      },
+    });
+    await dispatch({
+      type: SocketActionTypes.SOCKET_CHAT_RECEIVE_CONNECT,
+      payload: {
+        name: receiveNamespace,
+        socket: connectToNamespace(receiveNamespace),
+      },
+    });
+  },
+  addMessage: (message?: Message) => {
+    if (message)
+      dispatch({ type: ActionTypes.MESSAGES_APPEND, payload: message });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConversationCard);

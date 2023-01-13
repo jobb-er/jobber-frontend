@@ -14,8 +14,7 @@ import MessagesContent from "./messagesContent";
 import { ReactComponent as SearchIcon } from "common/images/offers/search.svg";
 import { ReactComponent as NoteAdd } from "common/images/messages/noteAddPrimary.svg";
 import { fetchConversations } from "../store/actions/conversationsActions";
-import { MESSAGES } from "common/constants";
-import { NEW_MESSAGE } from "common/constants/routes";
+import { MESSAGES, NEW_MESSAGE } from "common/constants";
 
 const Messages = ({
   auth,

@@ -21,6 +21,7 @@ import {
 } from "common/constants";
 import { logout } from "../../store/actions/authActions";
 import { MenuProps } from "./types";
+import UnreadNotification from "./unreadNotification";
 
 const Menu = ({ logout, resetStore }: MenuProps): ReactElement => {
   const { pathname } = useLocation();
@@ -42,7 +43,9 @@ const Menu = ({ logout, resetStore }: MenuProps): ReactElement => {
           title={t("menu.messages")}
           Icon={MessagesIcon}
           isActive={pathname.includes(MESSAGES)}
-        />
+        >
+          <UnreadNotification />
+        </MenuTab>
         <MenuTab
           path={MY_OFFERS}
           title={t("menu.myOffers")}

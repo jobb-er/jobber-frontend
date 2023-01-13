@@ -1,3 +1,5 @@
+import { Socket as SocketIO } from "socket.io-client";
+
 export interface Auth {
   isAuthorised: boolean;
   id?: string;
@@ -32,4 +34,15 @@ export interface LoginValues {
   email: string;
   password: string;
   invalid?: string;
+}
+
+export interface Socket {
+  name: string | null;
+  socket: SocketIO | null;
+}
+
+export interface SocketReducer {
+  private: Socket;
+  send: Socket;
+  receive: Socket;
 }

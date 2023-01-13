@@ -9,6 +9,8 @@ import { ReactComponent as CheckMarkIcon } from "common/images/offers/checkMark.
 import { ReactComponent as MessageIcon } from "common/images/offers/message.svg";
 import { applyForOffer } from "../../store/actions/myOffersActions";
 import { OfferContentProps } from "./types";
+import { NavLink } from "react-router-dom";
+import { MESSAGES } from "common/constants";
 
 const OfferContent = ({
   offer,
@@ -65,12 +67,14 @@ const OfferContent = ({
       </span>
       {isCandidate ? (
         <div className="flex items-center gap-3 justify-end bg-secondary-light w-full h-16 px-6 py-3 rounded-b-xl">
-          <Button variant="secondary">
-            <div className="flex items-center gap-3">
-              <MessageIcon className="w-5 h-5" />
-              {t("offer.message")}
-            </div>
-          </Button>
+          <NavLink to={`${MESSAGES}/${offer.recruiterId}`}>
+            <Button variant="secondary">
+              <div className="flex items-center gap-3">
+                <MessageIcon className="w-5 h-5" />
+                {t("offer.message")}
+              </div>
+            </Button>
+          </NavLink>
           <Button
             type="submit"
             onClick={() => {

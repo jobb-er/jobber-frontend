@@ -3,7 +3,6 @@ import {
   ChangeEvent,
   FunctionComponent,
   SVGProps,
-  MouseEventHandler,
   ReactElement,
 } from "react";
 

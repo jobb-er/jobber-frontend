@@ -1,4 +1,11 @@
-export { OFFERS, MESSAGES, MY_OFFERS, PROFILE, SETTINGS } from "./routes";
+export {
+  OFFERS,
+  MESSAGES,
+  NEW_MESSAGE,
+  MY_OFFERS,
+  PROFILE,
+  SETTINGS,
+} from "./routes";
 export { initialRegisterFormValues } from "./register";
 export { EMAIL_REGEXP, PASSWORD_REGEXP } from "./regexps";
 export { axiosHeaders, reduxMiddlewareHeaders } from "./headers";
@@ -9,3 +16,4 @@ export { RECRUITER, CANDIDATE } from "./roles";
 export { EN, PL } from "./languageCodes";
 export { initialSettingsFormValues } from "./settings";
 export { initialNewOfferFormValues } from "./offers";
+export { PRIVATE, CHAT } from "./socket";

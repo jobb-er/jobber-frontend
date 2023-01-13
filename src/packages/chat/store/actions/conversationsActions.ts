@@ -1,7 +1,9 @@
 import axios from "axios";
+import { Socket } from "socket.io-client";
+
 import { axiosHeaders } from "common/constants";
 import { actionBuilder } from "common/store";
-import { User } from "packages/chat/models/types";
+import { ChatMessage, Message, User } from "packages/chat/models/types";
 import ActionTypes from "../actionTypes";
 
 export const fetchConversations = () =>
@@ -28,3 +30,20 @@ export const fetchTopResults = (query: string) =>
     `${process.env.REACT_APP_API_URL}/user/list?query=${query}`,
     axiosHeaders,
   );
+
+export const sendMessage = (
+  socket: Socket,
+  message: ChatMessage,
+  callback: (message: Message) => void,
+) => {
+  socket.emit("sendMessage", message, (message: Message | string) => {
+    if (typeof message === "object") callback(message);
+  });
+};
+
+export const getUnreadCount = () =>
+  actionBuilder(`${process.env.REACT_APP_API_URL}/message/get-unread-count`, [
+    ActionTypes.UNREAD_COUNTER_REQUEST,
+    ActionTypes.UNREAD_COUNTER_SUCCESS,
+    ActionTypes.UNREAD_COUNTER_FAILURE,
+  ]);

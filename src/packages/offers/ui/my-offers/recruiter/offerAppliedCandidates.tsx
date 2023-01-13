@@ -15,6 +15,8 @@ import {
   fetchAppliedCandidatesForOffer,
 } from "packages/offers/store/actions/myOffersActions";
 import { OfferAppliedCandidatesProps } from "./types";
+import { NavLink } from "react-router-dom";
+import { MESSAGES } from "common/constants";
 
 const OfferAppliedCandidates = ({
   candidates,
@@ -65,10 +67,12 @@ const OfferAppliedCandidates = ({
                   </div>
                   <span className="underline font-semibold">{`${candidate.firstName} ${candidate.lastName}`}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <MessageIcon className="w-5 h-5" />
-                  <span>{t("myOffers.recruiter.message")}</span>
-                </div>
+                <NavLink to={`${MESSAGES}/${candidate.id}`}>
+                  <div className="flex items-center gap-2">
+                    <MessageIcon className="w-5 h-5" />
+                    <span>{t("myOffers.recruiter.message")}</span>
+                  </div>
+                </NavLink>
               </div>
               <div className="flex items-center gap-3 justify-center">
                 {candidate.recruiterResponse === "waiting" ? (

@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useRef, useState } from "react";
+import { ReactElement, useRef, useState } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 
 import { removeDuplicateWhitespaces } from "../../utils";
@@ -30,7 +30,7 @@ const Input = ({
   const [inputTimeout, setInputTimeout] = useState<NodeJS.Timeout>();
   const [focused, setFocused] = useState<boolean>(false);
 
-  useOnClickOutside(ref, () => setFocused(false));
+  useOnClickOutside(ref, () => setFocused(false), "mouseup");
 
   return (
     <div

@@ -46,3 +46,7 @@ export interface Message {
 }
 
 export interface SendMessageIO {}
+
+export interface ChatMessage {
+  message: string;
+}

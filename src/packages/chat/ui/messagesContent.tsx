@@ -13,7 +13,7 @@ import { ReactComponent as NoteAdd } from "common/images/messages/noteAddAction.
 import ConversationsList from "./conversations-list/conversationsList";
 import ConversationCard from "./conversation-card/conversationCard";
 import { Route, Routes } from "react-router-dom";
-import { NEW_MESSAGE } from "common/constants/routes";
+import { NEW_MESSAGE } from "common/constants";
 import NewConversationCard from "./conversation-card/newConversationCard";
 
 const MessagesContent = ({

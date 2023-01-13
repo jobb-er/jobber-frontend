@@ -14,16 +14,18 @@ const ConversationsListItem = ({
   return (
     <NavLink
       to={`/messages/${user.id}`}
-      className={`flex flex-row justify-between items-stretch rounded-xl text-primary ${
+      className={`flex flex-row justify-between items-stretch rounded-xl text-primary p-4 gap-4 ${
         isActive ? "bg-secondary-light" : ""
       }`}
     >
-      <div className="flex justify-center items-center w-24 h-24 p-4">
-        <div className="w-16 h-16 border border-primary rounded-full focus:outline-none">
+      <div className="flex box-content justify-center items-center w-16 h-16">
+        <div className="box-content border border-primary rounded-full focus:outline-none">
           {user.avatar || <NoAvatarIcon className="w-16 h-16 p-3" />}
         </div>
       </div>
-      <div className="flex flex-col grow justify-between pt-5 pb-7 truncate">
+      <div
+        className="flex flex-col grow justify-center truncate"
+      >
         <div className="h-6 text-msg-conv-list-title font-medium truncate">
           {user.firstName} {user.lastName}
         </div>
@@ -33,7 +35,7 @@ const ConversationsListItem = ({
         </div>
       </div>
       <div
-        className={`flex justify-center items-center px-4 ${
+        className={`flex justify-center items-center ${
           markAsRead && "hidden"
         }`}
       >

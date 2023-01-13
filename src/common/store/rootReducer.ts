@@ -1,7 +1,7 @@
 import { AnyAction, Reducer, combineReducers } from "@reduxjs/toolkit";
 
 import ActionTypes from "./actionTypes";
-import { authReducer } from "../../packages/app/store/reducers/authReducer";
+import { authReducer, socketReducers } from "packages/app/store/reducers";
 import {
   offersReducer,
   isFetchingAllOffers,
@@ -14,6 +14,20 @@ import { messagesReducers } from "../../packages/chat/store/reducers";
 
 const initialState = {
   auth: {},
+  socket: {
+    private: {
+      name: null,
+      socket: null,
+    },
+    send: {
+      name: null,
+      socket: null,
+    },
+    receive: {
+      name: null,
+      socket: null,
+    },
+  },
   offers: {
     allOffers: [],
     offer: {},
@@ -25,6 +39,7 @@ const initialState = {
   messages: {
     conversations: [],
     conversation: {},
+    unReadCount: null,
   },
   requestStatuses: {
     isFetchingAllOffers: false,
@@ -37,6 +52,7 @@ const initialState = {
 
 export const appReducer = combineReducers({
   auth: authReducer,
+  socket: socketReducers,
   offers: offersReducer,
   messages: messagesReducers,
   requestStatuses: combineReducers({
