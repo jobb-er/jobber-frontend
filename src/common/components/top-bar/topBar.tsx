@@ -31,7 +31,11 @@ const TopBar = ({
           className="w-12 h-12 border border-primary rounded-full focus:outline-none"
           onClick={() => navigate(PROFILE)}
         >
-          {avatar || <NoAvatarIcon className="w-12 h-12 p-3" />}
+          {avatar ? (
+            <img src={avatar} className="w-full h-full rounded-full" />
+          ) : (
+            <NoAvatarIcon className="w-12 h-12 p-3" />
+          )}
         </button>
       </div>
     </div>

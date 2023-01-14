@@ -26,7 +26,7 @@ const InnerForm = ({
       <div className="flex items-center gap-10">
         <ImageUploader
           title={t("profile.common.uploadAvatar")}
-          image={initialValues?.avatar || values?.avatar || ""}
+          image={values?.avatar || ""}
           onChange={(newImage: string) => setFieldValue("avatar", newImage)}
         />
         <Input

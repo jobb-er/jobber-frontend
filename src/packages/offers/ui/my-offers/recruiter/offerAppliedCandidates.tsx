@@ -64,7 +64,14 @@ const OfferAppliedCandidates = ({
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 border border-transparent rounded-full">
-                    <NoAvatarIcon className="w-10 h-10 p-2.5" />
+                    {candidate?.avatar ? (
+                      <img
+                        src={candidate?.avatar}
+                        className="w-full h-full rounded-full"
+                      />
+                    ) : (
+                      <NoAvatarIcon className="w-10 h-10 p-2.5" />
+                    )}
                   </div>
                   <button
                     className="underline font-semibold focus:outline-none"

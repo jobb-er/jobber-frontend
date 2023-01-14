@@ -23,4 +23,5 @@ export interface AboutMapStateReturn {
 export interface AboutProps {
   candidateProfile: CandidateProfile;
   fetchCandidateProfile: () => void;
+  fetchAuth: any;
 }

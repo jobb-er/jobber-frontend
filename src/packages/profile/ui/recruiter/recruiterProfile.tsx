@@ -6,6 +6,7 @@ import {
   fetchRecruiterProfile,
   updateRecruiterProfile,
 } from "packages/profile/store/actions/profileActions";
+import { fetchAuth } from "packages/app/store/actions/authActions";
 import { RecruiterProfileFormValues } from "packages/profile/models";
 import Form from "./form";
 import {
@@ -17,6 +18,7 @@ import {
 const RecruiterProfile = ({
   recruiterProfile,
   fetchRecruiterProfile,
+  fetchAuth,
 }: RecruiterProfileProps): ReactElement => {
   useEffect(() => {
     fetchRecruiterProfile();
@@ -28,8 +30,10 @@ const RecruiterProfile = ({
   ): Promise<void> => {
     try {
       const response = await updateRecruiterProfile(updatedProfile);
-      if (response?.status?.toString()?.[0] === "2")
+      if (response?.status?.toString()?.[0] === "2") {
+        await fetchAuth();
         return fetchRecruiterProfile();
+      }
     } catch (error) {
       console.log(error);
     }
@@ -47,6 +51,7 @@ const mapStateToProps = (
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   fetchRecruiterProfile: () => dispatch(fetchRecruiterProfile()),
+  fetchAuth: () => dispatch(fetchAuth()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecruiterProfile);
