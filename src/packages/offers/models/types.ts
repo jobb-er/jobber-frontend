@@ -59,6 +59,7 @@ export interface AppliedCandidateAPIValues {
 export type RecruiterResponse = "accepted" | "rejected" | "waiting";
 
 export interface AppliedCandidate {
+  avatar?: string;
   email: string;
   firstName: string;
   id: string;

@@ -39,6 +39,7 @@ const EditOffer = ({
         role={
           auth?.accountType ? t(`roles.${auth.accountType.toLowerCase()}`) : ""
         }
+        avatar={auth?.avatar}
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
       >
         <BackLink title={t("myOffers.recruiter.goBack")} />

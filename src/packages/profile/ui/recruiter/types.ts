@@ -17,6 +17,7 @@ export interface RecruiterProfileProps {
   isFetchingProfile: boolean;
   recruiterProfile: RecruiterProfile;
   fetchRecruiterProfile: () => void;
+  fetchAuth: any;
 }
 
 export interface FormikProps {

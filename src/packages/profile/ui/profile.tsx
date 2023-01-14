@@ -53,6 +53,7 @@ const Profile = ({ auth }: ProfileProps): ReactElement => {
               ? t(`roles.${auth.accountType.toLowerCase()}`)
               : ""
           }
+          avatar={auth?.avatar}
           name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
           additionalClassName={isCandidate ? "" : "self-end"}
         >

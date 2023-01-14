@@ -48,6 +48,7 @@ const OfferDetails = ({
         role={
           auth?.accountType ? t(`roles.${auth.accountType.toLowerCase()}`) : ""
         }
+        avatar={auth?.avatar}
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
         additionalClassName={appliedSuccess ? "self-end" : ""}
       >

@@ -44,6 +44,7 @@ const ImageUploader = ({
           <button
             className="absolute top-0 right-0 text-lg w-8 h-8 pb-1 bg-error rounded-full text-white font-semibold"
             onClick={() => onChange("")}
+            type="button"
           >
             x
           </button>

@@ -15,6 +15,7 @@ const Messages = ({ auth }: MessagesProps): ReactElement => {
           auth?.accountType ? t(`roles.${auth.accountType.toLowerCase()}`) : ""
         }
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
+        avatar={auth?.avatar}
       >
         <span>Messages</span>
       </TopBar>
