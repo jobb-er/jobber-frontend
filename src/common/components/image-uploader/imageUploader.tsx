@@ -16,6 +16,7 @@ const ImageUploader = ({
   ): Promise<void> => {
     if (event?.target?.files?.length) {
       const newImage = await toBase64(event?.target?.files[0]);
+      // eslint-disable-next-line
       // @ts-ignore
       return onChange(newImage);
     }

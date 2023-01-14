@@ -32,7 +32,11 @@ const TopBar = ({
           onClick={() => navigate(PROFILE)}
         >
           {avatar ? (
-            <img src={avatar} className="w-full h-full rounded-full" />
+            <img
+              src={avatar}
+              className="w-full h-full rounded-full"
+              alt="avatar"
+            />
           ) : (
             <NoAvatarIcon className="w-12 h-12 p-3" />
           )}

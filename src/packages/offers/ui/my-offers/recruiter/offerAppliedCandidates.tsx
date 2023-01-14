@@ -68,6 +68,7 @@ const OfferAppliedCandidates = ({
                       <img
                         src={candidate?.avatar}
                         className="w-full h-full rounded-full"
+                        alt="avatar"
                       />
                     ) : (
                       <NoAvatarIcon className="w-10 h-10 p-2.5" />
