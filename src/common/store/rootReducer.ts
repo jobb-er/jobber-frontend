@@ -39,7 +39,6 @@ const initialState = {
   messages: {
     conversations: [],
     conversation: {},
-    unReadCount: null,
   },
   requestStatuses: {
     isFetchingAllOffers: false,

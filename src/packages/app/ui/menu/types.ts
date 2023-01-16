@@ -1,16 +1,18 @@
+import { Conversations } from "packages/chat/models";
+
 export interface MenuProps {
   logout: () => any;
   resetStore: () => any;
 }
 
 export interface UnreadNotificationProps {
-  unReadCount: number;
+  conversations: Conversations;
 }
 
 export interface UnreadNotificationMapState {
-  messages: { unReadCount: number };
+  messages: { conversations: Conversations };
 }
 
 export interface UnreadNotificationMapStateReturn {
-  unReadCount: number;
+  conversations: Conversations;
 }

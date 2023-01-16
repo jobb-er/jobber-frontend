@@ -1,4 +1,4 @@
-import { ConversationsItem } from "packages/chat/models";
+import { Conversations, ConversationsItem } from "packages/chat/models";
 import { ReactElement } from "react";
 
 import { Auth } from "../models";
@@ -27,12 +27,19 @@ export interface SocketContainerProps {
   children: ReactElement;
   auth: Auth;
   socket: SocketReducer;
+  conversations: Conversations;
   connectToPrivateSocket: (id: string) => void;
   newMessage: (message: ConversationsItem) => void;
-  unreadCounter: () => void;
 }
 
 export interface SocketContainerMapState {
   auth: Auth;
   socket: SocketReducer;
+  messages: { conversations: Conversations };
+}
+
+export interface SocketContainerMapStateReturn {
+  auth: Auth;
+  socket: SocketReducer;
+  conversations: Conversations;
 }

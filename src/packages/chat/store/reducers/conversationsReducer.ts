@@ -3,26 +3,6 @@ import { AnyAction } from "redux";
 import { Conversation, Conversations, Messages } from "../../models";
 import ActionTypes from "../actionTypes";
 
-export const unReadCountReducer = (
-  state: number | null = null,
-  action: AnyAction,
-): number | null => {
-  switch (action.type) {
-    case ActionTypes.UNREAD_COUNTER_REQUEST:
-      return state;
-    case ActionTypes.UNREAD_COUNTER_SUCCESS:
-      return action.payload?.unReadCount;
-    case ActionTypes.UNREAD_COUNTER_FAILURE:
-      return 0;
-    case ActionTypes.UNREAD_COUNTER_INCREASE:
-      return state !== null ? state++ : state;
-    case ActionTypes.UNREAD_COUNTER_DECREASE:
-      return state ? state-- : state;
-    default:
-      return state;
-  }
-};
-
 export const conversationsReducer = (
   state: Conversations = [],
   action: AnyAction,

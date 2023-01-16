@@ -17,16 +17,21 @@ import {
 } from "packages/chat/store/actions/conversationsActions";
 import ActionTypes from "packages/chat/store/actionTypes";
 import SocketActionTypes from "packages/app/store/actionTypes";
-import { connectToNamespace } from "packages/app/store/actions/socketActions";
+import {
+  connectToNamespace,
+  socketDisconnect,
+} from "packages/app/store/actions/socketActions";
 import { Message } from "packages/chat/models";
 import ConversationMessages from "./conversationMessages";
 import { CHAT } from "common/constants";
+import { Socket } from "socket.io-client";
 
 const ConversationCard = ({
   auth,
   socket,
-  conversation: { user },
+  conversation: { user, messages },
   connectToChat,
+  disconnectFromChat,
   fetchUserConversation,
   addMessage,
 }: ConversationCardProps): ReactElement => {
@@ -35,19 +40,12 @@ const ConversationCard = ({
   const [messageInput, setMessageInput] = useState<string>("");
 
   useEffect(() => {
-    if (id) {
-      fetchUserConversation(id);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
-
-  useEffect(() => {
     if (id && auth.id) {
+      fetchUserConversation(id);
       connectToChat(auth.id, id);
     }
     return () => {
-      socket.send.socket?.disconnect();
-      socket.receive.socket?.disconnect();
+      disconnectFromChat(socket.send.socket, socket.receive.socket);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, auth]);
@@ -128,6 +126,7 @@ const mapStateToProps = (
   auth: state.auth,
   socket: state.socket,
   conversation: state.messages.conversation,
+  conversations: state.messages.conversations,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
@@ -138,8 +137,6 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   connectToChat: async (userId: string, receiverId: string) => {
     const sendNamespace = `${CHAT}/${userId}/${receiverId}`;
     const receiveNamespace = `${CHAT}/${receiverId}/${userId}`;
-    console.log(sendNamespace);
-    console.log(receiveNamespace);
     await dispatch({
       type: SocketActionTypes.SOCKET_CHAT_SEND_CONNECT,
       payload: {
@@ -153,6 +150,16 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
         name: receiveNamespace,
         socket: connectToNamespace(receiveNamespace),
       },
+    });
+  },
+  disconnectFromChat: async (socketSend: Socket | null, socketReceive: Socket | null) => {
+    await dispatch({
+      type: SocketActionTypes.SOCKET_CHAT_SEND_DISCONNECT,
+      payload: socketDisconnect(socketSend),
+    });
+    await dispatch({
+      type: SocketActionTypes.SOCKET_CHAT_RECEIVE_DISCONNECT,
+      payload: socketDisconnect(socketReceive),
     });
   },
   addMessage: (message?: Message) => {

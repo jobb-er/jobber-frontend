@@ -40,10 +40,3 @@ export const sendMessage = (
     if (typeof message === "object") callback(message);
   });
 };
-
-export const getUnreadCount = () =>
-  actionBuilder(`${process.env.REACT_APP_API_URL}/message/get-unread-count`, [
-    ActionTypes.UNREAD_COUNTER_REQUEST,
-    ActionTypes.UNREAD_COUNTER_SUCCESS,
-    ActionTypes.UNREAD_COUNTER_FAILURE,
-  ]);

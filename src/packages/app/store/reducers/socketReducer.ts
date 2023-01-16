@@ -22,6 +22,8 @@ export const socketChatSendReducer = (
   switch (action.type) {
     case ActionTypes.SOCKET_CHAT_SEND_CONNECT:
       return action.payload;
+    case ActionTypes.SOCKET_CHAT_SEND_DISCONNECT:
+      return action.payload;
     default:
       return state;
   }
@@ -33,6 +35,8 @@ export const socketChatReceiveReducer = (
 ) => {
   switch (action.type) {
     case ActionTypes.SOCKET_CHAT_RECEIVE_CONNECT:
+      return action.payload;
+    case ActionTypes.SOCKET_CHAT_RECEIVE_DISCONNECT:
       return action.payload;
     default:
       return state;

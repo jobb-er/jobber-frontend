@@ -5,22 +5,24 @@ import { Dispatch } from "redux";
 import { connectToNamespace } from "../store/actions/socketActions";
 import ActionTypes from "../store/actionTypes";
 import ChatActionTypes from "packages/chat/store/actionTypes";
-import { SocketContainerMapState, SocketContainerProps } from "./types";
+import {
+  SocketContainerMapState,
+  SocketContainerMapStateReturn,
+  SocketContainerProps,
+} from "./types";
 import { PRIVATE } from "common/constants";
-import { getUnreadCount } from "packages/chat/store/actions/conversationsActions";
 
 const SocketContainer = ({
   children,
   auth,
   socket,
+  conversations,
   connectToPrivateSocket,
   newMessage,
-  unreadCounter,
 }: SocketContainerProps): ReactElement => {
   useEffect(() => {
     if (auth.id) {
       connectToPrivateSocket(auth.id);
-      unreadCounter();
     }
     return () => {
       socket?.private?.socket?.disconnect();
@@ -45,16 +47,17 @@ const SocketContainer = ({
       socket?.private?.socket?.off("newMessage");
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [socket.private.socket, socket.receive.name]);
+  }, [socket.private.socket, socket.receive.name, conversations]);
 
   return <>{children}</>;
 };
 
 const mapStateToProps = (
   state: SocketContainerMapState,
-): SocketContainerMapState => ({
+): SocketContainerMapStateReturn => ({
   auth: state.auth,
   socket: state.socket,
+  conversations: state.messages.conversations,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
@@ -65,12 +68,11 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
       payload: { name: namespace, socket: connectToNamespace(namespace) },
     });
   },
-  newMessage: (message: ConversationsItem) =>
-    dispatch({
+  newMessage: async (message: ConversationsItem) =>
+    await dispatch({
       type: ChatActionTypes.NEW_MESSAGE,
       payload: message,
     }),
-  unreadCounter: () => dispatch(getUnreadCount()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SocketContainer);
