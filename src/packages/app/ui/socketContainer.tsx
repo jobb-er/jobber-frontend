@@ -2,7 +2,10 @@ import { ConversationsItem } from "packages/chat/models";
 import { ReactElement, useEffect } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { connectToNamespace } from "../store/actions/socketActions";
+import {
+  connectToNamespace,
+  socketDisconnect,
+} from "../store/actions/socketActions";
 import ActionTypes from "../store/actionTypes";
 import ChatActionTypes from "packages/chat/store/actionTypes";
 import {
@@ -11,6 +14,8 @@ import {
   SocketContainerProps,
 } from "./types";
 import { PRIVATE } from "common/constants";
+import { fetchConversations } from "packages/chat/store/actions/conversationsActions";
+import { Socket } from "socket.io-client";
 
 const SocketContainer = ({
   children,
@@ -18,14 +23,17 @@ const SocketContainer = ({
   socket,
   conversations,
   connectToPrivateSocket,
+  disconnectFromPrivateSocket,
   newMessage,
+  fetchMyConversations,
 }: SocketContainerProps): ReactElement => {
   useEffect(() => {
     if (auth.id) {
       connectToPrivateSocket(auth.id);
+      fetchMyConversations();
     }
     return () => {
-      socket?.private?.socket?.disconnect();
+      disconnectFromPrivateSocket(socket?.private?.socket);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth]);
@@ -68,11 +76,18 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
       payload: { name: namespace, socket: connectToNamespace(namespace) },
     });
   },
+  disconnectFromPrivateSocket: (socket: Socket | null) => {
+    dispatch({
+      type: ActionTypes.SOCKET_PRIVATE_DISCONNECT,
+      payload: socketDisconnect(socket),
+    });
+  },
   newMessage: async (message: ConversationsItem) =>
     await dispatch({
       type: ChatActionTypes.NEW_MESSAGE,
       payload: message,
     }),
+  fetchMyConversations: () => dispatch(fetchConversations()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SocketContainer);

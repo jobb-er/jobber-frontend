@@ -29,7 +29,7 @@ import { Socket } from "socket.io-client";
 const ConversationCard = ({
   auth,
   socket,
-  conversation: { user, messages },
+  conversation: { user },
   connectToChat,
   disconnectFromChat,
   fetchUserConversation,
@@ -53,6 +53,11 @@ const ConversationCard = ({
   useEffect(() => {
     socket.receive.socket?.on("receiveMessage", (message: Message) => {
       addMessage(message);
+      socket.receive.socket?.emit(
+        "readMessage",
+        { messageId: message.id },
+        () => {},
+      );
     });
 
     return () => {
@@ -152,7 +157,10 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
       },
     });
   },
-  disconnectFromChat: async (socketSend: Socket | null, socketReceive: Socket | null) => {
+  disconnectFromChat: async (
+    socketSend: Socket | null,
+    socketReceive: Socket | null,
+  ) => {
     await dispatch({
       type: SocketActionTypes.SOCKET_CHAT_SEND_DISCONNECT,
       payload: socketDisconnect(socketSend),

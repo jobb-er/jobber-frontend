@@ -18,7 +18,7 @@ const UnreadNotification = ({
   if (unReadCount < 1) return <></>;
 
   return (
-    <div className="absolute w-6 h-4 rounded-full bg-action right-1 text-xs text-center text-white">
+    <div className="absolute w-6 h-4 rounded-full bg-action right-1 top-1 text-xs text-center text-white">
       {unReadCount > 9 ? "9+" : unReadCount}
     </div>
   );

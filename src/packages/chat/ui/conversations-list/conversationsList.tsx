@@ -12,7 +12,7 @@ const ConversationsList = ({
   searchValue,
 }: ConversationsListProps): ReactElement => {
   return (
-    <div className="flex flex-col w-full h-full">
+    <div className="flex flex-col w-full h-full pr-1">
       {conversations
         .filter((item) => {
           if (!searchValue) return true;
@@ -47,7 +47,6 @@ const mapStateToProps = (
   state: ConversationsListMapState,
 ): ConversationsListMapStateReturn => ({
   conversations: state.messages.conversations,
-  // conversation: state.messages.conversation,
 });
 
 export default connect(mapStateToProps)(ConversationsList);

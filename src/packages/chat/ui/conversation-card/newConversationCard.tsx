@@ -38,7 +38,7 @@ const NewConversationCard = (): ReactElement => {
           delay={500}
         >
           {topResults ? (
-            <ul className="absolute z-10 top-10 min-w-full max-w-fit bg-secondary-lightest rounded-xl">
+            <ul className="absolute z-10 top-10 min-w-full max-w-fit max-h-80 bg-secondary-lightest rounded-xl overflow-auto">
               {topResults.map(
                 (user: User): ReactElement => (
                   <NavLink key={user.id} to={`/messages/${user.id}`}>

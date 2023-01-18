@@ -12,7 +12,7 @@ import { ReactComponent as EmptyInboxIcon } from "common/images/messages/emptyIn
 import { ReactComponent as NoteAdd } from "common/images/messages/noteAddAction.svg";
 import ConversationsList from "./conversations-list/conversationsList";
 import ConversationCard from "./conversation-card/conversationCard";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import { NEW_MESSAGE } from "common/constants";
 import NewConversationCard from "./conversation-card/newConversationCard";
 
@@ -21,8 +21,10 @@ const MessagesContent = ({
   searchValue,
 }: MessagesContentProps): ReactElement => {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const { id } = useParams();
 
-  if (!conversations?.length)
+  if (!conversations?.length && !pathname.includes(NEW_MESSAGE) && !id)
     return (
       <div className="flex justify-between gap-10 h-max p-16">
         <div className="flex flex-col gap-6">
@@ -38,11 +40,11 @@ const MessagesContent = ({
     );
 
   return (
-    <div className="flex flex-row justify-between gap-12 h-full px-10">
-      <div className="flex w-3/12">
+    <div className="flex flex-row justify-between gap-12 h-85 px-10">
+      <div className="flex w-3/12 h-full overflow-auto">
         <ConversationsList searchValue={searchValue} />
       </div>
-      <div className="flex grow">
+      <div className="flex grow h-full">
         <Routes>
           <Route path={`${NEW_MESSAGE}`} element={<NewConversationCard />} />
           <Route path=":id" element={<ConversationCard />} />

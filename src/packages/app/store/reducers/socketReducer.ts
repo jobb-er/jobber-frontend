@@ -10,6 +10,8 @@ export const socketPrivateReducer = (
   switch (action.type) {
     case ActionTypes.SOCKET_PRIVATE_CONNECT:
       return action.payload;
+    case ActionTypes.SOCKET_PRIVATE_DISCONNECT:
+        return action.payload;
     default:
       return state;
   }

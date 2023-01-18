@@ -1,8 +1,7 @@
-import { ChangeEvent, ReactElement, useEffect, useState } from "react";
+import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useParams } from "react-router-dom";
 
 import { Input, Link, TopBar } from "common/components";
 import {
@@ -13,23 +12,14 @@ import {
 import MessagesContent from "./messagesContent";
 import { ReactComponent as SearchIcon } from "common/images/offers/search.svg";
 import { ReactComponent as NoteAdd } from "common/images/messages/noteAddPrimary.svg";
-import { fetchConversations } from "../store/actions/conversationsActions";
 import { MESSAGES, NEW_MESSAGE } from "common/constants";
 
-const Messages = ({
-  auth,
-  conversations,
-  fetchMyConversations,
-}: MessagesProps): ReactElement => {
+const Messages = ({ auth, conversations }: MessagesProps): ReactElement => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
+  const { id } = useParams();
 
   const [searchValue, setSearchValue] = useState<string>("");
-
-  useEffect(() => {
-    fetchMyConversations();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   if (conversations.length > 0 && pathname === MESSAGES)
     return <Navigate replace to={`${conversations[0].user.id}`} />;
@@ -79,8 +69,4 @@ const mapStateToProps = (state: MessagesMapState): MessagesMapStateReturn => ({
   conversations: state.messages.conversations,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  fetchMyConversations: () => dispatch(fetchConversations()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Messages);
+export default connect(mapStateToProps)(Messages);

@@ -15,7 +15,6 @@ export interface MessagesMapStateReturn {
 }
 
 export interface MessagesProps {
-  fetchMyConversations: () => void;
   conversations: Conversations;
   auth?: Auth;
 }
