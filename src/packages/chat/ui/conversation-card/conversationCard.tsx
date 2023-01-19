@@ -93,8 +93,9 @@ const ConversationCard = ({
             {user?.avatar || <NoAvatarIcon className="w-16 h-16 p-3" />}
           </div>
         </div>
-        <div className="text-msg-conv-title px-6 py-3">
-          {user.firstName} {user.lastName}
+        <div className="text-msg-conv-title px-6 py-3 capitalize">
+          <span>{user.firstName}</span>
+          <span> {user.lastName}</span>
         </div>
       </div>
       <div className="absolute flex flex-col justify-between inset-8 top-28">

@@ -23,21 +23,20 @@ const ConversationsListItem = ({
           {user.avatar || <NoAvatarIcon className="w-16 h-16 p-3" />}
         </div>
       </div>
-      <div
-        className="flex flex-col grow justify-center truncate"
-      >
-        <div className="h-6 text-msg-conv-list-title font-medium truncate">
-          {user.firstName} {user.lastName}
+      <div className="flex flex-col grow justify-center truncate">
+        <div className="h-6 text-msg-conv-list-title font-medium truncate capitalize">
+          <span>{user.firstName}</span>
+          <span> {user.lastName}</span>
         </div>
         <div className="h-5 text-msg-conv-list-msg truncate">
-          {latestMessage.received ? user.firstName : "You"}:{" "}
-          {latestMessage.message}
+          <span className="capitalize">
+            {latestMessage.received ? user.firstName : "You"}:{" "}
+          </span>
+          <span>{latestMessage.message}</span>
         </div>
       </div>
       <div
-        className={`flex justify-center items-center ${
-          markAsRead && "hidden"
-        }`}
+        className={`flex justify-center items-center ${markAsRead && "hidden"}`}
       >
         <div className="bg-action h-4 w-4 rounded-lg"></div>
       </div>

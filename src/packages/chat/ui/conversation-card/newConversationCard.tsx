@@ -51,8 +51,9 @@ const NewConversationCard = (): ReactElement => {
                         </div>
                       </div>
                       <div className="flex flex-col flex-auto justify-center truncate">
-                        <div className="font-medium truncate">
-                          {user.firstName} {user.lastName}
+                        <div className="font-medium truncate capitalize">
+                          <span>{user.firstName}</span>
+                          <span> {user.lastName}</span>
                         </div>
                         <div className="text-sm truncate">{user.email}</div>
                       </div>
