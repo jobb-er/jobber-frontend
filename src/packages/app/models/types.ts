@@ -7,6 +7,7 @@ export interface Auth {
   lastName?: string;
   email?: string;
   accountType?: string;
+  avatar?: string;
 }
 
 export interface RegisterAPIValues {

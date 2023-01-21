@@ -32,6 +32,7 @@ const Messages = ({ auth, conversations }: MessagesProps): ReactElement => {
         }
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
         additionalClassName="gap-12"
+        avatar={auth?.avatar}
       >
         {conversations?.length ? (
           <>

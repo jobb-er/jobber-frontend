@@ -67,6 +67,7 @@ const AllOffers = ({
         role={
           auth?.accountType ? t(`roles.${auth.accountType.toLowerCase()}`) : ""
         }
+        avatar={auth?.avatar}
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
       >
         <div className="flex items-center gap-3 w-max">

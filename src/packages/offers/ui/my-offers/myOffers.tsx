@@ -24,6 +24,7 @@ const MyOffers = ({ auth }: MyOffersProps): ReactElement => {
         role={
           auth?.accountType ? t(`roles.${auth.accountType.toLowerCase()}`) : ""
         }
+        avatar={auth?.avatar}
         name={`${auth?.firstName || ""} ${auth?.lastName || ""}`}
       >
         {isCandidate ? (
