@@ -19,8 +19,16 @@ const ConversationsListItem = ({
       }`}
     >
       <div className="flex box-content justify-center items-center w-16 h-16">
-        <div className="box-content border border-primary rounded-full focus:outline-none">
-          {user.avatar || <NoAvatarIcon className="w-16 h-16 p-3" />}
+        <div className="box-content border border-primary w-16 h-16 rounded-full focus:outline-none">
+          {user?.avatar ? (
+            <img
+              src={user.avatar}
+              className="w-16 h-16 rounded-full"
+              alt="avatar"
+            />
+          ) : (
+            <NoAvatarIcon className="w-16 h-16 p-3" />
+          )}
         </div>
       </div>
       <div className="flex flex-col grow justify-center truncate">

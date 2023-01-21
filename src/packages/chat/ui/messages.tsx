@@ -1,7 +1,7 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
-import { Navigate, useLocation, useParams } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 import { Input, Link, TopBar } from "common/components";
 import {
@@ -17,7 +17,6 @@ import { MESSAGES, NEW_MESSAGE } from "common/constants";
 const Messages = ({ auth, conversations }: MessagesProps): ReactElement => {
   const { t } = useTranslation();
   const { pathname } = useLocation();
-  const { id } = useParams();
 
   const [searchValue, setSearchValue] = useState<string>("");
 

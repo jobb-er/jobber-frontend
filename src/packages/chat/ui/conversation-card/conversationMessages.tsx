@@ -21,7 +21,15 @@ const ConversationMessages = ({
               {msg.received && !arr[i - 1]?.received ? (
                 <div className="absolute left-0 bottom-1">
                   <div className="w-8 h-8 border box-content border-primary rounded-full">
-                    {user.avatar || <NoAvatarIcon className="w-8 h-8 p-2" />}
+                    {user?.avatar ? (
+                      <img
+                        src={user.avatar}
+                        className="w-full h-full rounded-full"
+                        alt="avatar"
+                      />
+                    ) : (
+                      <NoAvatarIcon className="w-8 h-8 p-2" />
+                    )}
                   </div>
                 </div>
               ) : (

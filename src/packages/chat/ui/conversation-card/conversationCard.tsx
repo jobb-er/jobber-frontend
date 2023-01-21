@@ -99,7 +99,15 @@ const ConversationCard = ({
       <div className="flex flex-row">
         <div className="flex justify-center items-center w-18 h-20 pb-4">
           <div className="w-16 h-16 box-content border border-primary rounded-full focus:outline-none">
-            {user?.avatar || <NoAvatarIcon className="w-16 h-16 p-3" />}
+            {user?.avatar ? (
+              <img
+                src={user.avatar}
+                className="w-full h-full rounded-full"
+                alt="avatar"
+              />
+            ) : (
+              <NoAvatarIcon className="w-16 h-16 p-3" />
+            )}
           </div>
         </div>
         <div className="text-msg-conv-title px-6 py-3 capitalize">
