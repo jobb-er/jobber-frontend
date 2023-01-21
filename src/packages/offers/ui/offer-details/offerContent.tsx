@@ -1,6 +1,8 @@
 import { ReactElement } from "react";
+import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+import { MESSAGES } from "common/constants";
 import { Button } from "common/components";
 import { ReactComponent as BuildingIcon } from "common/images/offers/building.svg";
 import { ReactComponent as MapPinIcon } from "common/images/offers/mapPin.svg";
@@ -9,8 +11,6 @@ import { ReactComponent as CheckMarkIcon } from "common/images/offers/checkMark.
 import { ReactComponent as MessageIcon } from "common/images/offers/message.svg";
 import { applyForOffer } from "../../store/actions/myOffersActions";
 import { OfferContentProps } from "./types";
-import { NavLink } from "react-router-dom";
-import { MESSAGES } from "common/constants";
 
 const OfferContent = ({
   offer,

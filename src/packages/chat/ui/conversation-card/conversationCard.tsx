@@ -1,30 +1,31 @@
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
-import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { Dispatch } from "redux";
+import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
+import { Socket } from "socket.io-client";
 
+import ActionTypes from "packages/chat/store/actionTypes";
+import SocketActionTypes from "packages/app/store/actionTypes";
+import { CHAT } from "common/constants";
 import { Card, Input, Loader } from "common/components";
 import { ReactComponent as NoAvatarIcon } from "common/images/top-bar/noAvatar.svg";
 import { ReactComponent as SendMessage } from "common/images/messages/send.svg";
+import { Message } from "packages/chat/models";
+import {
+  fetchConversation,
+  sendMessage as sendMessageAction,
+} from "packages/chat/store/actions/conversationsActions";
+import {
+  connectToNamespace,
+  socketDisconnect,
+} from "packages/app/store/actions/socketActions";
+import ConversationMessages from "./conversationMessages";
 import {
   ConversationCardMapState,
   ConversationCardMapStateReturn,
   ConversationCardProps,
 } from "./types";
-import {
-  fetchConversation,
-  sendMessage as sendMessageAction,
-} from "packages/chat/store/actions/conversationsActions";
-import ActionTypes from "packages/chat/store/actionTypes";
-import SocketActionTypes from "packages/app/store/actionTypes";
-import {
-  connectToNamespace,
-  socketDisconnect,
-} from "packages/app/store/actions/socketActions";
-import { Message } from "packages/chat/models";
-import ConversationMessages from "./conversationMessages";
-import { CHAT } from "common/constants";
-import { Socket } from "socket.io-client";
 
 const ConversationCard = ({
   auth,
@@ -37,6 +38,7 @@ const ConversationCard = ({
   addMessage,
 }: ConversationCardProps): ReactElement => {
   const { id } = useParams();
+  const { t } = useTranslation();
 
   const [messageInput, setMessageInput] = useState<string>("");
 
@@ -67,18 +69,14 @@ const ConversationCard = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket.receive.socket]);
 
-  if (isFetchingConversationReducer) {
+  if (id !== user?.id || isFetchingConversationReducer) {
     return (
       <Card additionalClassName="flex justify-center items-center w-full p-8">
-        <Loader additionalClassName="flex items-center justify-center h-full" />
-      </Card>
-    );
-  }
-
-  if (id !== user?.id) {
-    return (
-      <Card additionalClassName="flex justify-center items-center w-full p-8">
-        <p>Conversation not found!</p>
+        {isFetchingConversationReducer ? (
+          <Loader additionalClassName="flex items-center justify-center h-full" />
+        ) : (
+          <p>{t("messages.convNotFound")}</p>
+        )}
       </Card>
     );
   }
@@ -98,7 +96,7 @@ const ConversationCard = ({
     <Card additionalClassName="relative w-full p-8 divide-y-2 divide-primary text-primary">
       <div className="flex flex-row">
         <div className="flex justify-center items-center w-18 h-20 pb-4">
-          <div className="w-16 h-16 box-content border border-primary rounded-full focus:outline-none">
+          <div className="w-12 h-12 box-content border border-primary rounded-full focus:outline-none">
             {user?.avatar ? (
               <img
                 src={user.avatar}
@@ -106,20 +104,20 @@ const ConversationCard = ({
                 alt="avatar"
               />
             ) : (
-              <NoAvatarIcon className="w-16 h-16 p-3" />
+              <NoAvatarIcon className="w-12 h-12 p-3" />
             )}
           </div>
         </div>
-        <div className="text-msg-conv-title px-6 py-3 capitalize">
+        <div className="text-3xl px-6 py-3 capitalize">
           <span>{user.firstName}</span>
           <span> {user.lastName}</span>
         </div>
       </div>
       <div className="absolute flex flex-col justify-between inset-8 top-28">
         {<ConversationMessages />}
-        <div className="absolute flex flex-row inset-x-0 bottom-0">
+        <div className="absolute flex flex-row h-12 inset-x-0 bottom-0">
           <Input
-            additionalClassName="text-msg-conv-msg-inp py-4 px-6 h-14"
+            additionalClassName="text-xl py-4 px-6 h-12"
             height="h-min"
             placeholder="Aa"
             value={messageInput}
@@ -132,7 +130,7 @@ const ConversationCard = ({
               }
             }}
           />
-          <div className="py-2 px-7">
+          <div className="py-1 px-7">
             <button onClick={handleClick}>
               <SendMessage />
             </button>

@@ -1,21 +1,22 @@
-import { ConversationsItem } from "packages/chat/models";
 import { ReactElement, useEffect } from "react";
+import { Socket } from "socket.io-client";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import {
-  connectToNamespace,
-  socketDisconnect,
-} from "../store/actions/socketActions";
-import ActionTypes from "../store/actionTypes";
+
+import { ConversationsItem } from "packages/chat/models";
 import ChatActionTypes from "packages/chat/store/actionTypes";
+import { PRIVATE } from "common/constants";
+import { fetchConversations } from "packages/chat/store/actions/conversationsActions";
 import {
   SocketContainerMapState,
   SocketContainerMapStateReturn,
   SocketContainerProps,
 } from "./types";
-import { PRIVATE } from "common/constants";
-import { fetchConversations } from "packages/chat/store/actions/conversationsActions";
-import { Socket } from "socket.io-client";
+import {
+  connectToNamespace,
+  socketDisconnect,
+} from "../store/actions/socketActions";
+import ActionTypes from "../store/actionTypes";
 
 const SocketContainer = ({
   children,

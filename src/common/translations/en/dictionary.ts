@@ -129,6 +129,7 @@ const en = {
     newMessage: "New message",
     searchConvs: "Search conversations",
     searchUsers: "To",
+    convNotFound: "Conversation not found!",
   },
   settings: {
     app: "App",

@@ -1,13 +1,14 @@
 import { ReactElement } from "react";
+import { connect } from "react-redux";
 
+import { removeDuplicateWhitespaces } from "common/utils";
+import { ReactComponent as ConversationIcon } from "common/images/messages/conversationGraphic.svg";
+import { ReactComponent as NoAvatarIcon } from "common/images/top-bar/noAvatar.svg";
 import {
   ConversationMessagesMapState,
   ConversationMessagesMapStateReturn,
   ConversationMessagesProps,
 } from "./types";
-import { ReactComponent as ConversationIcon } from "common/images/messages/conversationGraphic.svg";
-import { ReactComponent as NoAvatarIcon } from "common/images/top-bar/noAvatar.svg";
-import { connect } from "react-redux";
 
 const ConversationMessages = ({
   conversation: { user, messages },
@@ -17,10 +18,15 @@ const ConversationMessages = ({
       <div className="absolute flex flex-col-reverse flex-auto w-full overflow-y-auto top-2 bottom-24">
         {messages.map((msg, i, arr) => {
           return (
-            <div key={msg.id} className="relative w-full">
+            <div
+              key={msg.id}
+              className={`relative w-full ${
+                arr[i - 1]?.received !== arr[i]?.received && "mb-2"
+              } ${arr[i + 1]?.received !== arr[i]?.received && "mt-2"}`}
+            >
               {msg.received && !arr[i - 1]?.received ? (
                 <div className="absolute left-0 bottom-1">
-                  <div className="w-8 h-8 border box-content border-primary rounded-full">
+                  <div className="w-6 h-6 border box-content border-primary rounded-full">
                     {user?.avatar ? (
                       <img
                         src={user.avatar}
@@ -28,7 +34,7 @@ const ConversationMessages = ({
                         alt="avatar"
                       />
                     ) : (
-                      <NoAvatarIcon className="w-8 h-8 p-2" />
+                      <NoAvatarIcon className="w-6 h-6 p-1" />
                     )}
                   </div>
                 </div>
@@ -36,11 +42,13 @@ const ConversationMessages = ({
                 <></>
               )}
               <p
-                className={`text-msg-conv-msg rounded-xl px-5 py-3 my-0.5 w-max text-white ${
-                  msg.received
-                    ? "ml-14 float-left bg-secondary"
-                    : "mr-4 float-right bg-action"
-                }`}
+                className={`${removeDuplicateWhitespaces(
+                  `text-lg rounded-xl px-4 py-1 my-0.5 text-white break-words ${
+                    msg.received
+                      ? "ml-10 float-left bg-secondary max-w-3/5"
+                      : "mr-4 float-right bg-action max-w-1/2"
+                  }`,
+                )}`}
               >
                 {msg.message}
               </p>

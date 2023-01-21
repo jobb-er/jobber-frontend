@@ -1,13 +1,12 @@
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
 
 import { Card, Input } from "common/components";
 import { User } from "packages/chat/models/types";
 import { fetchTopResults } from "packages/chat/store/actions/conversationsActions";
-import { ReactComponent as NoAvatarIcon } from "common/images/top-bar/noAvatar.svg";
 import { ReactComponent as ConversationIcon } from "common/images/messages/conversationGraphic.svg";
 import { ReactComponent as SendMessageDisabled } from "common/images/messages/sendDisabled.svg";
+import SearchUserItem from "./searchUserItem";
 
 const NewConversationCard = (): ReactElement => {
   const { t } = useTranslation();
@@ -39,28 +38,9 @@ const NewConversationCard = (): ReactElement => {
         >
           {topResults ? (
             <ul className="absolute z-10 top-10 min-w-full max-w-fit max-h-80 bg-secondary-lightest rounded-xl overflow-auto">
-              {topResults.map(
-                (user: User): ReactElement => (
-                  <NavLink key={user.id} to={`/messages/${user.id}`}>
-                    <li className="flex flex-row group gap-3 text-primary cursor-pointer hover:bg-primary hover:text-white rounded-xl p-2">
-                      <div className="flex box-content justify-center items-center">
-                        <div className="w-12 h-12 box-content border border-primary group-hover:border-white rounded-full focus:outline-none">
-                          {user.avatar || (
-                            <NoAvatarIcon className="w-12 h-12 p-3" />
-                          )}
-                        </div>
-                      </div>
-                      <div className="flex flex-col flex-auto justify-center truncate">
-                        <div className="font-medium truncate capitalize">
-                          <span>{user.firstName}</span>
-                          <span> {user.lastName}</span>
-                        </div>
-                        <div className="text-sm truncate">{user.email}</div>
-                      </div>
-                    </li>
-                  </NavLink>
-                ),
-              )}
+              {topResults.map((user) => (
+                <SearchUserItem user={user} />
+              ))}
             </ul>
           ) : (
             <></>
@@ -75,14 +55,14 @@ const NewConversationCard = (): ReactElement => {
             </div>
           </div>
         </div>
-        <div className="absolute flex flex-row h-14 inset-x-0 bottom-0">
+        <div className="absolute flex flex-row h-12 inset-x-0 bottom-0">
           <Input
-            additionalClassName="text-msg-conv-msg-inp py-4 px-6 h-14"
+            additionalClassName="text-xl py-4 px-6 h-12"
             height="h-min"
             placeholder="Aa"
             disabled
           />
-          <div className="py-2 px-7">
+          <div className="py-1 px-7">
             <SendMessageDisabled />
           </div>
         </div>

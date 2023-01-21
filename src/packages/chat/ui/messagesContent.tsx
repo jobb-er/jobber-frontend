@@ -1,20 +1,20 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
+import { Route, Routes, useLocation, useParams } from "react-router-dom";
 
+import { NEW_MESSAGE } from "common/constants";
 import { Label, Link } from "common/components";
+import { ReactComponent as EmptyInboxIcon } from "common/images/messages/emptyInboxGraphic.svg";
+import { ReactComponent as NoteAdd } from "common/images/messages/noteAddAction.svg";
+import NewConversationCard from "./conversation-card/newConversationCard";
+import ConversationsList from "./conversations-list/conversationsList";
+import ConversationCard from "./conversation-card/conversationCard";
 import {
   MessagesContentProps,
   MessagesContentMapState,
   MessagesContentMapStateReturn,
 } from "./types";
-import { ReactComponent as EmptyInboxIcon } from "common/images/messages/emptyInboxGraphic.svg";
-import { ReactComponent as NoteAdd } from "common/images/messages/noteAddAction.svg";
-import ConversationsList from "./conversations-list/conversationsList";
-import ConversationCard from "./conversation-card/conversationCard";
-import { Route, Routes, useLocation, useParams } from "react-router-dom";
-import { NEW_MESSAGE } from "common/constants";
-import NewConversationCard from "./conversation-card/newConversationCard";
 
 const MessagesContent = ({
   conversations,

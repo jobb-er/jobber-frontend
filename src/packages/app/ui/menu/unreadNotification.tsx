@@ -1,5 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { connect } from "react-redux";
+
 import {
   UnreadNotificationMapState,
   UnreadNotificationMapStateReturn,
@@ -9,7 +10,7 @@ import {
 const UnreadNotification = ({
   conversations,
 }: UnreadNotificationProps): ReactElement => {
-  const [unReadCount, setUnReadCount] = useState<number>(0);
+  const [unReadCount, setUnReadCount] = useState(0);
 
   useEffect(() => {
     setUnReadCount(conversations.filter((conv) => !conv.markAsRead).length);

@@ -1,5 +1,5 @@
-import { Auth } from "../../app";
 import { Conversations, Conversation } from "../models";
+import { Auth } from "../../app";
 
 export interface MapState {
   messages: { conversations: Conversations; conversation: Conversation };

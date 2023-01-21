@@ -7,7 +7,7 @@ import {
   isFetchingConversationsReducer,
 } from "./conversationsReducer";
 
-export const messagesReducers = combineReducers({
+export const messagesReducer = combineReducers({
   conversations: conversationsReducer,
   conversation: conversationReducer,
 });

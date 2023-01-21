@@ -26,9 +26,9 @@ const Input = ({
 }: InputProps): ReactElement => {
   const ref = useRef(null);
 
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
   const [inputTimeout, setInputTimeout] = useState<NodeJS.Timeout>();
-  const [focused, setFocused] = useState<boolean>(false);
+  const [focused, setFocused] = useState(false);
 
   useOnClickOutside(ref, () => setFocused(false), "mouseup");
 

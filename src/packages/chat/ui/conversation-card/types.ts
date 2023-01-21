@@ -1,8 +1,10 @@
+import { Socket } from "socket.io-client";
+
 import { Auth } from "packages/app";
 import { SocketReducer } from "packages/app/models";
 import { Conversation, Conversations, Message } from "packages/chat/models";
-import { Socket } from "socket.io-client";
 import { MapState } from "../types";
+import { User } from "packages/chat/models/types";
 
 export interface ConversationCardMapState extends MapState {
   auth: Auth;
@@ -39,4 +41,8 @@ export interface ConversationMessagesMapState extends MapState {}
 
 export interface ConversationMessagesMapStateReturn {
   conversation: Conversation;
+}
+
+export interface SearchUserItemProps {
+  user: User;
 }
