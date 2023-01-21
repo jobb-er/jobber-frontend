@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { useParams } from "react-router-dom";
 
-import { Card, Input } from "common/components";
+import { Card, Input, Loader } from "common/components";
 import { ReactComponent as NoAvatarIcon } from "common/images/top-bar/noAvatar.svg";
 import { ReactComponent as SendMessage } from "common/images/messages/send.svg";
 import {
@@ -30,6 +30,7 @@ const ConversationCard = ({
   auth,
   socket,
   conversation: { user },
+  isFetchingConversationReducer,
   connectToChat,
   disconnectFromChat,
   fetchUserConversation,
@@ -65,6 +66,14 @@ const ConversationCard = ({
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket.receive.socket]);
+
+  if (isFetchingConversationReducer) {
+    return (
+      <Card additionalClassName="flex justify-center items-center w-full p-8">
+        <Loader additionalClassName="flex items-center justify-center h-full" />
+      </Card>
+    );
+  }
 
   if (id !== user?.id) {
     return (
@@ -133,6 +142,8 @@ const mapStateToProps = (
   socket: state.socket,
   conversation: state.messages.conversation,
   conversations: state.messages.conversations,
+  isFetchingConversationReducer:
+    state.requestStatuses.isFetchingConversationReducer,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({

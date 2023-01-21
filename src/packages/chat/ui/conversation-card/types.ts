@@ -7,6 +7,7 @@ import { MapState } from "../types";
 export interface ConversationCardMapState extends MapState {
   auth: Auth;
   socket: SocketReducer;
+  requestStatuses: { isFetchingConversationReducer: boolean };
 }
 
 export interface ConversationCardMapStateReturn {
@@ -14,6 +15,7 @@ export interface ConversationCardMapStateReturn {
   socket: SocketReducer;
   conversation: Conversation;
   conversations: Conversations;
+  isFetchingConversationReducer: boolean;
 }
 
 export interface ConversationCardProps extends ConversationCardMapStateReturn {

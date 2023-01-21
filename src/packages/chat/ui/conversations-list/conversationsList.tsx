@@ -1,3 +1,4 @@
+import { Loader } from "common/components";
 import { ReactElement } from "react";
 import { connect } from "react-redux";
 import ConversationsListItem from "./conversationsListItem";
@@ -9,8 +10,17 @@ import {
 
 const ConversationsList = ({
   conversations,
+  isFetchingConversationsReducer,
   searchValue,
 }: ConversationsListProps): ReactElement => {
+  if (isFetchingConversationsReducer) {
+    return (
+      <div className="flex flex-col w-full h-full pr-1">
+        <Loader additionalClassName="flex items-center justify-center h-full" />
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col w-full h-full pr-1">
       {conversations
@@ -47,6 +57,8 @@ const mapStateToProps = (
   state: ConversationsListMapState,
 ): ConversationsListMapStateReturn => ({
   conversations: state.messages.conversations,
+  isFetchingConversationsReducer:
+    state.requestStatuses.isFetchingConversationsReducer,
 });
 
 export default connect(mapStateToProps)(ConversationsList);

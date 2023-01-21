@@ -56,3 +56,33 @@ export const conversationReducer = (
       return state;
   }
 };
+
+export const isFetchingConversationsReducer = (
+  state = false,
+  action: AnyAction
+) => {
+  switch (action.type) {
+    case ActionTypes.CONVERSATIONS_REQUEST:
+      return true;
+    case ActionTypes.CONVERSATIONS_SUCCESS:
+    case ActionTypes.CONVERSATIONS_FAILURE:
+      return false;
+    default:
+      return state;
+  }
+};
+
+export const isFetchingConversationReducer = (
+  state = false,
+  action: AnyAction
+) => {
+  switch (action.type) {
+    case ActionTypes.CONVERSATION_REQUEST:
+      return true;
+    case ActionTypes.CONVERSATION_SUCCESS:
+    case ActionTypes.CONVERSATION_FAILURE:
+      return false;
+    default:
+      return state;
+  }
+};
