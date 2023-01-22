@@ -32,11 +32,11 @@ const ConversationsListItem = ({
           <span>{user.firstName}</span>
           <span> {user.lastName}</span>
         </div>
-        <div className="h-5 text-base truncate">
-          <div className="capitalize inline-block">
-            {latestMessage.received ? user.firstName : "You"}:{" "}
+        <div className="flex flex-row h-5 text-base w-72">
+          <div className="capitalize">
+            {latestMessage.received ? user.firstName : "You"}:
           </div>
-          <div className="w-16 inline-block">&nbsp;{latestMessage.message}</div>
+          <div className="truncate">&nbsp;{latestMessage.message}</div>
         </div>
       </div>
       <div
