@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { Input, Link, TopBar } from "common/components";
 import { ReactComponent as SearchIcon } from "common/images/offers/search.svg";
-import { ReactComponent as NoteAdd } from "common/images/messages/noteAddPrimary.svg";
+import { ReactComponent as NoteAdd } from "common/images/messages/noteAdd.svg";
 import { MESSAGES, NEW_MESSAGE } from "common/constants";
 import MessagesContent from "./messagesContent";
 import {

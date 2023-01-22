@@ -6,7 +6,7 @@ import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import { NEW_MESSAGE } from "common/constants";
 import { Label, Link } from "common/components";
 import { ReactComponent as EmptyInboxIcon } from "common/images/messages/emptyInboxGraphic.svg";
-import { ReactComponent as NoteAdd } from "common/images/messages/noteAddAction.svg";
+import { ReactComponent as NoteAdd } from "common/images/messages/noteAdd.svg";
 import NewConversationCard from "./conversation-card/newConversationCard";
 import ConversationsList from "./conversations-list/conversationsList";
 import ConversationCard from "./conversation-card/conversationCard";

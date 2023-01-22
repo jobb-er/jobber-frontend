@@ -132,7 +132,7 @@ const ConversationCard = ({
           />
           <div className="py-1 px-7">
             <button onClick={handleClick}>
-              <SendMessage />
+              <SendMessage className="text-action"/>
             </button>
           </div>
         </div>

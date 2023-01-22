@@ -5,7 +5,7 @@ import { Card, Input } from "common/components";
 import { User } from "packages/chat/models/types";
 import { fetchTopResults } from "packages/chat/store/actions/conversationsActions";
 import { ReactComponent as ConversationIcon } from "common/images/messages/conversationGraphic.svg";
-import { ReactComponent as SendMessageDisabled } from "common/images/messages/sendDisabled.svg";
+import { ReactComponent as SendMessage } from "common/images/messages/send.svg";
 import SearchUserItem from "./searchUserItem";
 
 const NewConversationCard = (): ReactElement => {
@@ -63,7 +63,7 @@ const NewConversationCard = (): ReactElement => {
             disabled
           />
           <div className="py-1 px-7">
-            <SendMessageDisabled />
+            <SendMessage className="text-secondary-lightest" />
           </div>
         </div>
       </div>
