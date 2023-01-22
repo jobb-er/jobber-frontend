@@ -13,8 +13,7 @@ module.exports = {
         DEFAULT: "0 15px 10px rgba(0, 0, 0, 0.25)",
       },
       minWidth: {
-        48: "12rem",
-        "4/12": "33.333333%",
+        48: "12rem"
       },
       maxWidth: {
         "1/2": "50%",

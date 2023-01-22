@@ -2,9 +2,9 @@ import { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { removeDuplicateWhitespaces } from "../../utils";
-import { ReactComponent as NoAvatarIcon } from "../../images/top-bar/noAvatar.svg";
 import { PROFILE } from "../../constants";
 import { TopBarProps } from "./types";
+import Avatar from "../avatar/avatar";
 
 const TopBar = ({
   children,
@@ -24,22 +24,18 @@ const TopBar = ({
       {children}
       <div className="flex items-center gap-4 select-none">
         <div className="flex flex-col gap-0.5 capitalize">
-          <span className="font-semibold text-lg whitespace-nowrap">{name}</span>
-          <span className="text-secondary text-sm whitespace-nowrap">{role}</span>
+          <span className="font-semibold text-lg whitespace-nowrap">
+            {name}
+          </span>
+          <span className="text-secondary text-sm whitespace-nowrap">
+            {role}
+          </span>
         </div>
         <button
           className="w-12 h-12 border border-primary rounded-full focus:outline-none"
           onClick={() => navigate(PROFILE)}
         >
-          {avatar ? (
-            <img
-              src={avatar}
-              className="w-full h-full rounded-full"
-              alt="avatar"
-            />
-          ) : (
-            <NoAvatarIcon className="w-12 h-12 p-3" />
-          )}
+          <Avatar avatar={avatar} />
         </button>
       </div>
     </div>

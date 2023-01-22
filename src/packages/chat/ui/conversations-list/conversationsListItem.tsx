@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 import { removeDuplicateWhitespaces } from "common/utils";
-import { ReactComponent as NoAvatarIcon } from "common/images/top-bar/noAvatar.svg";
+import Avatar from "common/components/avatar/avatar";
 import { ConversationsListItemProps } from "./types";
 
 const ConversationsListItem = ({
@@ -24,15 +24,7 @@ const ConversationsListItem = ({
     >
       <div className="flex box-content justify-center items-center w-12 h-12">
         <div className="box-content border border-primary w-12 h-12 rounded-full focus:outline-none">
-          {user?.avatar ? (
-            <img
-              src={user.avatar}
-              className="w-12 h-12 rounded-full"
-              alt="avatar"
-            />
-          ) : (
-            <NoAvatarIcon className="w-12 h-12 p-3" />
-          )}
+          <Avatar avatar={user?.avatar} />
         </div>
       </div>
       <div className="flex flex-col grow justify-center truncate">

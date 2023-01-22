@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { removeDuplicateWhitespaces } from "common/utils";
 import { ReactComponent as ConversationIcon } from "common/images/messages/conversationGraphic.svg";
-import { ReactComponent as NoAvatarIcon } from "common/images/top-bar/noAvatar.svg";
+import Avatar from "common/components/avatar/avatar";
 import {
   ConversationMessagesMapState,
   ConversationMessagesMapStateReturn,
@@ -27,15 +27,12 @@ const ConversationMessages = ({
               {msg.received && !arr[i - 1]?.received ? (
                 <div className="absolute left-0 bottom-1">
                   <div className="w-6 h-6 border box-content border-primary rounded-full">
-                    {user?.avatar ? (
-                      <img
-                        src={user.avatar}
-                        className="w-full h-full rounded-full"
-                        alt="avatar"
-                      />
-                    ) : (
-                      <NoAvatarIcon className="w-6 h-6 p-1" />
-                    )}
+                    <Avatar
+                      avatar={user?.avatar}
+                      width="w-6"
+                      height="h-6"
+                      padding="p-1"
+                    />
                   </div>
                 </div>
               ) : (

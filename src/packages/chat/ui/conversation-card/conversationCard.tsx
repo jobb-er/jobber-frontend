@@ -6,19 +6,17 @@ import { useParams } from "react-router-dom";
 import { Socket } from "socket.io-client";
 
 import ActionTypes from "packages/chat/store/actionTypes";
-import SocketActionTypes from "packages/app/store/actionTypes";
-import { CHAT } from "common/constants";
 import { Card, Input, Loader } from "common/components";
-import { ReactComponent as NoAvatarIcon } from "common/images/top-bar/noAvatar.svg";
+import Avatar from "common/components/avatar/avatar";
 import { ReactComponent as SendMessage } from "common/images/messages/send.svg";
 import { Message } from "packages/chat/models";
 import {
-  fetchConversation,
+  fetchConversationAction,
   sendMessage as sendMessageAction,
 } from "packages/chat/store/actions/conversationsActions";
 import {
-  connectToNamespace,
-  socketDisconnect,
+  connectToChatAction,
+  disconnectFromChatAction,
 } from "packages/app/store/actions/socketActions";
 import ConversationMessages from "./conversationMessages";
 import {
@@ -97,15 +95,7 @@ const ConversationCard = ({
       <div className="flex flex-row">
         <div className="flex justify-center items-center w-18 h-20 pb-4">
           <div className="w-12 h-12 box-content border border-primary rounded-full focus:outline-none">
-            {user?.avatar ? (
-              <img
-                src={user.avatar}
-                className="w-full h-full rounded-full"
-                alt="avatar"
-              />
-            ) : (
-              <NoAvatarIcon className="w-12 h-12 p-3" />
-            )}
+            <Avatar avatar={user?.avatar} />
           </div>
         </div>
         <div className="text-3xl px-6 py-3 capitalize">
@@ -153,45 +143,18 @@ const mapStateToProps = (
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  fetchUserConversation: async (id: string) => {
-    await dispatch(fetchConversation(id));
-    await dispatch({ type: ActionTypes.MARK_AS_READ, payload: id });
+  fetchUserConversation: (id: string) => {
+    dispatch(fetchConversationAction(id));
   },
-  connectToChat: async (userId: string, receiverId: string) => {
-    const sendNamespace = `${CHAT}/${userId}/${receiverId}`;
-    const receiveNamespace = `${CHAT}/${receiverId}/${userId}`;
-    await dispatch({
-      type: SocketActionTypes.SOCKET_CHAT_SEND_CONNECT,
-      payload: {
-        name: sendNamespace,
-        socket: connectToNamespace(sendNamespace),
-      },
-    });
-    await dispatch({
-      type: SocketActionTypes.SOCKET_CHAT_RECEIVE_CONNECT,
-      payload: {
-        name: receiveNamespace,
-        socket: connectToNamespace(receiveNamespace),
-      },
-    });
-  },
+  connectToChat: (userId: string, receiverId: string) =>
+    dispatch(connectToChatAction(userId, receiverId)),
   disconnectFromChat: async (
     socketSend: Socket | null,
     socketReceive: Socket | null,
-  ) => {
-    await dispatch({
-      type: SocketActionTypes.SOCKET_CHAT_SEND_DISCONNECT,
-      payload: socketDisconnect(socketSend),
-    });
-    await dispatch({
-      type: SocketActionTypes.SOCKET_CHAT_RECEIVE_DISCONNECT,
-      payload: socketDisconnect(socketReceive),
-    });
-  },
-  addMessage: (message?: Message) => {
-    if (message)
-      dispatch({ type: ActionTypes.MESSAGES_APPEND, payload: message });
-  },
+  ) => dispatch(disconnectFromChatAction(socketSend, socketReceive)),
+  addMessage: (message?: Message) =>
+    message &&
+    dispatch({ type: ActionTypes.MESSAGES_APPEND, payload: message }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConversationCard);
