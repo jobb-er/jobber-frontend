@@ -1,4 +1,4 @@
-import { ReactElement, useRef, useState } from "react";
+import { ChangeEvent, ReactElement, useRef, useState } from "react";
 import { useOnClickOutside } from "usehooks-ts";
 
 import { removeDuplicateWhitespaces } from "../../utils";
@@ -32,6 +32,26 @@ const Input = ({
 
   useOnClickOutside(ref, () => setFocused(false), "mouseup");
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!delay) {
+      if (onChange) onChange(e);
+    } else {
+      setLoading(true);
+      clearTimeout(inputTimeout);
+      if (onChange)
+        setInputTimeout(
+          setTimeout(
+            (e) => {
+              onChange(e);
+              setLoading(false);
+            },
+            delay,
+            e,
+          ),
+        );
+    }
+  };
+
   return (
     <div
       className={removeDuplicateWhitespaces(
@@ -58,25 +78,7 @@ const Input = ({
         name={name}
         type={type}
         placeholder={placeholder}
-        onChange={(e) => {
-          if (!delay) {
-            if (onChange) onChange(e);
-          } else {
-            setLoading(true);
-            clearTimeout(inputTimeout);
-            if (onChange)
-              setInputTimeout(
-                setTimeout(
-                  (e) => {
-                    onChange(e);
-                    setLoading(false);
-                  },
-                  delay,
-                  e,
-                ),
-              );
-          }
-        }}
+        onChange={handleChange}
         disabled={disabled}
         {...props}
       />

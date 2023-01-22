@@ -83,8 +83,8 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
       payload: socketDisconnect(socket),
     });
   },
-  newMessage: async (message: ConversationsItem) =>
-    await dispatch({
+  newMessage: (message: ConversationsItem) =>
+    dispatch({
       type: ChatActionTypes.NEW_MESSAGE,
       payload: message,
     }),

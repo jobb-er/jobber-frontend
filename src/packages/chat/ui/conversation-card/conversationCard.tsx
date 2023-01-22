@@ -69,6 +69,17 @@ const ConversationCard = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket.receive.socket]);
 
+  const handleClick = () => {
+    if (socket.send.socket && messageInput) {
+      sendMessageAction(
+        socket.send.socket,
+        { message: messageInput },
+        addMessage,
+      );
+      setMessageInput("");
+    }
+  };
+
   if (id !== user?.id || isFetchingConversationReducer) {
     return (
       <Card additionalClassName="flex justify-center items-center w-full p-8">
@@ -80,17 +91,6 @@ const ConversationCard = ({
       </Card>
     );
   }
-
-  const handleClick = () => {
-    if (socket.send.socket && messageInput) {
-      sendMessageAction(
-        socket.send.socket,
-        { message: messageInput },
-        addMessage,
-      );
-      setMessageInput("");
-    }
-  };
 
   return (
     <Card additionalClassName="relative w-full p-8 divide-y-2 divide-primary text-primary">
@@ -132,7 +132,7 @@ const ConversationCard = ({
           />
           <div className="py-1 px-7">
             <button onClick={handleClick}>
-              <SendMessage className="text-action"/>
+              <SendMessage className="text-action" />
             </button>
           </div>
         </div>
