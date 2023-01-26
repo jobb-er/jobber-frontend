@@ -1,6 +1,6 @@
 import { AnyAction, Reducer, combineReducers } from "@reduxjs/toolkit";
 
-import { authReducer } from "packages/app/store/reducers/authReducer";
+import { authReducer, socketReducer } from "packages/app/store/reducers";
 import {
   offersReducer,
   isFetchingAllOffers,
@@ -10,6 +10,11 @@ import {
   isFetchingOfferAppliedCandidates,
 } from "packages/offers/store/reducers";
 import {
+  isFetchingConversationReducer,
+  isFetchingConversationsReducer,
+  messagesReducer,
+} from "packages/chat/store/reducers";
+import {
   profileReducer,
   isFetchingProfile,
 } from "packages/profile/store/reducers";
@@ -17,6 +22,20 @@ import ActionTypes from "./actionTypes";
 
 const initialState = {
   auth: {},
+  socket: {
+    private: {
+      name: null,
+      socket: null,
+    },
+    send: {
+      name: null,
+      socket: null,
+    },
+    receive: {
+      name: null,
+      socket: null,
+    },
+  },
   offers: {
     allOffers: [],
     offer: {},
@@ -24,6 +43,10 @@ const initialState = {
     recruiterOffers: [],
     offerAppliedCandidates: [],
     candidateOffers: [],
+  },
+  messages: {
+    conversations: [],
+    conversation: {},
   },
   profile: {
     candidateProfile: {},
@@ -36,13 +59,17 @@ const initialState = {
     isFetchingOffer: false,
     isFetchingMyOffer: false,
     isFetchingOfferAppliedCandidates: false,
+    isFetchingConversationReducer: false,
+    isFetchingConversationsReducer: false,
     isFetchingProfile: false,
   },
 };
 
 export const appReducer = combineReducers({
   auth: authReducer,
+  socket: socketReducer,
   offers: offersReducer,
+  messages: messagesReducer,
   profile: profileReducer,
   requestStatuses: combineReducers({
     isFetchingAllOffers,
@@ -50,6 +77,8 @@ export const appReducer = combineReducers({
     isFetchingOffer,
     isFetchingMyOffer,
     isFetchingOfferAppliedCandidates,
+    isFetchingConversationReducer,
+    isFetchingConversationsReducer,
     isFetchingProfile,
   }),
 });

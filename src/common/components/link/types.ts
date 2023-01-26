@@ -8,5 +8,6 @@ export interface LinkProps {
   path?: string;
   onClick?: () => void;
   textSize?: `text-${string}`;
+  textColor?: `text-${string}`;
   additionalClassName?: string;
 }

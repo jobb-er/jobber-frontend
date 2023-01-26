@@ -5,8 +5,8 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { PROFILE } from "common/constants";
+import Avatar from "common/components/avatar/avatar";
 import { AppliedCandidate, RecruiterResponse } from "packages/offers/models";
-import { ReactComponent as NoAvatarIcon } from "common/images/offers/noAvatar.svg";
 import { ReactComponent as MessageIcon } from "common/images/offers/message.svg";
 import { ReactComponent as XIcon } from "common/images/offers/x.svg";
 import { ReactComponent as CheckMarkIcon } from "common/images/offers/checkMark.svg";
@@ -17,6 +17,8 @@ import {
   fetchAppliedCandidatesForOffer,
 } from "packages/offers/store/actions/myOffersActions";
 import { OfferAppliedCandidatesProps } from "./types";
+import { NavLink } from "react-router-dom";
+import { MESSAGES } from "common/constants";
 
 const OfferAppliedCandidates = ({
   candidates,
@@ -64,15 +66,12 @@ const OfferAppliedCandidates = ({
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 border border-transparent rounded-full">
-                    {candidate?.avatar ? (
-                      <img
-                        src={candidate?.avatar}
-                        className="w-full h-full rounded-full"
-                        alt="avatar"
-                      />
-                    ) : (
-                      <NoAvatarIcon className="w-10 h-10 p-2.5" />
-                    )}
+                    <Avatar
+                      avatar={candidate?.avatar}
+                      width="w-10"
+                      height="h-10"
+                      padding="p-2.5"
+                    />
                   </div>
                   <button
                     className="underline font-semibold focus:outline-none"
@@ -81,10 +80,12 @@ const OfferAppliedCandidates = ({
                     }
                   >{`${candidate.firstName} ${candidate.lastName}`}</button>
                 </div>
-                <div className="flex items-center gap-2">
-                  <MessageIcon className="w-5 h-5" />
-                  <span>{t("myOffers.recruiter.message")}</span>
-                </div>
+                <NavLink to={`${MESSAGES}/${candidate.id}`}>
+                  <div className="flex items-center gap-2">
+                    <MessageIcon className="w-5 h-5" />
+                    <span>{t("myOffers.recruiter.message")}</span>
+                  </div>
+                </NavLink>
               </div>
               <div className="flex items-center gap-3 justify-center">
                 {candidate.recruiterResponse === "waiting" ? (

@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-import { ReactComponent as NoAvatarIcon } from "common/images/top-bar/noAvatar.svg";
+import Avatar from "common/components/avatar/avatar";
 import { ReactComponent as LinkIcon } from "common/images/profile/link.svg";
 import { ReactComponent as LinkedinIcon } from "common/images/profile/linkedin.svg";
 import { ReactComponent as LocationIcon } from "common/images/profile/location.svg";
@@ -22,15 +22,12 @@ const About = ({ about }: AboutProps): ReactElement => (
   <section className="flex flex-col gap-8 pt-8 text-primary">
     <div className="flex items-center gap-10">
       <div className="w-40 h-40 border border-primary rounded-full">
-        {about?.avatar ? (
-          <img
-            src={about.avatar}
-            alt="avatar"
-            className="rounded-full w-full h-full"
-          />
-        ) : (
-          <NoAvatarIcon className="w-40 h-40 p-14 text-primary" />
-        )}
+        <Avatar
+          avatar={about?.avatar}
+          width="w-40"
+          height="h-40"
+          padding="p-14"
+        />
       </div>
       <div className="grid grid-cols-2 grid-flow-row gap-x-8 gap-y-4">
         <span className="font-bold text-3xl col-span-2">{`${about?.firstName} ${about?.lastName}`}</span>

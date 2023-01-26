@@ -1,6 +1,8 @@
 import { ReactElement } from "react";
+import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+import { MESSAGES } from "common/constants";
 import { Button } from "common/components";
 import { ReactComponent as BuildingIcon } from "common/images/offers/building.svg";
 import { ReactComponent as MapPinIcon } from "common/images/offers/mapPin.svg";
@@ -65,12 +67,14 @@ const OfferContent = ({
       </span>
       {isCandidate ? (
         <div className="flex items-center gap-3 justify-end bg-secondary-light w-full h-16 px-6 py-3 rounded-b-xl">
-          <Button variant="secondary">
-            <div className="flex items-center gap-3">
-              <MessageIcon className="w-5 h-5" />
-              {t("offer.message")}
-            </div>
-          </Button>
+          <NavLink to={`${MESSAGES}/${offer.recruiterId}`}>
+            <Button variant="secondary">
+              <div className="flex items-center gap-3">
+                <MessageIcon className="w-5 h-5" />
+                {t("offer.message")}
+              </div>
+            </Button>
+          </NavLink>
           <Button
             type="submit"
             onClick={() => {

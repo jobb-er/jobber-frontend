@@ -45,6 +45,7 @@ export interface Offer {
   description: string;
   status: "open" | "closed";
   isNew?: boolean;
+  recruiterId?: string;
 }
 
 export type Offers = Offer[];
