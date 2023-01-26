@@ -64,6 +64,7 @@ const InnerForm = ({
           errorMessage={t(errors?.email || "", {
             field: t(`${TRANSLATION_PATH}.email`),
           })}
+          disabled
         />
         <Input
           label={addAsterisk(t(`${TRANSLATION_PATH}.phoneNumber`))}

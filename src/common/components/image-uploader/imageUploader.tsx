@@ -24,7 +24,7 @@ const ImageUploader = ({
   };
 
   return (
-    <form
+    <div
       className="relative border border-primary rounded-full w-40 h-40 cursor-pointer text-primary"
       onClick={() => fileRef?.current?.click()}
     >
@@ -56,7 +56,7 @@ const ImageUploader = ({
           <ImageIcon />
         </div>
       )}
-    </form>
+    </div>
   );
 };
 
