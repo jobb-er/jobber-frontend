@@ -50,8 +50,8 @@ const initialState = {
   },
   profile: {
     candidateProfile: {},
-    otherCandidateProfile: {},
     recruiterProfile: {},
+    otherCandidateProfile: {},
   },
   requestStatuses: {
     isFetchingAllOffers: false,
@@ -86,7 +86,7 @@ export const appReducer = combineReducers({
 const rootReducer: Reducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case ActionTypes.RESET_STORE:
-      return state;
+      return initialState;
     default:
       return appReducer(state, action);
   }
