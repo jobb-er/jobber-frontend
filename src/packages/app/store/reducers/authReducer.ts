@@ -27,7 +27,7 @@ export const authReducer = (
         CLIENT_SESSION,
         clientSessionExpirationDate.toString(),
       );
-      return { ...action.payload?.user, isAuthorised };
+      return { ...action.payload?.user, isAuthorised: true };
     case ActionTypes.AUTH_FAILURE:
       return { isAuthorised: false };
     case ActionTypes.LOGOUT_REQUEST:
